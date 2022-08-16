@@ -106,10 +106,16 @@
     vim
     wget
     git-crypt
+    curl
+    tmux
     dmenu
     surf
     st
   ];
+
+  environment.shellAliases = {
+    nix-search = "nix --extra-experimental-features 'nix-command flakes' search nixpkgs";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
