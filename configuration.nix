@@ -60,12 +60,10 @@
   services.xserver.enable = true;
   services.xserver.desktopManager.xterm.enable = true;
 #  services.xserver.windowManager.dwm.enable = true;
-  services.xserver.displayManager.defaultSession = "none+i3";
+  services.xserver.displayManager.defaultSession = "none+dwm";
 
-  services.xserver.windowManager.i3 = {
+  services.xserver.windowManager.dwm = {
     enable = true;
-    package = pkgs.i3-gaps;
-    extraPackages = with pkgs; [ i3status i3lock polybar ];
   };
 
   # Configure keymap in X11
@@ -105,9 +103,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     wget
     git-crypt
+    dmenu
+    surf
+    st
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
