@@ -50,7 +50,15 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.windowManager.dwm.enable = true;
+  services.xserver.desktopManager.xterm.enable = true;
+#  services.xserver.windowManager.dwm.enable = true;
+  services.xserver.displayManager.defaultSession = "none+i3";
+
+  services.xserver.windowManager.i3 = {
+    enable = true;
+    package = pkgs.i3-gaps;
+    extraPackages = with pkgs; [ i3status i3lock polybar ];
+  };
 
   # Configure keymap in X11
   services.xserver.layout = "us";
