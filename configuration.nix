@@ -33,6 +33,13 @@
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   networking.wireless.userControlled.enable = true;
+  networking.wireless.environmentFile = "/home/matt/wireless.env";
+  networking.wireless.networks = {
+    "Horsefish" = {
+      pskRaw = "@PSK_HORSEFISH@";
+      authProtocols = [ "WPA-PSK" ];
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "America/Toronto";
@@ -100,6 +107,7 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    git-crypt
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
