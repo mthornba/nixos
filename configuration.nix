@@ -96,7 +96,19 @@
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCeo79G56E0Ogd4EIGEoqk4wO8tPSzu5J06PdjGODcgz4r4GU3ZYMQ1yN5JQzhxw7OqZOfBsAM9HCuRZdt1b78XvDZz1+n6xy90q95Uol2ouF7arxFb04qMgiIjGpoB8xWNjnivCPuKUkxjNkNxQ+nIYBio1LTezi/xr4TrZiykdVZKLzcUit24KqdNubNfsW5fcSOaCsvL2UzRcMsU7FhUPqyBnMsfw1mtN12u53IYAU7ikPy3CWHVegW+CYGC5EOUOjXNyQMulLlgw5QxBF0mzg4tZLt0rGFtsV97qs07BS5384h5saGjPHflGEIlxRacf0I3JTcKrV/HjjcP5Egx ansible-generated on matt-dell"
     ];
     packages = with pkgs; [
-      vim
+      (st.overrideAttrs (oldAttrs: rec {
+        patches = [
+          # Fetch them directly from `st.suckless.org`
+          (fetchpatch {
+            url = "https://st.suckless.org/patches/solarized/st-no_bold_colors-20170623-b331da5.diff";
+            sha256 = "0iaq3wbazpcisys8px71sgy6k12zkhvqi4z47slivqfri48j3qbi";
+          })
+          (fetchpatch {
+            url = "https://st.suckless.org/patches/solarized/st-solarized-both-20220617-baa9357.diff";
+            sha256 = "13w101j9lz40xky3rba5clp2qkac18pgya567grm4ka2dnmahh5k";
+          })
+        ];
+      }))
     ];
   };
 
