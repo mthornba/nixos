@@ -12,6 +12,7 @@
 
   # Use the systemd-boot EFI boot loader.
   # boot.loader.systemd-boot.enable = true;
+  boot.kernelParams = [ "intel_idle.max_cstate=1" ]; # In case your laptop hangs randomly
   boot.loader = {
     efi = {
       canTouchEfiVariables = false;
