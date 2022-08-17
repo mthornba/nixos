@@ -131,6 +131,16 @@
             url = "https://st.suckless.org/patches/solarized/st-solarized-both-20220617-baa9357.diff";
             sha256 = "13w101j9lz40xky3rba5clp2qkac18pgya567grm4ka2dnmahh5k";
           })
+          # allow windows to fill available pixels
+          (fetchpatch {
+            url = "https://st.suckless.org/patches/anysize/st-anysize-20220718-baa9357.diff";
+            sha256 = "1ym5d2f85l3avgwf9q93aymdg23aidprqwyh9s1fdpjvyh80rvvq";
+          })
+          # w3m image hack
+          (fetchpatch {
+            url = "https://st.suckless.org/patches/w3m/st-w3m-0.8.3.diff";
+            sha256 = "1cwidwqyg6qv68x8bsnxns2h0gy9crd5hs2z99xcd5m0q3agpmlb";
+          })
         ];
       }))
     ];
