@@ -176,7 +176,13 @@
   #   enableSSHSupport = true;
   # };
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      ls = "lsd";
+      ll = "lsd -lA";
+    };
+  };
 
   programs.light.enable = true;
   services.actkbd = {
