@@ -160,6 +160,10 @@
     st
   ];
 
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "Meslo" ]; })
+  ];
+
   environment.shellAliases = {
     nix-search = "nix --extra-experimental-features 'nix-command flakes' search nixpkgs";
   };
