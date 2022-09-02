@@ -111,16 +111,14 @@
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCeo79G56E0Ogd4EIGEoqk4wO8tPSzu5J06PdjGODcgz4r4GU3ZYMQ1yN5JQzhxw7OqZOfBsAM9HCuRZdt1b78XvDZz1+n6xy90q95Uol2ouF7arxFb04qMgiIjGpoB8xWNjnivCPuKUkxjNkNxQ+nIYBio1LTezi/xr4TrZiykdVZKLzcUit24KqdNubNfsW5fcSOaCsvL2UzRcMsU7FhUPqyBnMsfw1mtN12u53IYAU7ikPy3CWHVegW+CYGC5EOUOjXNyQMulLlgw5QxBF0mzg4tZLt0rGFtsV97qs07BS5384h5saGjPHflGEIlxRacf0I3JTcKrV/HjjcP5Egx ansible-generated on matt-dell"
     ];
     packages = with pkgs; [
+      barrier
+      bat
+      bitwarden-cli
+      btop
       buku
-      git
+      htop
       lsd
       qutebrowser
-      syncthing
-      barrier
-      bitwarden-cli
-      bat
-      htop
-      btop
       (st.overrideAttrs (oldAttrs: rec {
         patches = [
           # Fetch them directly from `st.suckless.org`
@@ -144,20 +142,22 @@
           })
         ];
       }))
+      syncthing
     ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    curl
+    dmenu
+    git
+    git-crypt
+    st
+    surf
+    tmux
     vim
     wget
-    git-crypt
-    curl
-    tmux
-    dmenu
-    surf
-    st
   ];
 
   fonts.fonts = with pkgs; [
