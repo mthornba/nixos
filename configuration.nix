@@ -117,8 +117,10 @@
       btop
       buku
       htop
+      jq
       lsd
       qutebrowser
+      silver-searcher
       (st.overrideAttrs (oldAttrs: rec {
         patches = [
           # Fetch them directly from `st.suckless.org`
