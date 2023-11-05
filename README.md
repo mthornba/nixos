@@ -9,6 +9,22 @@ NixOS Configs
   sudo nixos-rebuild switch -I nixos-config=./configuration.nix
   ```
 
+## Upgrade to unstable
+
+As root:
+```sh
+nix-channel --add https://nixos.org/channels/nixos-unstable nixos
+nix-channel --update
+nixos-rebuild switch --upgrade
+```
+
+## Home Manager
+
+```sh
+sudo nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+sudo nix-channel --update
+```
+
 ## Dell T3610
 
 

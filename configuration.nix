@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware/t3610.nix
+      <home-manager/nixos>
     ];
 
   # Bootloader.
@@ -75,6 +76,19 @@
       firefox
     #  thunderbird
     ];
+  };
+
+  home-manager.users.matt = { pkgs, ... }: {
+    home.packages = with pkgs; [
+      buku
+      kitty
+      lsd
+    ];
+    programs.zsh.enable = true;
+  
+    # The state version is required and should stay at the version you
+    # originally installed.
+    home.stateVersion = "23.05";
   };
 
   # Allow unfree packages
