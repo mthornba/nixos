@@ -20,9 +20,25 @@ nixos-rebuild switch --upgrade
 
 ## Home Manager
 
+Add the master branch since we're following NixOS Unstable
 ```sh
 sudo nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 sudo nix-channel --update
+```
+
+Install Standalone
+```sh
+nix-shell '<home-manager>' -A install
+```
+
+Move Home Manager config into this repo
+```sh
+mv ~/.config/home-manager/home.nix users/matt
+```
+
+Apply Home Manager Config
+```sh
+home-manager switch -f ./users/matt/home.nix
 ```
 
 ## Connect Bluetooth Mouse & Keyboard
