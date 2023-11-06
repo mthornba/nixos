@@ -78,6 +78,11 @@
     ];
   };
 
+  # Home Manager
+
+  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
+
   home-manager.users.matt = { pkgs, ... }: {
     home.packages = with pkgs; [
       buku
