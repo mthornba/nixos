@@ -25,6 +25,23 @@ sudo nix-channel --add https://github.com/nix-community/home-manager/archive/mas
 sudo nix-channel --update
 ```
 
+## Connect Bluetooth Mouse & Keyboard
+
+https://nixos.wiki/wiki/bluetooth
+
+Neither would connect through GNOME settings. Used CLI:
+```sh
+$ bluetoothctl
+[bluetooth] # power on
+[bluetooth] # agent on
+[bluetooth] # default-agent
+[bluetooth] # scan on
+[bluetooth] # pair [hex-address]
+[bluetooth] # connect [hex-address]
+[bluetooth] # trust [hex-address]
+```
+
+
 ## Dell T3610
 
 
