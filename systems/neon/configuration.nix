@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware/t3610.nix
+      ./t3610.nix
       <home-manager/nixos>
     ];
 
