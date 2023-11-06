@@ -81,24 +81,6 @@
     ];
   };
 
-  # Home Manager
-
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
-
-  home-manager.users.matt = { pkgs, ... }: {
-    home.packages = with pkgs; [
-      buku
-      kitty
-      lsd
-    ];
-    programs.zsh.enable = true;
-  
-    # The state version is required and should stay at the version you
-    # originally installed.
-    home.stateVersion = "23.05";
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
