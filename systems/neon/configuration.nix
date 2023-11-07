@@ -8,7 +8,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./t3610.nix
-      <home-manager/nixos>
     ];
 
   # Enable Flakes

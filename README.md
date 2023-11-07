@@ -18,6 +18,17 @@ nix-channel --update
 nixos-rebuild switch --upgrade
 ```
 
+### Flakes
+
+Load system config with a flake
+```sh
+sudo nixos-rebuild switch --flake .#
+```
+optionally, including the hostname:
+```sh
+sudo nixos-rebuild switch --flake .#neon
+```
+
 ## Home Manager
 
 Add the master branch since we're following NixOS Unstable
