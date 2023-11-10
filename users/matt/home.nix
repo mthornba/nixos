@@ -77,17 +77,27 @@
     enable = true;
     enableAutosuggestions = true;
     defaultKeymap = "viins";
+
+    shellAliases = {
+      ll = "lsd -l";
+      lla = "lsd -lA";
+      lst = "lsd --tree";
+      lsat = "lsd -a --tree";
+      icat = "kitty +kitten icat";
+      kssh = "kitty +kitten ssh";
+    };
+
     zplug = {
       enable = true;
       plugins = [
-        { name = "zplug zdharma/fast-syntax-highlighting"; }
-        { name = "zplug zsh-users/zsh-history-substring-search"; }
-        { name = "zplug zsh-users/zsh-autosuggestions"; }
-        { name = "zplug mdumitru/git-aliases"; }
-        { name = "zplug marzocchi/zsh-notify"; }
-        { name = "zplug joel-porquet/zsh-dircolors-solarized"; }
-        { name = "zplug zdharma-continuum/zsh-diff-so-fancy"; }
-        { name = "zplug jimeh/zsh-peco-history"; }
+        { name = "plugins/git"; tags = [ from:oh-my-zsh ]; }
+        { name = "plugins/ag"; tags = [ from:oh-my-zsh ]; }
+        { name = "zdharma-continuum/fast-syntax-highlighting"; }
+        { name = "zsh-users/zsh-history-substring-search"; }
+        { name = "zsh-users/zsh-autosuggestions"; }
+        { name = "marzocchi/zsh-notify"; }
+        { name = "zdharma-continuum/zsh-diff-so-fancy"; }
+        { name = "jimeh/zsh-peco-history"; }
       ];
     };
   };
