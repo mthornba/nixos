@@ -71,4 +71,35 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    defaultKeymap = "viins";
+    zplug = {
+      enable = true;
+      plugins = [
+        { name = "zplug zdharma/fast-syntax-highlighting"; }
+        { name = "zplug zsh-users/zsh-history-substring-search"; }
+        { name = "zplug zsh-users/zsh-autosuggestions"; }
+        { name = "zplug mdumitru/git-aliases"; }
+        { name = "zplug marzocchi/zsh-notify"; }
+        { name = "zplug joel-porquet/zsh-dircolors-solarized"; }
+        { name = "zplug zdharma-continuum/zsh-diff-so-fancy"; }
+        { name = "zplug jimeh/zsh-peco-history"; }
+      ];
+    };
+  };
+
+  programs.starship = {
+    enable = true;
+    # custom settings
+    settings = {
+      add_newline = false;
+      aws.disabled = true;
+      gcloud.disabled = true;
+      line_break.disabled = true;
+    };
+  };
+
 }
