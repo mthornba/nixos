@@ -70,8 +70,7 @@
     EDITOR = "vim";
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  # Programs
 
   programs.git = {
     enable = true;
@@ -83,6 +82,22 @@
         }/bin/git-credential-libsecret";
     };
   };
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+
+  programs.starship = {
+    enable = true;
+    # custom settings
+    settings = {
+      add_newline = false;
+      aws.disabled = true;
+      gcloud.disabled = true;
+      line_break.disabled = true;
+    };
+  };
+
+  programs.thefuck.enable = true;
 
   programs.zsh = {
     enable = true;
@@ -110,19 +125,6 @@
         { name = "zdharma-continuum/zsh-diff-so-fancy"; }
         { name = "jimeh/zsh-peco-history"; }
       ];
-    };
-  };
-
-  programs.thefuck.enable = true;
-
-  programs.starship = {
-    enable = true;
-    # custom settings
-    settings = {
-      add_newline = false;
-      aws.disabled = true;
-      gcloud.disabled = true;
-      line_break.disabled = true;
     };
   };
 
