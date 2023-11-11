@@ -73,6 +73,17 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  programs.git = {
+    enable = true;
+    userName  = "Matt Thornback";
+    userEmail = "matt.thornback@gmail.com";
+    extraConfig = {
+      credential.helper = "${
+          pkgs.git.override { withLibsecret = true; }
+        }/bin/git-credential-libsecret";
+    };
+  };
+
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
