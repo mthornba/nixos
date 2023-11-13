@@ -142,13 +142,23 @@
         { name = "plugins/git"; tags = [ from:oh-my-zsh ]; }
         { name = "plugins/ag"; tags = [ from:oh-my-zsh ]; }
         { name = "zdharma-continuum/fast-syntax-highlighting"; }
-        { name = "zsh-users/zsh-history-substring-search"; }
+        { name = "zsh-users/zsh-history-substring-search"; tags = [ as:plugin ]; }
         { name = "zsh-users/zsh-autosuggestions"; }
         { name = "marzocchi/zsh-notify"; }
         { name = "zdharma-continuum/zsh-diff-so-fancy"; }
         { name = "jimeh/zsh-peco-history"; }
       ];
     };
+
+    initExtra = ''
+      # bind arrow keys to zsh-history-substring-search functions
+      bindkey -M vicmd 'k' history-substring-search-up
+      bindkey -M vicmd 'j' history-substring-search-down
+      bindkey -M vicmd '^[OA' history-substring-search-up
+      bindkey -M vicmd '^[OB' history-substring-search-down
+      bindkey -M viins '^[OA' history-substring-search-up
+      bindkey -M viins '^[OB' history-substring-search-down
+    '';
   };
 
 }
