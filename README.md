@@ -1,6 +1,8 @@
 # nixos
 NixOS Configs
 
+## Install steps
+
 - Perform initial install, creating my user
 - clone this repo
 - for a brand new system, copy `/etc/nixos/*.nix` to this repo
@@ -9,7 +11,7 @@ NixOS Configs
   sudo nixos-rebuild switch -I nixos-config=./configuration.nix
   ```
 
-## Upgrade to unstable
+### Upgrade to unstable
 
 As root:
 ```sh
@@ -27,6 +29,19 @@ sudo nixos-rebuild switch --flake .#
 optionally, including the hostname:
 ```sh
 sudo nixos-rebuild switch --flake .#neon
+```
+
+## X11 vs Wayland
+
+By default, NixOS uses Wayland:
+```sh
+❯ echo $XDG_SESSION_TYPE
+wayland
+```
+
+Add to `configuration.nix` to allow choosing between X11 and Wayland at login:
+```nix
+services.xserver.displayManager.defaultSession = "gnome-xorg";
 ```
 
 ## Home Manager
