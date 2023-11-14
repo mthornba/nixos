@@ -127,6 +127,27 @@
     enableAutosuggestions = true;
     defaultKeymap = "viins";
 
+# TODO: remove plugin
+#    syntaxHighlighting = {
+#      enable = true;
+#      styles = {
+#        brackets = "bg=blue"
+#      };
+#    };
+
+    historySubstringSearch = {
+      enable = true;
+# TODO: remove plugin
+#      searchDownKey = [
+#        "j"
+#        "[B"
+#      ];
+#      searchUpKey = [
+#        "k"
+#        "[A"
+#      ];
+    };
+
     shellAliases = {
       ll = "lsd -l";
       lla = "lsd -lA";
