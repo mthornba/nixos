@@ -52,6 +52,19 @@ Apply Home Manager Config
 home-manager switch -f ./users/matt/home.nix
 ```
 
+### Allow Unfree
+
+From [github.com/Misterio77/nix-starter-configs](https://github.com/Misterio77/nix-starter-configs/blob/972935c1b35d8b92476e26b0e63a044d191d49c3/minimal/home-manager/home.nix#L19):
+Add to `home.nix`:
+```nix
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+  };
+```
+
 ### Flakes
 
 Install home-manager as a flake

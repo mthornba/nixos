@@ -1,6 +1,30 @@
 { config, pkgs, ... }:
 
 {
+
+  # From https://github.com/Misterio77/nix-starter-configs/blob/972935c1b35d8b92476e26b0e63a044d191d49c3/minimal/home-manager/home.nix#L19:
+  nixpkgs = {
+    # You can add overlays here
+    overlays = [
+      # If you want to use overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
+    ];
+    # Configure your nixpkgs instance
+    config = {
+      # Disable if you don't want unfree packages
+      allowUnfree = true;
+      # Workaround for https://github.com/nix-community/home-manager/issues/2942
+      allowUnfreePredicate = _: true;
+    };
+  };
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "matt";
@@ -30,22 +54,22 @@
     silver-searcher
     tldr
     # graphical apps
-    # discord
+    discord # unfree
     emacs
     freecad
     kitty
     logseq
     nyxt
-    # plex
-    # plexamp
+    plexamp # unfree
     prusa-slicer
     signal-desktop
     solaar
-    # spotify
+    spotify # unfree
     syncthing
-    # vivaldi
+    vivaldi # unfree
     vlc
-    # vscode
+    vscode # unfree
+
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
