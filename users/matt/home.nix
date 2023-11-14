@@ -118,92 +118,95 @@
   };
 
   # Programs
+  programs = {
 
-  programs.git = {
-    enable = true;
-    userName  = "Matt Thornback";
-    userEmail = "matt.thornback@gmail.com";
-    extraConfig = {
-      credential.helper = "${
-          pkgs.git.override { withLibsecret = true; }
-        }/bin/git-credential-libsecret";
-    };
-  };
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
-  programs.starship = {
-    enable = true;
-    # custom settings
-    settings = {
-      add_newline = false;
-      aws.disabled = true;
-      gcloud.disabled = true;
-      line_break.disabled = true;
-    };
-  };
-
-  programs.thefuck.enable = true;
-
-  programs.zsh = {
-    enable = true;
-    enableAutosuggestions = true;
-    defaultKeymap = "viins";
-
-# TODO: remove plugin
-#    syntaxHighlighting = {
-#      enable = true;
-#      styles = {
-#        brackets = "bg=blue"
-#      };
-#    };
-
-    historySubstringSearch = {
+    git = {
       enable = true;
-# TODO: remove plugin
-#      searchDownKey = [
-#        "j"
-#        "[B"
-#      ];
-#      searchUpKey = [
-#        "k"
-#        "[A"
-#      ];
+      userName  = "Matt Thornback";
+      userEmail = "matt.thornback@gmail.com";
+      extraConfig = {
+        credential.helper = "${
+            pkgs.git.override { withLibsecret = true; }
+          }/bin/git-credential-libsecret";
+      };
     };
 
-    shellAliases = {
-      ll = "lsd -l";
-      lla = "lsd -lA";
-      lst = "lsd --tree";
-      lsat = "lsd -a --tree";
-      icat = "kitty +kitten icat";
-      kssh = "kitty +kitten ssh";
-    };
+    # Let Home Manager install and manage itself.
+    home-manager.enable = true;
 
-    zplug = {
+    starship = {
       enable = true;
-      plugins = [
-        { name = "plugins/git"; tags = [ from:oh-my-zsh ]; }
-        { name = "plugins/ag"; tags = [ from:oh-my-zsh ]; }
-        { name = "zdharma-continuum/fast-syntax-highlighting"; }
-        { name = "zsh-users/zsh-history-substring-search"; tags = [ as:plugin ]; }
-        { name = "zsh-users/zsh-autosuggestions"; }
-        { name = "marzocchi/zsh-notify"; }
-        { name = "zdharma-continuum/zsh-diff-so-fancy"; }
-        { name = "jimeh/zsh-peco-history"; }
-      ];
+      # custom settings
+      settings = {
+        add_newline = false;
+        aws.disabled = true;
+        gcloud.disabled = true;
+        line_break.disabled = true;
+      };
     };
 
-    initExtra = ''
-      # bind arrow keys to zsh-history-substring-search functions
-      bindkey -M vicmd 'k' history-substring-search-up
-      bindkey -M vicmd 'j' history-substring-search-down
-      bindkey -M vicmd '^[OA' history-substring-search-up
-      bindkey -M vicmd '^[OB' history-substring-search-down
-      bindkey -M viins '^[OA' history-substring-search-up
-      bindkey -M viins '^[OB' history-substring-search-down
-    '';
+    thefuck.enable = true;
+
+    zsh = {
+      enable = true;
+      enableAutosuggestions = true;
+      defaultKeymap = "viins";
+
+      #TODO: remove plugin
+      #syntaxHighlighting = {
+      #  enable = true;
+      #  styles = {
+      #    brackets = "bg=blue"
+      #  };
+      #};
+
+      historySubstringSearch = {
+        enable = true;
+        #TODO: remove plugin
+        #searchDownKey = [
+        #  "j"
+        #  "[B"
+        #];
+        #searchUpKey = [
+        #  "k"
+        #  "[A"
+        #];
+      };
+
+      shellAliases = {
+        ll = "lsd -l";
+        lla = "lsd -lA";
+        lst = "lsd --tree";
+        lsat = "lsd -a --tree";
+        icat = "kitty +kitten icat";
+        kssh = "kitty +kitten ssh";
+      };
+
+      zplug = {
+        enable = true;
+        plugins = [
+          { name = "plugins/git"; tags = [ from:oh-my-zsh ]; }
+          { name = "plugins/ag"; tags = [ from:oh-my-zsh ]; }
+          { name = "zdharma-continuum/fast-syntax-highlighting"; }
+          { name = "zsh-users/zsh-history-substring-search"; tags = [ as:plugin ]; }
+          { name = "zsh-users/zsh-autosuggestions"; }
+          { name = "marzocchi/zsh-notify"; }
+          { name = "zdharma-continuum/zsh-diff-so-fancy"; }
+          { name = "jimeh/zsh-peco-history"; }
+        ];
+      };
+
+      initExtra = ''
+        # bind arrow keys to zsh-history-substring-search functions
+        bindkey -M vicmd 'k' history-substring-search-up
+        bindkey -M vicmd 'j' history-substring-search-down
+        bindkey -M vicmd '^[OA' history-substring-search-up
+        bindkey -M vicmd '^[OB' history-substring-search-down
+        bindkey -M viins '^[OA' history-substring-search-up
+        bindkey -M viins '^[OB' history-substring-search-down
+      '';
+    };
+
   };
 
 }
