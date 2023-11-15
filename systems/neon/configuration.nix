@@ -22,6 +22,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Other boot options
+  boot.initrd = {
+    supportedFilesystems = [ "nfs" ];
+    kernelModules = [ "nfs" ];
+  };
+
   networking.hostName = "neon"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -31,6 +37,8 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  networking.hosts = { "192.168.250.41" = [ "unraid" ]; };
 
   # Set your time zone.
   time.timeZone = "America/Toronto";
@@ -96,6 +104,25 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # NFS mounts
+  services.rpcbind.enable = true; # needed for NFS
+  systemd.mounts = [{
+    type = "nfs";
+    mountConfig = {
+      Options = "noatime";
+    };
+    what = "unraid:/mnt/user/files";
+    where = "/mnt/files";
+  }];
+
+  systemd.automounts = [{
+    wantedBy = [ "multi-user.target" ];
+    automountConfig = {
+      TimeoutIdleSec = "600";
+    };
+    where = "/mnt/files";
+  }];
+
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -143,6 +170,7 @@
   environment.systemPackages = with pkgs; [
     curl
     git
+    nfs-utils
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
   ];
