@@ -99,6 +99,12 @@ This will also install `home-manager` if `home.nix` includes:
 programs.home-manager.enable = true;
 ```
 
+#### Upgrading Packages
+
+```sh
+home-manager switch --flake ./users/matt --recreate-lock-file
+```
+
 ## Connect Bluetooth Mouse & Keyboard
 
 https://nixos.wiki/wiki/bluetooth
