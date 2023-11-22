@@ -188,8 +188,8 @@
       };
 
       shellAliases = {
-        ll = "lsd -l";
-        lla = "lsd -lA";
+        ll = "lsd -lg";
+        lla = "lsd -lAg";
         lst = "lsd --tree";
         lsat = "lsd -a --tree";
         icat = "kitty +kitten icat";
