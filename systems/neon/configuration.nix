@@ -104,6 +104,14 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Octoprint
+  services.octoprint = {
+    enable = true;
+    openFirewall = true;
+    port = 5000;
+    user = "octoprint";
+  };
+
   # NFS mounts
   services.rpcbind.enable = true; # needed for NFS
   systemd.mounts = [{
@@ -185,6 +193,15 @@
   programs.zsh.enable = true;
 
   # List services that you want to enable:
+
+  services = {
+    mjpg-streamer = {
+      enable = true;
+      outputPlugin = "output_http.so -p 8080 -w ${pkgs.mjpg-streamer}/share/mjpg-streamer/www";
+      # outputPlugin = "output_http.so -p 8080 -w /nix/store/g2831x2a4843xzfabn4hpc6lkqyqzn43-mjpg-streamer-unstable-2019-05-24/share/mjpg-streamer/www";
+      inputPlugin = "input_uvc.so -r 1280x960 -f 10 -d /dev/video0 -y";
+    };
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
