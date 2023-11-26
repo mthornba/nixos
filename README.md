@@ -104,21 +104,3 @@ programs.home-manager.enable = true;
 ```sh
 home-manager switch --flake ./users/matt --recreate-lock-file
 ```
-
-## Connect Bluetooth Mouse & Keyboard
-
-https://nixos.wiki/wiki/bluetooth
-
-Neither would connect through GNOME settings. Used CLI:
-```sh
-$ bluetoothctl
-[bluetooth] # power on
-[bluetooth] # agent on
-[bluetooth] # default-agent
-[bluetooth] # scan on
-[bluetooth] # pair [hex-address]
-[bluetooth] # connect [hex-address]
-[bluetooth] # trust [hex-address]
-```
-
-
