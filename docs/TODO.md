@@ -6,3 +6,4 @@
 - [ ] fix keyboard bluetooth pairing
 - [ ] install syncthing service
 - [X] nerdfonts
+- [ ] docs for nixos-generate-config

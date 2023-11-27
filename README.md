@@ -1,28 +1,31 @@
-# nixos
-NixOS Configs
+# NixOS Configs
 
-## Install steps
+- Perform intiial install from USB, creating my user
+- reboot
 
-- Perform initial install, creating my user
-- clone this repo
-- for a brand new system, copy `/etc/nixos/*.nix` to this repo
-- rebuild config pointing to appropriate configuration.nix
-  ```sh
-  sudo nixos-rebuild switch -I nixos-config=./configuration.nix
-  ```
+## Upgrade to unstable channel
 
-### Upgrade to unstable
-
-As root:
+Is this necessary if I'm going to use flakes?
 ```sh
+sudo -i
 nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 nix-channel --update
 nixos-rebuild switch --upgrade
 ```
 
-### Flakes
+## Flakes
 
-Load system config with a flake
+1. Install `git` in a `nix shell`
+```sh
+nix --extra-experimental-features 'nix-command flakes' shell nixpkgs#git
+```
+
+2. Clone this repo
+```sh
+git clone https://github.com/mthornba/nixos.git ~/.nixos
+```
+
+3. Load system config with a flake
 ```sh
 sudo nixos-rebuild switch --flake .#
 ```
@@ -30,6 +33,8 @@ optionally, including the hostname:
 ```sh
 sudo nixos-rebuild switch --flake .#neon
 ```
+
+In some cases, such as the initial install, need to specify the hostname.
 
 ## X11 vs Wayland
 
