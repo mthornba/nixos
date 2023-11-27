@@ -25,6 +25,13 @@
     };
   };
 
+  # Set GNOME Dark Style
+  dconf.settings = {
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
+  };
+
   fonts.fontconfig.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
