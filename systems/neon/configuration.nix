@@ -16,6 +16,9 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+    gc.automatic = true;
+    gc.options = "--delete-older-than 30d";
+    gc.persistent = true;
   };
 
   # Bootloader.
