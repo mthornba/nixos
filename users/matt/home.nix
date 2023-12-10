@@ -54,6 +54,7 @@
     # cli apps
     bat
     buku
+    file
     htop
     keychain
     lsd
@@ -75,9 +76,11 @@
     solaar
     spotify # unfree
     syncthing
+    unzip
     vivaldi # unfree
     vlc
     vscode # unfree
+    zip
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
