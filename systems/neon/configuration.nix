@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./t3610.nix
       ../../modules/octoprint.nix
+      ../../modules/syncthing.nix
     ];
 
   # Enable Flakes
