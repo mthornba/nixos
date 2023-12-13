@@ -1,6 +1,15 @@
+let
+  user = "matt";
+in
 {
 
   # Syncthing
+
+  users.users.syncthing.extraGroups = [ "users" ];
+  systemd.services.syncthing.serviceConfig.UMask = "0007";
+  systemd.tmpfiles.rules = [
+    "d /home/${user} 0750 ${user} syncthing"
+  ];
 
   services.syncthing = {
     enable = true;

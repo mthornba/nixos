@@ -155,7 +155,7 @@
   users.users.matt = {
     isNormalUser = true;
     description = "Matt";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "syncthing" ];
     shell = pkgs.zsh;
     packages = with pkgs; [
       firefox
