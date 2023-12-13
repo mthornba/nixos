@@ -138,6 +138,10 @@
       nix-direnv.enable = true;
     };
 
+    gh = {
+      enable = true;
+    };
+
     git = {
       enable = true;
       userName  = "Matt Thornback";
