@@ -67,7 +67,6 @@
     discord # unfree
     emacs
     freecad
-    kitty
     logseq
     nyxt
     plexamp # unfree
@@ -157,9 +156,30 @@
     home-manager.enable = true;
 
     kitty = {
+      enable = true;
+      shellIntegration = {
+        enableZshIntegration = true;
+      };
       font = {
         name = "Hack Nerd Font Mono";
+        size = 12;
       };
+      keybindings = {
+        "shift+cmd+v" = "paste_from_buffer a1";
+        "ctrl+alt+enter" = "launch --cwd=current";
+        "ctrl+shift+z" = "toggle_layout stack";
+      };
+      settings = {
+        url_style = "dashed";
+        copy_on_select = "a1";
+        mouse_map = "right press ungrabbed paste_from_buffer a1";
+        enable_audio_bell = "no";
+        visual_bell_duration = "0.1";
+        bell_on_tab = "\"🔔 \"";
+        tab_bar_style = "fade";
+        hide_window_decorations = "yes";
+      };
+      theme = "Solarized Dark";
     };
 
     starship = {
