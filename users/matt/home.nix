@@ -222,10 +222,14 @@
       };
 
       shellAliases = {
+        # buku
+        b = "buku --np";
+        # lsd
         ll = "lsd -lg";
         lla = "lsd -lAg";
         lst = "lsd --tree";
         lsat = "lsd -a --tree";
+        # kitty
         icat = "kitty +kitten icat";
         kssh = "kitty +kitten ssh";
       };
