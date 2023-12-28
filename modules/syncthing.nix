@@ -2,7 +2,7 @@ let
   user = "matt";
   syncPath = "/var/lib/syncthing";
   bukuPath = "/home/matt/.local/share/buku";
-  logseqPath = "/home/matt/Documents/logseq";
+  logseqPath = "/home/matt/Sync/logseq";
 in
 {
 
@@ -54,10 +54,17 @@ in
     };
   };
 
-  # bind mount sync folder to buku data dir
+  # bind mount sync folders
+
   fileSystems."buku" = {
     mountPoint = "${bukuPath}";
     device = "${syncPath}/buku";
+    options = [ "bind" ];
+  };
+
+  fileSystems."logseq" = {
+    mountPoint = "${logseqPath}";
+    device = "${syncPath}/logseq";
     options = [ "bind" ];
   };
 
