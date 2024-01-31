@@ -111,22 +111,41 @@
 
   # NFS mounts
   services.rpcbind.enable = true; # needed for NFS
-  systemd.mounts = [{
-    type = "nfs";
-    mountConfig = {
-      Options = "noatime";
-    };
-    what = "unraid:/mnt/user/files";
-    where = "/mnt/files";
-  }];
+  systemd.mounts = [
+    {
+      type = "nfs";
+      mountConfig = {
+        Options = "noatime";
+      };
+      what = "unraid:/mnt/user/files";
+      where = "/mnt/files";
+    }
+    {
+      type = "nfs";
+      mountConfig = {
+        Options = "noatime";
+      };
+      what = "unraid:/mnt/user/media";
+      where = "/mnt/media";
+    }
+  ];
 
-  systemd.automounts = [{
-    wantedBy = [ "multi-user.target" ];
-    automountConfig = {
-      TimeoutIdleSec = "600";
-    };
-    where = "/mnt/files";
-  }];
+  systemd.automounts = [
+    {
+      wantedBy = [ "multi-user.target" ];
+      automountConfig = {
+        TimeoutIdleSec = "600";
+      };
+      where = "/mnt/files";
+    }
+    {
+      wantedBy = [ "multi-user.target" ];
+      automountConfig = {
+        TimeoutIdleSec = "600";
+      };
+      where = "/mnt/media";
+    }
+  ];
 
   # Enable sound with pipewire.
   sound.enable = true;
