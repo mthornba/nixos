@@ -62,6 +62,7 @@
     nnn
     ranger
     silver-searcher
+    terraform # unfree
     tldr
     # graphical apps
     discord # unfree
