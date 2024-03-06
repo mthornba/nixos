@@ -64,6 +64,8 @@
     silver-searcher
     terraform # unfree
     tldr
+    unzip
+    zip
     # graphical apps
     discord # unfree
     emacs
@@ -76,11 +78,9 @@
     solaar
     spotify # unfree
     syncthing
-    unzip
     vivaldi # unfree
     vlc
     vscode # unfree
-    zip
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
