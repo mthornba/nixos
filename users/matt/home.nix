@@ -57,6 +57,7 @@
     file
     htop
     keychain
+    kubectl
     lsd
     navi
     nnn
@@ -226,6 +227,8 @@
       shellAliases = {
         # buku
         b = "buku --np";
+        # k8s
+        k = "kubectl";
         # lsd
         ll = "lsd -lg";
         lla = "lsd -lAg";
