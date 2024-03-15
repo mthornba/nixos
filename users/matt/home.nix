@@ -57,12 +57,16 @@
     file
     htop
     keychain
+    kubectl
     lsd
     navi
     nnn
     ranger
     silver-searcher
+    terraform # unfree
     tldr
+    unzip
+    zip
     # graphical apps
     discord # unfree
     emacs
@@ -75,11 +79,9 @@
     solaar
     spotify # unfree
     syncthing
-    unzip
     vivaldi # unfree
     vlc
     vscode # unfree
-    zip
 
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -159,6 +161,7 @@
       enable = true;
       shellIntegration = {
         enableZshIntegration = true;
+        enableBashIntegration = true;
       };
       font = {
         name = "Hack Nerd Font Mono";
@@ -167,7 +170,7 @@
       keybindings = {
         "shift+cmd+v" = "paste_from_buffer a1";
         "ctrl+alt+enter" = "launch --cwd=current";
-        "ctrl+shift+z" = "toggle_layout stack";
+        "ctrl+alt+z" = "toggle_layout stack";
       };
       settings = {
         url_style = "dashed";
@@ -177,7 +180,7 @@
         visual_bell_duration = "0.1";
         bell_on_tab = "\"🔔 \"";
         tab_bar_style = "fade";
-        hide_window_decorations = "yes";
+        hide_window_decorations = "no";
       };
       theme = "Solarized Dark";
     };
@@ -224,6 +227,8 @@
       shellAliases = {
         # buku
         b = "buku --np";
+        # k8s
+        k = "kubectl";
         # lsd
         ll = "lsd -lg";
         lla = "lsd -lAg";

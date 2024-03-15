@@ -1,19 +1,33 @@
 # TODO
 
- - [X] install direnv
- - [X] revert Wayland to X11
- - [X] nerdfonts
- - [X] schedule gc
- - [X] octoprint config
- - [X] split into modules
- - [ ] install syncthing service
- - [ ] encryption for passwords
- - [ ] prusaslicer config
- - [ ] Mac keybindings
- - [ ] freecad config
- - [ ] emacs
- - [ ] cache to speed up `nix search`
- - [ ] refresh .desktop entries
- - [ ] fix keyboard bluetooth pairing
- - [ ] docs for nixos-generate-config
- - [ ] ssh config
+- [X] install direnv
+- [X] revert Wayland to X11
+- [X] nerdfonts
+- [X] schedule gc
+- [X] octoprint config
+- [X] split into modules
+- [X] install syncthing service
+- [X] buku
+- [ ] Logseq
+- [ ] encryption for passwords
+- [ ] prusaslicer config
+- [ ] Mac keybindings
+- [ ] freecad config
+- [ ] emacs
+- [ ] cache to speed up `nix search`
+- [ ] refresh .desktop entries
+- [ ] fix keyboard bluetooth pairing
+- [ ] docs for nixos-generate-config
+- [ ] ssh config
+- [ ] virtualization:
+  - [X] podman
+  - [ ] colima
+  - [ ] qemu
+  - [ ] libvirt
+- [ ] containerization: 
+  - [X] podman
+  - https://nixos.wiki/wiki/Podman
+  - [ ] docker
+  - [ ] skopeo
+  - [ ] buildah
+- [ ] distrobox
