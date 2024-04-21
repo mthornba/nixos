@@ -10,20 +10,29 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, ... }@inputs:
     let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      homeConfigurations."matt" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+      hostnames = {
+        neon = "x86_64-linux";
+        # Add more hostnames and their corresponding systems here
       };
-    };
+    in
+      builtins.listToAttrs (map (hostname: {
+        name = hostname;
+        value = let
+          system = hostnames.${hostname};
+          pkgs = nixpkgs.legacyPackages.${system};
+        in {
+          homeConfigurations."matt" = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+
+            extraSpecialArgs = {
+              inherit system;
+            };
+
+            modules = [ ./home.nix ];
+          };
+        };
+      }) (builtins.attrNames hostnames));
+
 }

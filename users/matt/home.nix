@@ -1,57 +1,33 @@
-{ config, pkgs, ... }:
+{ config, pkgs, system, ... }:
 
-{
+let
+  isLinux = system == "x86_64-linux";
+  isDarwin = system == "x86_64-darwin";
 
-  # From https://github.com/Misterio77/nix-starter-configs/blob/972935c1b35d8b92476e26b0e63a044d191d49c3/minimal/home-manager/home.nix#L19:
-  nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # If you want to use overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
+  hostname =
+    if isLinux then builtins.readFile "/etc/hostname"
+    else if isDarwin then builtins.exec [ "/usr/sbin/scutil" "--get" "LocalHostName" ]
+    else throw "Unsupported system: ${builtins.currentSystem}";
 
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-      # Workaround for https://github.com/nix-community/home-manager/issues/2942
-      allowUnfreePredicate = _: true;
-    };
+  isNeon = hostname == "neon";
+
+  # dconf settings
+  dconfSettingsCommon = {
   };
 
-  # Set GNOME Dark Style
-  dconf.settings = {
+  dconfSettingsNeon = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
     };
   };
 
-  fonts.fontconfig.enable = true;
+  dconfSettingsOther = {
+    # dconf settings specific to other hosts
+  };
 
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "matt";
-  home.homeDirectory = "/home/matt";
-
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "23.05"; # Please read the comment before changing.
-
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = with pkgs; [
-    # cli apps
+  # packages
+  pkgsCommon = with pkgs; [
+    # common cli apps
     bat
     buku
     file
@@ -62,7 +38,6 @@
     kubectl
     lsd
     navi
-    nnn
     ranger
     silver-searcher
     terraform # unfree
@@ -70,7 +45,13 @@
     unzip
     wtf
     zip
-    # graphical apps
+
+    (pkgs.nerdfonts.override { fonts = [ "Hack" ]; })
+
+  ];
+
+  pkgsNeon = with pkgs; [
+    # packages specific to Neon
     discord # unfree
     emacs
     freecad
@@ -85,112 +66,21 @@
     vivaldi # unfree
     vlc
     vscode # unfree
-
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    (pkgs.nerdfonts.override { fonts = [ "Hack" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # symlink to the Nix store copy.
-    ".config/wtf/config.yml".source = dotfiles/wtf/config.yml;
+  pkgsOther = with pkgs; [
+    # packages specific to other hosts
+    # pkgs.hello
+  ];
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
-
-  # You can also manage environment variables but you will have to manually
-  # source
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/matt/etc/profile.d/hm-session-vars.sh
-  #
-  # if you don't want to manage your shell through Home Manager.
-  home.sessionVariables = {
-    EDITOR = "vim";
-  };
-
-  # Programs
-  programs = {
-
-    direnv = {
-      enable = true;
-      enableZshIntegration = true;
-      nix-direnv.enable = true;
-    };
-
-    fzf = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-
-    gh = {
-      enable = true;
-    };
-
-    git = {
-      enable = true;
-      userName  = "Matt Thornback";
-      userEmail = "matt.thornback@gmail.com";
-      extraConfig = {
-        credential.helper = "${
-            pkgs.git.override { withLibsecret = true; }
-          }/bin/git-credential-libsecret";
-      };
-    };
+  # programs
+  programsCommon = {
 
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
 
-    kitty = {
+    gh = {
       enable = true;
-      shellIntegration = {
-        enableZshIntegration = true;
-        enableBashIntegration = true;
-      };
-      font = {
-        name = "Hack Nerd Font Mono";
-        size = 12;
-      };
-      keybindings = {
-        "shift+cmd+v" = "paste_from_buffer a1";
-        "ctrl+alt+enter" = "launch --cwd=current";
-        "ctrl+alt+z" = "toggle_layout stack";
-      };
-      settings = {
-        url_style = "dashed";
-        copy_on_select = "a1";
-        mouse_map = "right press ungrabbed paste_from_buffer a1";
-        enable_audio_bell = "no";
-        visual_bell_duration = "0.1";
-        bell_on_tab = "\"🔔 \"";
-        tab_bar_style = "fade";
-        hide_window_decorations = "no";
-      };
-      theme = "Solarized Dark";
     };
 
     starship = {
@@ -203,8 +93,6 @@
         line_break.disabled = true;
       };
     };
-
-    thefuck.enable = true;
 
     zsh = {
       enable = true;
@@ -279,5 +167,142 @@
     };
 
   };
+
+  programsNeon = {
+
+    direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv.enable = true;
+    };
+
+    git = {
+      enable = true;
+      userName  = "Matt Thornback";
+      userEmail = "matt.thornback@gmail.com";
+      extraConfig = {
+        credential.helper = "${
+            pkgs.git.override { withLibsecret = true; }
+          }/bin/git-credential-libsecret";
+      };
+    };
+
+    kitty = {
+      enable = true;
+      shellIntegration = {
+        enableZshIntegration = true;
+        enableBashIntegration = true;
+      };
+      font = {
+        name = "Hack Nerd Font Mono";
+        size = 12;
+      };
+      keybindings = {
+        "shift+cmd+v" = "paste_from_buffer a1";
+        "ctrl+alt+enter" = "launch --cwd=current";
+        "ctrl+alt+z" = "toggle_layout stack";
+      };
+      settings = {
+        url_style = "dashed";
+        copy_on_select = "a1";
+        mouse_map = "right press ungrabbed paste_from_buffer a1";
+        enable_audio_bell = "no";
+        visual_bell_duration = "0.1";
+        bell_on_tab = "\"🔔 \"";
+        tab_bar_style = "fade";
+        hide_window_decorations = "no";
+      };
+      theme = "Solarized Dark";
+    };
+
+    thefuck.enable = true;
+
+  };
+
+  programsOther = {};
+
+in
+{
+  # From https://github.com/Misterio77/nix-starter-configs/blob/972935c1b35d8b92476e26b0e63a044d191d49c3/minimal/home-manager/home.nix#L19:
+  nixpkgs = {
+    # You can add overlays here
+    overlays = [
+      # If you want to use overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
+    ];
+    # Configure your nixpkgs instance
+    config = {
+      # Disable if you don't want unfree packages
+      allowUnfree = true;
+      # Workaround for https://github.com/nix-community/home-manager/issues/2942
+      allowUnfreePredicate = _: true;
+    };
+  };
+
+  # Set GNOME Dark Style
+  dconf.settings = dconfSettingsCommon // (if isNeon then dconfSettingsNeon else dconfSettingsOther);
+
+  fonts.fontconfig.enable = true;
+
+  # Home Manager needs a bit of information about you and the paths it should
+  # manage.
+  home.username = "matt";
+  home.homeDirectory = "/home/matt";
+
+  # This value determines the Home Manager release that your configuration is
+  # compatible with. This helps avoid breakage when a new Home Manager release
+  # introduces backwards incompatible changes.
+  #
+  # You should not change this value, even if you update Home Manager. If you do
+  # want to update the value, then make sure to first check the Home Manager
+  # release notes.
+  home.stateVersion = "23.05"; # Please read the comment before changing.
+
+  # The home.packages option allows you to install Nix packages into your
+  # environment.
+  home.packages =
+    pkgsCommon ++
+    (if isNeon then pkgsNeon
+    else if isMacbook then pkgsMacbook
+    else pkgsOther);
+
+  # Home Manager is pretty good at managing dotfiles. The primary way to manage
+  # plain files is through 'home.file'.
+  home.file = {
+    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
+    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
+    # # symlink to the Nix store copy.
+    # ".screenrc".source = dotfiles/screenrc;
+
+    # # You can also set the file content immediately.
+    # ".gradle/gradle.properties".text = ''
+    #   org.gradle.console=verbose
+    #   org.gradle.daemon.idletimeout=3600000
+    # '';
+  };
+
+  # You can also manage environment variables but you will have to manually
+  # source
+  #
+  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+  #
+  # or
+  #
+  #  /etc/profiles/per-user/matt/etc/profile.d/hm-session-vars.sh
+  #
+  # if you don't want to manage your shell through Home Manager.
+  home.sessionVariables = {
+    EDITOR = "vim";
+  };
+
+  # Programs
+  programs = programsCommon // (if isNeon then programsNeon else programsOther);
 
 }
