@@ -56,6 +56,7 @@
     buku
     file
     htop
+    jq
     keychain
     kubectl
     lsd
