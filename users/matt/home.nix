@@ -140,6 +140,11 @@
       nix-direnv.enable = true;
     };
 
+    fzf = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
     gh = {
       enable = true;
     };
@@ -263,6 +268,12 @@
         bindkey -M viins '^[OA' history-substring-search-up
         bindkey -M viins '^[OB' history-substring-search-down
       '';
+    };
+
+    zoxide = {
+      enable = true;
+      enableZshIntegration = true;
+      options = [ "--cmd cd" ];
     };
 
   };
