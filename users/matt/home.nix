@@ -56,6 +56,7 @@
     buku
     file
     htop
+    ipcalc
     jq
     keychain
     kubectl
