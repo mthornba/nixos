@@ -208,7 +208,7 @@
 
     zsh = {
       enable = true;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       defaultKeymap = "viins";
 
       #TODO: remove plugin
