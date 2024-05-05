@@ -10,6 +10,7 @@ let
     else throw "Unsupported system: ${builtins.currentSystem}";
 
   isNeon = hostname == "neon";
+  isMacbook = hostname == "macbook";
 
   # dconf settings
   dconfSettingsCommon = {
@@ -66,6 +67,10 @@ let
     vivaldi # unfree
     vlc
     vscode # unfree
+  ];
+
+  pkgsMacbook = with pkgs; [
+    unnaturalscrollwheels
   ];
 
   pkgsOther = with pkgs; [
