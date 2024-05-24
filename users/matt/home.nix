@@ -67,6 +67,7 @@
     silver-searcher
     terraform # unfree
     tldr
+    unrar
     unzip
     wtf
     zip
