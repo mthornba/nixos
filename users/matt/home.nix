@@ -137,6 +137,8 @@
   # Programs
   programs = {
 
+    dircolors.enable = true;
+
     direnv = {
       enable = true;
       enableZshIntegration = true;
@@ -209,28 +211,46 @@
 
     zsh = {
       enable = true;
-      autosuggestion.enable = true;
+
+      autosuggestion = {
+        enable = true;
+        highlight = "fg=orange,bg=green,bold,underline";
+      };
+
       defaultKeymap = "viins";
 
-      #TODO: remove plugin
-      #syntaxHighlighting = {
-      #  enable = true;
-      #  styles = {
-      #    brackets = "bg=blue"
-      #  };
-      #};
+      enableCompletion = true;
+
+      envExtra = "HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=green,fg=black,bold'\n";
+
+      syntaxHighlighting = {
+        enable = true;
+        highlighters = [
+          "main"
+          "brackets"
+        ];
+        styles = {
+          alias = "fg=blue";
+        };
+      };
+
+      history = {
+        extended = true;
+        ignoreAllDups = true;
+        ignoreDups = false;
+        share = true;
+      };
 
       historySubstringSearch = {
         enable = true;
-        #TODO: remove plugin
-        #searchDownKey = [
-        #  "j"
-        #  "[B"
-        #];
-        #searchUpKey = [
-        #  "k"
-        #  "[A"
-        #];
+        searchDownKey = [
+          "j"
+          "^[OB"
+        ];
+        searchUpKey = [
+          "k"
+          "^[OA"
+        ];
       };
 
       shellAliases = {
@@ -249,7 +269,7 @@
       };
 
       zplug = {
-        enable = true;
+        enable = false;
         plugins = [
           { name = "plugins/git"; tags = [ from:oh-my-zsh ]; }
           { name = "plugins/ag"; tags = [ from:oh-my-zsh ]; }
@@ -262,15 +282,24 @@
         ];
       };
 
+      plugins = [
+        {
+          name = "ohmyzsh-git";
+          file = "plugins/git/git.plugin.zsh";
+          src = pkgs.fetchFromGitHub {
+            owner = "ohmyzsh";
+            repo = "ohmyzsh";
+            rev = "master";
+            sha256 = "XpEFBnIlv/plkCSHf8qSzeFDXGpFu8R/PYt7rj830iM=";
+          };
+        }
+      ];
+
       initExtra = ''
-        # bind arrow keys to zsh-history-substring-search functions
-        bindkey -M vicmd 'k' history-substring-search-up
-        bindkey -M vicmd 'j' history-substring-search-down
-        bindkey -M vicmd '^[OA' history-substring-search-up
-        bindkey -M vicmd '^[OB' history-substring-search-down
-        bindkey -M viins '^[OA' history-substring-search-up
-        bindkey -M viins '^[OB' history-substring-search-down
+        # Completion styling
+        zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
       '';
+
     };
 
     zoxide = {
