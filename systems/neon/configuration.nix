@@ -109,6 +109,13 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Auto-detect printers
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
+
   # NFS mounts
   services.rpcbind.enable = true; # needed for NFS
   systemd.mounts = [
