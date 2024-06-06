@@ -244,11 +244,9 @@
       historySubstringSearch = {
         enable = true;
         searchDownKey = [
-          "j"
           "^[OB"
         ];
         searchUpKey = [
-          "k"
           "^[OA"
         ];
       };
