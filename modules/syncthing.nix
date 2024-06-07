@@ -1,8 +1,10 @@
 let
   user = "matt";
+  userShare = "/home/${user}/.local/share";
+  userConfig = "/home/${user}/.config";
   syncPath = "/var/lib/syncthing";
-  bukuPath = "/home/matt/.local/share/buku";
-  logseqPath = "/home/matt/Sync/logseq";
+  bukuPath = "${userShare}/buku";
+  logseqPath = "${userShare}/logseq";
 in
 {
 
@@ -10,16 +12,21 @@ in
 
   # users.users.syncthing.extraGroups = [ "users" ];
   # systemd.services.syncthing.serviceConfig.UMask = "0007";
-  # systemd.tmpfiles.rules = [
-  #   "d ${bukuPath} 0770 ${user} syncthing"
-  # ];
+
+  # for syntax, see https://man.archlinux.org/man/tmpfiles.d.5
+  systemd.tmpfiles.rules = [
+    "d ${bukuPath} 0775 ${user} users"
+    "d ${logseqPath} 0775 ${user} users"
+    "d ${syncPath} 0775 ${user} users"
+  ];
 
   services.syncthing = {
     enable = true;
-    user = "syncthing";
-    group = "syncthing";
+    user = "${user}";
+    group = "users";
     relay.enable = true;
     dataDir = "${syncPath}";
+    configDir = "${userConfig}/syncthing";
     guiAddress = "127.0.0.1:8384";
     openDefaultPorts = true;
     settings = {
@@ -37,12 +44,26 @@ in
         "buku" = {
           id = "jjcxm-tvhvg";
           devices = [ "unRAID" ];
-          path = "~/buku";
+          path = "${bukuPath}";
+          versioning = {
+            type = "staggered";
+            params = {
+              cleanInterval = "3600";
+              maxAge = "15768000";
+            };
+          };
         };
         "logseq" = {
           id = "zvwsu-btepb";
           devices = [ "unRAID" ];
-          path = "~/logseq";
+          path = "${logseqPath}";
+          versioning = {
+            type = "staggered";
+            params = {
+              cleanInterval = "3600";
+              maxAge = "15768000";
+            };
+          };
         };
       };
       gui = {
@@ -56,16 +77,16 @@ in
 
   # bind mount sync folders
 
-  fileSystems."buku" = {
-    mountPoint = "${bukuPath}";
-    device = "${syncPath}/buku";
-    options = [ "bind" ];
-  };
+  # fileSystems."buku" = {
+  #   mountPoint = "${bukuPath}";
+  #   device = "${syncPath}/buku";
+  #   options = [ "bind" ];
+  # };
 
-  fileSystems."logseq" = {
-    mountPoint = "${logseqPath}";
-    device = "${syncPath}/logseq";
-    options = [ "bind" ];
-  };
+  # fileSystems."logseq" = {
+  #   mountPoint = "${logseqPath}";
+  #   device = "${syncPath}/logseq";
+  #   options = [ "bind" ];
+  # };
 
 }
