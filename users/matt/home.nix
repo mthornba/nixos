@@ -131,6 +131,7 @@
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
+    BUKU_COLORS = "FCexd";
     EDITOR = "vim";
   };
 
