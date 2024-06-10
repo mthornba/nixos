@@ -286,13 +286,23 @@
 
       plugins = [
         {
+          name = "ohmyzsh-lib-git";
+          file = "lib/git.zsh";
+          src = pkgs.fetchFromGitHub {
+            owner = "ohmyzsh";
+            repo = "ohmyzsh";
+            rev = "master";
+            sha256 = "0VS+qvvVK3PjXb1mdoqe9/8Nzl0/NkOswkDf6U13c4s=";
+          };
+        }
+        {
           name = "ohmyzsh-git";
           file = "plugins/git/git.plugin.zsh";
           src = pkgs.fetchFromGitHub {
             owner = "ohmyzsh";
             repo = "ohmyzsh";
             rev = "master";
-            sha256 = "XpEFBnIlv/plkCSHf8qSzeFDXGpFu8R/PYt7rj830iM=";
+            sha256 = "0VS+qvvVK3PjXb1mdoqe9/8Nzl0/NkOswkDf6U13c4s=";
           };
         }
       ];
