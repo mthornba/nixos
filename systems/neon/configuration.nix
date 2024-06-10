@@ -173,7 +173,7 @@
   ];
 
   # Enable sound with pipewire.
-  sound.enable = true;
+  sound.enable = false;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -251,6 +251,8 @@
   programs.zsh.enable = true;
 
   # List services that you want to enable:
+
+  services.blueman.enable = true;
 
   # Enable the OpenSSH daemon.
   services.openssh = {
