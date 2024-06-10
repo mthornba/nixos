@@ -24,6 +24,9 @@ in {
       };
 
       keybindings = lib.mkOptionDefault {
+        # Logout
+        "${mod}+Shift+e" = "exec i3-nagbar -t warning -m 'Do you want to exit i3?' -b 'Yes' 'xfce4-session-logout'";
+
         # Focus
         "${mod}+j" = "focus left";
         "${mod}+k" = "focus down";

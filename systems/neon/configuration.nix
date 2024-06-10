@@ -97,9 +97,15 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver = {
-    displayManager.gdm.enable = false;
-    desktopManager.gnome.enable = false;
-    displayManager.defaultSession = "none+i3";
+    displayManager.defaultSession = "xfce+i3";
+    desktopManager = {
+      xterm.enable = false;
+      xfce = {
+        enable = true;
+        noDesktop = true;
+        enableXfwm = false;
+      };
+    };
 
     windowManager.i3 = {
       enable = true;
