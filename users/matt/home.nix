@@ -1,6 +1,13 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
+let
+  defaultImports = [
+    ./modules/i3.nix
+  ];
+in
 {
+
+  imports = defaultImports;
 
   # From https://github.com/Misterio77/nix-starter-configs/blob/972935c1b35d8b92476e26b0e63a044d191d49c3/minimal/home-manager/home.nix#L19:
   nixpkgs = {
@@ -22,13 +29,6 @@
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = _: true;
-    };
-  };
-
-  # Set GNOME Dark Style
-  dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
     };
   };
 
@@ -133,18 +133,6 @@
   home.sessionVariables = {
     BUKU_COLORS = "FCexd";
     EDITOR = "vim";
-  };
-
-  xsession.windowManager.i3 = {
-    enable = true;
-    package = pkgs.i3-gaps;
-    config = {
-      modifier = "Mod4";
-      gaps = {
-        inner = 10;
-        outer = 5;
-      };
-    };
   };
 
   # Programs
