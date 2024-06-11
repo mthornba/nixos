@@ -3,6 +3,7 @@
 let
   defaultImports = [
     ./modules/i3.nix
+    ./modules/code-server.nix
   ];
 in
 {
