@@ -4,6 +4,10 @@ let
   mod = "Mod4";
 in {
 
+  home.packages = with pkgs; [
+    picom
+  ];
+
   xsession.windowManager.i3 = {
     enable = true;
     package = pkgs.i3-gaps;
@@ -44,6 +48,10 @@ in {
         "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_SINK@ 0.1-";
         "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
       };
+
+      startup = [
+        { command = "picom"; always = false; notification = false; }
+      ];
 
     };
   };
