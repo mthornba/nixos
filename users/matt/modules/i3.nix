@@ -21,9 +21,33 @@ in {
         }
       ];
 
+      colors = {
+        focused = {
+          background = "#285577";
+          border = "#728905";
+          childBorder = "#728905";
+          indicator = "#2e9ef4";
+          text = "#ffffff";
+        };
+      };
+
+      floating = {
+        criteria = [
+          {
+            class = ".blueman-manager-wrapped";
+          }
+          {
+            class = "Plexamp";
+          }
+        ];
+        titlebar = false;
+      };
+
       gaps = {
         inner = 10;
         outer = 0;
+        smartBorders = "on";
+        smartGaps = true;
       };
 
       keybindings = lib.mkOptionDefault {
@@ -52,6 +76,27 @@ in {
         { command = "picom"; always = false; notification = false; }
       ];
 
+      window = {
+        border = 2;
+        titlebar = false;
+        commands = [
+          {
+            command = "border pixel 0";
+            criteria = {
+              class = "Plexamp";
+            };
+          }
+        ];
+      };
+
+      workspaceAutoBackAndForth = true;
+
     };
+
+    extraConfig = ''
+      # force borders on all apps
+      for_window [class=^(?i)(?!Plexamp)(?!.blueman-manager-wrapped).*] border normal 1
+    '';
+
   };
 }
