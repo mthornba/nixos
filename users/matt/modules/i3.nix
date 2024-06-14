@@ -15,10 +15,10 @@ in {
       modifier = mod;
 
       bars = [
-        {
-          position = "top";
-          statusCommand = "${pkgs.i3status}/bin/i3status";
-        }
+        # {
+        #   position = "top";
+        #   statusCommand = "${pkgs.i3status}/bin/i3status";
+        # }
       ];
 
       colors = {
@@ -101,4 +101,5 @@ in {
     '';
 
   };
+
 }
