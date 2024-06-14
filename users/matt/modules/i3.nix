@@ -76,6 +76,8 @@ in {
         { command = "picom"; always = false; notification = false; }
       ];
 
+      terminal = "kitty";
+
       window = {
         border = 2;
         titlebar = false;
