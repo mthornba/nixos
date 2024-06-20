@@ -5,6 +5,7 @@ let
     ./modules/i3.nix
     ./modules/polybar.nix
     ./modules/code-server.nix
+    ./modules/rofi.nix
   ];
 in
 {

@@ -70,6 +70,10 @@ in {
         "XF86AudioRaiseVolume" = "exec wpctl set-volume @DEFAULT_SINK@ 0.1+";
         "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_SINK@ 0.1-";
         "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
+
+        # Rofi
+        "${mod}+Tab" = "exec rofi -show";
+
       };
 
       startup = [
