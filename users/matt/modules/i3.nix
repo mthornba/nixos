@@ -66,6 +66,10 @@ in {
         "${mod}+Shift+k" = "move up";
         "${mod}+Shift+l" = "move right";
 
+        # Move workspaces
+        "${mod}+Shift+greater" = "move workspace to output left";
+        "${mod}+Shift+less" = "move workspace to output right";
+
         # Splits
         "${mod}+semicolon" = "split h";
         "${mod}+v" = "split v";
