@@ -12,9 +12,7 @@
         githubSupport = true;
       };
       script = ''
-        for m in $(polybar -m | ${pkgs.gnused}/bin/sed -e 's/:.*$//g'); do
-          MONITOR=$m polybar --reload status &
-        done
+        polybar --reload status &
       '';
       settings = {
         "colors" = {
@@ -54,7 +52,7 @@
           font-0 = "monospace;2";
 
           modules-left = "xworkspaces xwindow";
-          modules-right = "filesystem xkeyboard memory cpu eth systray pulseaudio date";
+          modules-right = "filesystem xkeyboard memory cpu eth pulseaudio systray date";
 
           cursor-click = "pointer";
           cursor-scroll = "ns-resize";
