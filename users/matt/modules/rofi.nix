@@ -8,7 +8,8 @@
   programs.rofi = {
     enable = true;
     extraConfig = {
-      modi = "window,drun,run,emoji,calc,keys";
+      modi = "combi,window,drun,run,emoji,calc,keys";
+      combi-modes = "window,drun";
       show-icons = true;
     };
     plugins = with pkgs; [

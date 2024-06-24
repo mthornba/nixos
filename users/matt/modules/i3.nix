@@ -80,7 +80,8 @@ in {
         "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_SINK@ toggle";
 
         # Rofi
-        "${mod}+Tab" = "exec rofi -show";
+        "${mod}+Tab" = "exec rofi -show window";
+        "${mod}+r" = "exec rofi -show combi";
 
       };
 
