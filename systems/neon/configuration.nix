@@ -263,7 +263,10 @@
   };
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 32500 ]; #Plexamp remote control
+  networking.firewall.allowedTCPPorts = [
+    3000  # openvscode-server
+    32500 # Plexamp remote control
+  ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;

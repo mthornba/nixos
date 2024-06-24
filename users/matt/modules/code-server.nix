@@ -16,7 +16,7 @@
         Type = "exec";
         ExecStart = ''
           ${pkgs.openvscode-server}/bin/openvscode-server \
-          --host 192.168.250.10 --port 3000 \
+          --host 0.0.0.0 --port 3000 \
           --without-connection-token \
 	        --telemetry-level off
         '';
