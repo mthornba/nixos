@@ -6,6 +6,7 @@ let
     ./modules/polybar.nix
     ./modules/code-server.nix
     ./modules/rofi.nix
+    ./modules/secret-service.nix
   ];
 in
 {
@@ -168,6 +169,7 @@ in
 
     git = {
       enable = true;
+      package = pkgs.gitFull;
       userName  = "Matt Thornback";
       userEmail = "matt.thornback@gmail.com";
       extraConfig = {
