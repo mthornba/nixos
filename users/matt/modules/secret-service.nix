@@ -31,6 +31,10 @@
       verbose = true;
     };
 
+    pass-secret-service = {
+      enable = true;
+    };
+
   };
 
 }
