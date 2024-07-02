@@ -12,7 +12,7 @@
 
   outputs = { nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-linux";
+      system = "x86_64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       homeConfigurations."matt" = home-manager.lib.homeManagerConfiguration {

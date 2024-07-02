@@ -2,10 +2,7 @@
 
 let
   defaultImports = [
-    ./modules/i3.nix
-    ./modules/polybar.nix
-    ./modules/code-server.nix
-    ./modules/rofi.nix
+    ./modules/taskwarrior.nix
   ];
 in
 {
@@ -40,7 +37,7 @@ in
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "matt";
-  home.homeDirectory = "/home/matt";
+  home.homeDirectory = "/Users/matt";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -75,19 +72,8 @@ in
     wtf
     zip
     # graphical apps
-    discord # unfree
-    emacs
-    freecad
-    logseq
-    nyxt
-    plexamp # unfree
-    prusa-slicer
-    signal-desktop
-    solaar
-    spotify # unfree
-    syncthing
-    vivaldi # unfree
-    vlc
+    # logseq
+    # vivaldi # unfree
     vscode # unfree
 
     # # Adds the 'hello' command to your environment. It prints a friendly
