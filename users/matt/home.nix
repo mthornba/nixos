@@ -259,6 +259,7 @@ in
         ppath = "sed -e \"s/:/\n/g\" <<< \$PATH";
         # taskwarrior
         t = "task";
+        tf = "terraform";
       };
 
       zplug = {
