@@ -257,6 +257,8 @@ in
         kssh = "kitty +kitten ssh";
         # split path
         ppath = "sed -e \"s/:/\n/g\" <<< \$PATH";
+        # taskwarrior
+        t = "task";
       };
 
       zplug = {
