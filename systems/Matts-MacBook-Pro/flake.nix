@@ -53,6 +53,9 @@
       programs.zsh.enable = true;  # default shell on catalina
       # programs.fish.enable = true;
 
+      # Disable press and hold for diacritics (to allow holding down vim keys in vscode)
+      system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
+
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
 
