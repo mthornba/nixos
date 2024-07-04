@@ -16,6 +16,10 @@ in
     # Homebrew is *installed* via the flake input nix-homebrew
     enable = true;
     casks = pkgs.callPackage ./casks.nix {};
+    onActivation = {
+      cleanup = "uninstall";
+      autoUpdate = false; # make darwin-rebuild switch idempotent
+    };
 
     # These app IDs are from using the mas CLI app
     # mas = mac app store
