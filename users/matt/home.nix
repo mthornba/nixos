@@ -3,6 +3,7 @@
 let
   defaultImports = [
     ./modules/taskwarrior.nix
+    ./modules/palitronica.nix
   ];
 in
 {
@@ -59,13 +60,11 @@ in
     ipcalc
     jq
     keychain
-    kubectl
     lsd
     navi
     nnn
     ranger
     silver-searcher
-    terraform # unfree
     tldr
     unrar
     unzip
