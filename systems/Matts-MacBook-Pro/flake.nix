@@ -26,6 +26,7 @@
 
   outputs = inputs@{ self, nix-darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, home-manager, nixpkgs }:
   let
+    user = "matt";
     configuration = { pkgs, ... }: {
 
       imports = [
@@ -53,8 +54,32 @@
       programs.zsh.enable = true;  # default shell on catalina
       # programs.fish.enable = true;
 
-      # Disable press and hold for diacritics (to allow holding down vim keys in vscode)
-      system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
+      system.defaults = {
+        dock = {
+          appswitcher-all-displays = true;
+          autohide = true;
+          persistent-apps = [
+            "/Applications/Vivaldi.app"
+          ];
+          persistent-others = [
+            "/Users/${user}/Applications"
+          ];
+          wvous-bl-corner = 11; # Launchpad
+          wvous-br-corner = 2; # Mission Control
+
+        };
+        NSGlobalDomain = {
+          _HIHideMenuBar = true; # autohide menu bar
+          AppleInterfaceStyle = "Dark";
+          # Disable press and hold for diacritics (to allow holding down vim keys in vscode)
+          ApplePressAndHoldEnabled = false;
+          AppleShowAllFiles = true; # show hidden files
+          KeyRepeat = 2; # how fast keys repeat
+          NSAutomaticCapitalizationEnabled = false;
+          NSWindowShouldDragOnGesture = true; # drag windows from anywhere
+        };
+        LaunchServices.LSQuarantine = false;
+      };
 
       # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -83,7 +108,7 @@
             enableRosetta = false;
 
             # User owning the Homebrew prefix
-            user = "matt";
+            user = "${user}";
 
             # Optional: Declarative tap management
             taps = {
