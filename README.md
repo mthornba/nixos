@@ -109,3 +109,15 @@ programs.home-manager.enable = true;
 ```sh
 home-manager switch --flake ./users/matt --recreate-lock-file
 ```
+
+## nix-darwin
+
+First run:
+```sh
+nix run nix-darwin -- switch --flake ./systems/Matts-MacBook-Pro
+```
+
+Future runs can now use:
+```sh
+darwin-rebuild switch --flake ./systems/Matts-MacBook-Pro
+```
