@@ -16,6 +16,7 @@ in
     # Homebrew is *installed* via the flake input nix-homebrew
     enable = true;
     casks = pkgs.callPackage ./casks.nix {};
+    taps = builtins.attrNames config.nix-homebrew.taps;
     onActivation = {
       cleanup = "uninstall";
       autoUpdate = false; # make darwin-rebuild switch idempotent
