@@ -1,6 +1,7 @@
 _:
 
 [
+  "logseq"
   "unnaturalscrollwheels"
   "vivaldi"
 ]
