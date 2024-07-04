@@ -74,6 +74,7 @@ in
     # graphical apps
     # logseq
     # vivaldi # unfree
+    slack
     vscode # unfree
 
     # # Adds the 'hello' command to your environment. It prints a friendly
