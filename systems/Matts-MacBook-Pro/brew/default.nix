@@ -25,7 +25,7 @@ in
     # $ mas search <app name>
     #
     masApps = {
-      # "azure-vpn-client" = 1553936137;
+      "azure-vpn-client" = 1553936137;
       "wireguard" = 1451685025;
     };
   };
