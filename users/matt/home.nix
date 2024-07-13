@@ -141,6 +141,14 @@ in
   # Programs
   programs = {
 
+    atuin = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        show_preview = true;
+      };
+    };
+
     dircolors.enable = true;
 
     direnv = {
@@ -151,7 +159,7 @@ in
 
     fzf = {
       enable = true;
-      enableZshIntegration = true;
+      enableZshIntegration = false;
     };
 
     gh = {
