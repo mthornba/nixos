@@ -62,7 +62,7 @@ in
     keychain
     lsd
     navi
-    nnn
+    nmap
     ranger
     silver-searcher
     tldr
