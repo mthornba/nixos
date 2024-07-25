@@ -31,6 +31,7 @@ in
     #
     masApps = {
       "azure-vpn-client" = 1553936137;
+      "bitwarden" = 1352778147;
       "wireguard" = 1451685025;
     };
   };
