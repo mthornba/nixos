@@ -13,6 +13,8 @@
     podman
     terraform
     terraform-docs
+    tflint
+    tfsec
   ];
 
   programs = {
