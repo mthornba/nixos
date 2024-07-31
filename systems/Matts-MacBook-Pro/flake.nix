@@ -70,7 +70,7 @@
 
         };
         NSGlobalDomain = {
-          _HIHideMenuBar = true; # autohide menu bar
+          _HIHideMenuBar = false; # autohide menu bar
           AppleInterfaceStyle = "Dark";
           # Disable press and hold for diacritics (to allow holding down vim keys in vscode)
           ApplePressAndHoldEnabled = false;
