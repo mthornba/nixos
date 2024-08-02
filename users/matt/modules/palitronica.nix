@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     ansible
-    azure-cli
     drone-cli
     helm-docs
     kubectl

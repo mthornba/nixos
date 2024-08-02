@@ -15,6 +15,11 @@ in
     # This is a module from nix-darwin
     # Homebrew is *installed* via the flake input nix-homebrew
     enable = true;
+
+    # List of Homebrew formulae to install
+    brews = [
+      "azure-cli"
+    ];
     casks = pkgs.callPackage ./casks.nix {};
     taps = builtins.attrNames config.nix-homebrew.taps;
     onActivation = {
