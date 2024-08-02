@@ -5,7 +5,11 @@
     ansible
     drone-cli
     helm-docs
+    ktop
+    kubecolor
     kubectl
+    kubectx
+    kubespy
     kubernetes-helm
     minio-client
     packer
