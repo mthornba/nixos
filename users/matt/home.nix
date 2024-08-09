@@ -253,7 +253,7 @@ in
         # buku
         b = "buku --np";
         # k8s
-        k = "kubectl";
+        k = "kubecolor";
         # lsd
         ll = "lsd -lg";
         lla = "lsd -lAg";
@@ -310,6 +310,9 @@ in
       initExtra = ''
         # Completion styling
         zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+        # Make "kubecolor" borrow the same completion logic as "kubectl"
+        compdef kubecolor=kubectl
       '';
 
     };
