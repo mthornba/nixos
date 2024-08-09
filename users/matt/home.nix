@@ -264,7 +264,7 @@ in
         icat = "kitty +kitten icat";
         kssh = "kitty +kitten ssh";
         # split path
-        ppath = "sed -e \"s/:/\n/g\" <<< \$PATH";
+        ppath = "sed -e \"s/:/\\n/g\" <<< \$PATH";
         # taskwarrior
         t = "task";
         tf = "terraform";
