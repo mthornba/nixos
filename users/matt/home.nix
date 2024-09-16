@@ -130,8 +130,12 @@ in
     atuin = {
       enable = true;
       enableZshIntegration = true;
+      flags = [ "--disable-up-arrow" ];
       settings = {
+        inline_height = 15;
         show_preview = true;
+        style = "auto";
+        workspaces = true;
       };
     };
 
