@@ -155,7 +155,7 @@ in
     git = {
       enable = true;
       userName  = "Matt Thornback";
-      userEmail = "matt.thornback@gmail.com";
+      userEmail = "matt.thornback@palitronica.com";
       extraConfig = {
         credential.helper = "${
             pkgs.git.override { withLibsecret = true; }
