@@ -212,6 +212,23 @@ in
 
     thefuck.enable = true;
 
+    vim = {
+      defaultEditor = true;
+      enable = true;
+      extraConfig =
+        ''
+        nmap <F2> :NERDTreeToggle<CR>
+        '';
+      plugins = with pkgs.vimPlugins; [
+        nerdtree
+        nerdtree-git-plugin
+      ];
+      settings = {
+        modeline = true;
+        number = true;
+      };
+    };
+
     zsh = {
       enable = true;
 
@@ -320,14 +337,6 @@ in
         compdef kubecolor=kubectl
       '';
 
-    };
-
-    vim = {
-      defaultEditor = true;
-      enable = true;
-      settings = {
-        modeline = true;
-      };
     };
 
     zoxide = {
