@@ -193,6 +193,8 @@ in
         bell_on_tab = "\"🔔 \"";
         tab_bar_style = "fade";
         hide_window_decorations = "no";
+        selection_foreground = "none";
+        selection_background = "none";
       };
       theme = "Solarized Dark";
     };
