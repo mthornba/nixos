@@ -19,6 +19,7 @@
     terraform-docs
     tflint
     tfsec
+    tshark
   ];
 
   programs = {
