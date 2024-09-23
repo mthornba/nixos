@@ -5,6 +5,7 @@
     ansible
     drone-cli
     helm-docs
+    krew
     ktop
     kubecolor
     kubectl

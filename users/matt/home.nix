@@ -346,6 +346,9 @@ in
 
         # Make "kubecolor" borrow the same completion logic as "kubectl"
         compdef kubecolor=kubectl
+
+        # krew
+        export PATH="''\${KREW_ROOT:-''\$HOME/.krew}/bin:$PATH"
       '';
 
     };
