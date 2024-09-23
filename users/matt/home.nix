@@ -61,7 +61,6 @@ in
     jq
     keychain
     lsd
-    navi
     nmap
     ranger
     silver-searcher
@@ -197,6 +196,18 @@ in
         selection_background = "none";
       };
       theme = "Solarized Dark";
+    };
+
+    navi = {
+      enable = true;
+      settings = {
+        finder = {
+          command = "fzf";
+        };
+        shell = {
+          command = "zsh";
+        };
+      };
     };
 
     starship = {
