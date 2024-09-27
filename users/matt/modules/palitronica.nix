@@ -15,6 +15,7 @@
     minio-client
     packer
     podman
+    pre-commit
     terraform
     terraform-docs
     tflint
