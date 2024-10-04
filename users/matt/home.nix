@@ -156,13 +156,14 @@ in
 
     git = {
       enable = true;
-      userName  = "Matt Thornback";
-      userEmail = "matt.thornback@palitronica.com";
       extraConfig = {
         credential.helper = "${
             pkgs.git.override { withLibsecret = true; }
           }/bin/git-credential-libsecret";
+        init.templateDir = "~/.git-template";
       };
+      userName  = "Matt Thornback";
+      userEmail = "matt.thornback@palitronica.com";
     };
 
     # Let Home Manager install and manage itself.
