@@ -223,6 +223,16 @@ in
 
     thefuck.enable = true;
 
+    tmux = {
+      enable = true;
+      keyMode = "vi";
+      reverseSplit = true;
+      terminal = "xterm-256color";
+      plugins = with pkgs; [
+        tmuxPlugins.tilish
+      ];
+    };
+
     vim = {
       defaultEditor = true;
       enable = true;
