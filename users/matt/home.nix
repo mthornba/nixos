@@ -276,6 +276,7 @@ in
       };
 
       history = {
+        append = true;
         extended = true;
         ignoreAllDups = true;
         ignoreDups = false;
