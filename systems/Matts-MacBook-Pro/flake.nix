@@ -37,6 +37,7 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs; [
         curl
+        darwin.iproute2mac
         qemu
         vim
         wget
