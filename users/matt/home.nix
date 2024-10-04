@@ -255,7 +255,7 @@ in
 
       autosuggestion = {
         enable = true;
-        highlight = "fg=orange,bg=green,bold,underline";
+        highlight = "fg=#52676f,bg=dim";
       };
 
       defaultKeymap = "viins";
