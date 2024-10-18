@@ -16,6 +16,7 @@
     minio-client
     packer
     podman
+    podman-compose
     pre-commit
     terraform
     terraform-docs
