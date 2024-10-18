@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     ansible
+    argocd
     drone-cli
     helm-docs
     krew
