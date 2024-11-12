@@ -55,6 +55,7 @@ in
     # cli apps
     bat
     buku
+    dos2unix
     file
     htop
     ipcalc
