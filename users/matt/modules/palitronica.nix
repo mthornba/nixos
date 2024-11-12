@@ -23,6 +23,7 @@
     tflint
     tfsec
     tshark
+    vault
   ];
 
   programs = {
