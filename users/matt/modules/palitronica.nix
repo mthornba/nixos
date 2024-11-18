@@ -18,6 +18,7 @@
     podman
     podman-compose
     pre-commit
+    restic
     terraform
     terraform-docs
     tflint
