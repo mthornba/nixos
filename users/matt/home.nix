@@ -163,6 +163,10 @@ in
           }/bin/git-credential-libsecret";
         init.templateDir = "~/.git-template";
       };
+      ignores = [
+        "*.DS_Store"
+        "*.swp"
+      ];
       userName  = "Matt Thornback";
       userEmail = "matt.thornback@palitronica.com";
     };
