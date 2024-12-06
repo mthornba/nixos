@@ -46,6 +46,7 @@
         curl
         darwin.iproute2mac
         qemu
+        raycast
         vim
         wget
       ];
