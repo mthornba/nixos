@@ -318,7 +318,9 @@ in
         ppath = "sed -e \"s/:/\\n/g\" <<< \$PATH";
         # taskwarrior
         t = "task";
+        # terraform
         tf = "terraform";
+        tfd = "terraform-docs";
       };
 
       zplug = {
