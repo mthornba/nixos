@@ -57,6 +57,7 @@ in
     buku
     dos2unix
     file
+    gnupg
     htop
     ipcalc
     jq
