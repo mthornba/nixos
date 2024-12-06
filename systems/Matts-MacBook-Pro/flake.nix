@@ -29,6 +29,13 @@
     user = "matt";
     configuration = { pkgs, ... }: {
 
+      nixpkgs = {
+        config = {
+          allowUnfree = true;
+          allowUnfreePredicate = _: true;
+        };
+      };
+
       imports = [
         ./brew
       ];
