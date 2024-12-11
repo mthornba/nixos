@@ -369,6 +369,18 @@ in
 
         # krew
         export PATH="''\${KREW_ROOT:-''\$HOME/.krew}/bin:$PATH"
+
+        # display Vault secrets
+        showCreds() {
+          vault kv get -format=json -mount="''\${1}" "''\${2}" | \
+          jq '.data.data | to_entries|map("\(.key)=\(.value|tostring)")|.[]' -r
+        }
+
+        # source Vault secrets into shell environment
+        getCreds() {
+          eval $(vault kv get -format=json -mount="''\${1}" "''\${2}" | \
+          jq '.data.data | to_entries|map("export \(.key)=\(.value|tostring)")|.[]' -r)
+        }
       '';
 
     };
