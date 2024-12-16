@@ -306,6 +306,7 @@ in
         b = "buku --np";
         # k8s
         k = "kubecolor";
+        kdr = "kubectl --dry-run=client -o yaml";
         # lsd
         ll = "lsd -lg";
         lla = "lsd -lAg";
