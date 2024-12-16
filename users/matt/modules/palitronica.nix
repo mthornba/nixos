@@ -14,6 +14,7 @@
     kubespy
     kubernetes-helm
     minio-client
+    openvpn
     packer
     podman
     podman-compose
