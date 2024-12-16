@@ -63,6 +63,7 @@ in
     jq
     keychain
     lsd
+    ncdu
     nmap
     ranger
     silver-searcher
