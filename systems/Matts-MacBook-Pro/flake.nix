@@ -45,6 +45,7 @@
       environment.systemPackages = with pkgs; [
         curl
         darwin.iproute2mac
+        lima
         qemu
         raycast
         vim
