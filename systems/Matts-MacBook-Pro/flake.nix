@@ -47,6 +47,7 @@
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs; [
+        ansible
         curl
         darwin.iproute2mac
         lima
