@@ -65,6 +65,7 @@ in
     lsd
     ncdu
     nmap
+    pv
     ranger
     silver-searcher
     tldr
