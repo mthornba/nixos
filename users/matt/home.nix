@@ -324,6 +324,7 @@ in
         # terraform
         tf = "terraform";
         tfd = "terraform-docs";
+        tg = "terragrunt";
       };
 
       zplug = {

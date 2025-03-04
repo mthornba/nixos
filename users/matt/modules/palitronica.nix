@@ -5,6 +5,7 @@
     ansible
     argocd
     drone-cli
+    graphviz
     helm-docs
     krew
     ktop
@@ -20,8 +21,11 @@
     podman-compose
     pre-commit
     restic
+    sops
     terraform
     terraform-docs
+    terragrunt
+    tfk8s
     tflint
     tfsec
     tshark
