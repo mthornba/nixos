@@ -204,7 +204,7 @@ in
         selection_foreground = "none";
         selection_background = "none";
       };
-      themeFile = "Solarized_Dark";
+      themeFile = "selenized-dark";
     };
 
     navi = {
