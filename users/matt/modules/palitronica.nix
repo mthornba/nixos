@@ -5,6 +5,7 @@
     ansible
     argocd
     drone-cli
+    go-task
     graphviz
     helm-docs
     krew
