@@ -60,10 +60,16 @@ in
     buku
     dos2unix
     file
+    gitnr
+    glow
+    gurk-rs
     gnupg
+    hoard
     htop
     ipcalc
+    jless
     jq
+    jqp
     keychain
     lsd
     ncdu
@@ -72,6 +78,8 @@ in
     pv
     ranger
     silver-searcher
+    sshs
+    termscp
     tldr
     unrar
     unzip
