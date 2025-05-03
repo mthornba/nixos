@@ -56,6 +56,7 @@ in
   # environment.
   home.packages = with pkgs; [
     # cli apps
+    aerc
     bat
     buku
     dos2unix
