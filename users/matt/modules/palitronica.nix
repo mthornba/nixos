@@ -23,6 +23,7 @@
     pre-commit
     restic
     sops
+    sshs
     terraform
     terraform-docs
     terragrunt
