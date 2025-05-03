@@ -83,7 +83,6 @@ in
     tldr
     unrar
     unzip
-    wtf
     zip
     # graphical apps
     # logseq
