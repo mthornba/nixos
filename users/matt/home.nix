@@ -376,7 +376,7 @@ in
         }
       ];
 
-      initExtra = ''
+      initContent = ''
         # Completion styling
         zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
