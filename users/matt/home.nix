@@ -116,6 +116,7 @@ in
     # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # symlink to the Nix store copy.
     ".config/wtf/config.yml".source = dotfiles/wtf/config.yml;
+    "zellij/config.kdl".source = dotfiles/zellij/config.kdl;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -215,6 +216,7 @@ in
         hide_window_decorations = "no";
         selection_foreground = "none";
         selection_background = "none";
+        macos_option_as_alt = "left";
       };
       themeFile = "selenized-dark";
     };
@@ -269,6 +271,11 @@ in
         modeline = true;
         number = true;
       };
+    };
+
+    zellij = {
+      enable = true;
+      enableZshIntegration = true;
     };
 
     zsh = {
