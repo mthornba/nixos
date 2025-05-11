@@ -58,6 +58,7 @@ in
     # cli apps
     aerc
     bat
+    browsh
     buku
     dos2unix
     file
@@ -160,6 +161,10 @@ in
       enable = true;
       enableZshIntegration = true;
       nix-direnv.enable = true;
+    };
+
+    firefox = {
+      enable = true;
     };
 
     fzf = {
