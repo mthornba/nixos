@@ -237,6 +237,43 @@ in
       };
     };
 
+    newsboat = {
+      autoReload = true;
+      enable = true;
+      extraConfig = ''
+        color background color244 default
+        color listnormal color244 default
+        color listfocus color15 color136
+        color listnormal_unread color33 default
+        color listfocus_unread color15 color136
+        color info color244 color235
+        color article color15 default
+        highlight article "^(Title):.*$" color5  default
+        highlight article "https?://[^ ]+" blue default
+        highlight article "\\[image\\ [0-9]+\\]" green default
+      '';
+      urls = [
+        {
+          tags = [
+            "terminal"
+          ];
+          url = "https://terminaltrove.com/new.xml";
+        }
+        {
+          tags = [
+            "tech"
+          ];
+          url = "https://news.ycombinator.com/rss";
+        }
+        {
+          tags = [
+            "tech"
+          ];
+          url = "https://lobste.rs/rss";
+        }
+      ];
+    };
+
     ranger = {
       enable = true;
       settings = {
