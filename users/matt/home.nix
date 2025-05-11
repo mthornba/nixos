@@ -78,7 +78,6 @@ in
     nerd-fonts.hack
     nmap
     pv
-    ranger
     silver-searcher
     sshs
     termscp
@@ -235,6 +234,13 @@ in
         shell = {
           command = "zsh";
         };
+      };
+    };
+
+    ranger = {
+      enable = true;
+      settings = {
+        preview_images_method = "kitty";
       };
     };
 
