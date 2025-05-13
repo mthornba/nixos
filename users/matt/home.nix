@@ -221,8 +221,9 @@ in
         selection_foreground = "none";
         selection_background = "none";
         macos_option_as_alt = "left";
+        # include = "~/.config/kitty/current-theme.conf";
       };
-      themeFile = "selenized-dark";
+      themeFile = "Solarized8_Dark";
     };
 
     navi = {
@@ -309,11 +310,18 @@ in
       enable = true;
       extraConfig =
         ''
+        colorscheme solarized8_dark
         nmap <F2> :NERDTreeToggle<CR>
         '';
       plugins = with pkgs.vimPlugins; [
         nerdtree
         nerdtree-git-plugin
+        vim-colors-solarized
+        vim-colorstepper
+        vim-colorstepper
+        vim-colorschemes
+        vim-gitgutter
+        xterm-color-table-vim
       ];
       settings = {
         modeline = true;
