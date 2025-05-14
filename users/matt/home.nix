@@ -56,10 +56,10 @@ in
   # environment.
   home.packages = with pkgs; [
     # cli apps
-    aerc
     bat
     browsh
     buku
+    ddgr
     dos2unix
     file
     gitnr
@@ -84,6 +84,7 @@ in
     tldr
     unrar
     unzip
+    wtfutil
     zip
     # graphical apps
     # logseq
@@ -141,6 +142,13 @@ in
 
   # Programs
   programs = {
+
+    aerc = {
+      enable = true;
+#      extraConfig = {
+#        "text/html" = "! w3m -T text/html -I UTF-8";
+#      };
+    };
 
     atuin = {
       enable = true;

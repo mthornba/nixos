@@ -15,7 +15,7 @@ wtf:
         rows:
           even: "lightblue"
           odd: "white"
-      enabled: true
+      enabled: false
       locations:
         Vancouver: "America/Vancouver"
         Toronto: "America/Toronto"
@@ -29,27 +29,6 @@ wtf:
       title: "Americas"
       type: "clocks"
 
-    clocks_b:
-      colors:
-        rows:
-          even: "lightblue"
-          odd: "white"
-      enabled: true
-      locations:
-        London: "Etc/UTC"
-        Paris: "Europe/Paris"
-        Bucharest: "Europe/Bucharest"
-        India: "Asia/Kolkata"
-      position:
-        top: 2
-        left: 3
-        height: 1
-        width: 1
-      refreshInterval: 15
-      sort: "chronological"
-      title: "APAC"
-      type: "clocks"
-
     digitalclock:
       color: orange
       enabled: true
@@ -58,7 +37,7 @@ wtf:
       hourFormat: 24
       position:
         top: 0
-        left: 3
+        left: 1
         height: 1
         width: 1
       refreshInterval: 1s
@@ -72,46 +51,33 @@ wtf:
       enabled: true
       position:
         top: 0
-        left: 0
+        left: 3
         height: 1
         width: 2
       refreshInterval: 150
-
-    resourceusage:
-      cpuCombined: false
-      enabled: true
-      position:
-        top: 2
-        left: 0
-        height: 3
-        width: 2
-      refreshInterval: 1s
-      showCPU: true
-      showMem: true
-      showSwp: true
 
     prettyweather:
       enabled: true
       city: "Waterloo, ON"
       position:
         top: 0
-        left: 2
+        left: 0
         height: 1
         width: 1
       refreshInterval: 5m
       unit: "m"
       view: 0
       language: "en"
+      title: ""
 
-    feedreader:
+    cmdrunner:
+      cmd: "cal"
       enabled: true
-      feeds:
-      - https://news.ycombinator.com/rss
-      - https://lobste.rs/rss
-      feedLimit: 10
       position:
-        top: 1
-        left: 0
+        top: 0
+        left: 2
         height: 1
-        width: 3
-      refreshInterval: 4h
+        width: 1
+      pty: true
+      refreshInterval: 1h
+      title: ""
