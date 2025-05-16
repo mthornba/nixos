@@ -71,7 +71,8 @@ wtf:
       title: ""
 
     cmdrunner:
-      cmd: "cal"
+      cmd: "carl"
+      args: ["-s"]
       enabled: true
       position:
         top: 0

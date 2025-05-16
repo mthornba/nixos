@@ -59,6 +59,7 @@ in
     bat
     browsh
     buku
+    carl
     ddgr
     dos2unix
     file
