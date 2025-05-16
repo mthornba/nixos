@@ -3,7 +3,8 @@
 {
   home.packages = with pkgs; [
     ansible
-    argocd
+    atac
+    commitizen
     drone-cli
     go-task
     graphviz
