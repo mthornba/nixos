@@ -49,7 +49,7 @@
       environment.systemPackages = with pkgs; [
         ansible
         curl
-        darwin.iproute2mac
+        iproute2mac
         lima
         qemu
         raycast
