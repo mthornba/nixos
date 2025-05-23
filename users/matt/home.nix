@@ -330,6 +330,7 @@ in
         vim-colorstepper
         vim-colorschemes
         vim-gitgutter
+        vim-terraform-completion
         xterm-color-table-vim
       ];
       settings = {

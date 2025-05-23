@@ -27,6 +27,7 @@
     sshs
     terraform
     terraform-docs
+    terraform-ls
     terragrunt
     tfk8s
     tflint
