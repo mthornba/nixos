@@ -355,7 +355,10 @@ in
 
       enableCompletion = true;
 
-      envExtra = "HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=green,fg=black,bold'\n";
+      sessionVariables = {
+        HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND = "bg=green,fg=black,bold";
+	MANPAGER = "bat --plain --language man";
+      };
 
       syntaxHighlighting = {
         enable = true;
