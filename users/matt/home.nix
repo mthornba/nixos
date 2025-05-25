@@ -257,6 +257,7 @@ in
         set number
         '';
       plugins = with pkgs.vimPlugins; [
+        ale
         git-blame-nvim
         nerdtree
         nerdtree-git-plugin
