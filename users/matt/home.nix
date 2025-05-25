@@ -247,6 +247,27 @@ in
       };
     };
 
+    neovim = {
+      defaultEditor = true;
+      enable = true;
+      extraConfig =
+        ''
+        colorscheme solarized8_dark
+        nmap <F2> :NERDTreeToggle<CR>
+        '';
+      plugins = with pkgs.vimPlugins; [
+        nerdtree
+        nerdtree-git-plugin
+        vim-colors-solarized
+        vim-colorstepper
+        vim-colorschemes
+        vim-gitgutter
+        vim-terraform-completion
+        xterm-color-table-vim
+      ];
+      vimAlias = true;
+    };
+
     newsboat = {
       autoReload = true;
       enable = true;
@@ -316,7 +337,7 @@ in
 
     vim = {
       defaultEditor = true;
-      enable = true;
+      enable = false;
       extraConfig =
         ''
         colorscheme solarized8_dark
@@ -326,7 +347,6 @@ in
         nerdtree
         nerdtree-git-plugin
         vim-colors-solarized
-        vim-colorstepper
         vim-colorstepper
         vim-colorschemes
         vim-gitgutter
