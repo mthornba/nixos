@@ -254,9 +254,9 @@ in
       enable = true;
       extraConfig =
         ''
-        colorscheme solarized8_dark
-        nmap <F2> :NERDTreeToggle<CR>
         set number
+        nmap <F2> :NERDTreeToggle<CR>
+        colorscheme solarized8_dark
         '';
       plugins = with pkgs.vimPlugins; [
         ale
@@ -265,7 +265,6 @@ in
         nerdtree-git-plugin
         telescope-nvim
         vim-colors-solarized
-        vim-colorstepper
         vim-colorschemes
         vim-fugitive
         vim-gitgutter
