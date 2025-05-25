@@ -389,7 +389,7 @@ in
 
       sessionVariables = {
         HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND = "bg=green,fg=black,bold";
-	MANPAGER = "bat --plain --language man";
+        MANPAGER = "bat --plain --language man";
       };
 
       syntaxHighlighting = {
