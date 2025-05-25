@@ -62,6 +62,7 @@ in
     carl
     ddgr
     dos2unix
+    fd
     file
     gitnr
     glow
@@ -79,6 +80,7 @@ in
     nerd-fonts.hack
     nmap
     pv
+    ripgrep
     silver-searcher
     sshs
     termscp
@@ -261,6 +263,7 @@ in
         git-blame-nvim
         nerdtree
         nerdtree-git-plugin
+        telescope-nvim
         vim-colors-solarized
         vim-colorstepper
         vim-colorschemes
