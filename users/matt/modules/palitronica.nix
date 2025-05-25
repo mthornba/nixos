@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     ansible
-    atac
     commitizen
     drone-cli
     go-task
@@ -21,6 +20,7 @@
     packer
     podman
     podman-compose
+    posting
     pre-commit
     restic
     sops
