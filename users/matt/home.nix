@@ -254,6 +254,7 @@ in
         ''
         colorscheme solarized8_dark
         nmap <F2> :NERDTreeToggle<CR>
+        set number
         '';
       plugins = with pkgs.vimPlugins; [
         git-blame-nvim
