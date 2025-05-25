@@ -264,6 +264,8 @@ in
         nerdtree
         nerdtree-git-plugin
         telescope-nvim
+        vim-airline
+        vim-airline-themes
         vim-colors-solarized
         vim-colorschemes
         vim-fugitive
