@@ -256,11 +256,13 @@ in
         nmap <F2> :NERDTreeToggle<CR>
         '';
       plugins = with pkgs.vimPlugins; [
+        git-blame-nvim
         nerdtree
         nerdtree-git-plugin
         vim-colors-solarized
         vim-colorstepper
         vim-colorschemes
+        vim-fugitive
         vim-gitgutter
         vim-terraform-completion
         xterm-color-table-vim
