@@ -257,6 +257,8 @@ in
         set number
         nmap <F2> :NERDTreeToggle<CR>
         colorscheme solarized8_dark
+        let g:terraform_fmt_on_save=1
+        let g:terraform_align=1
         '';
       plugins = with pkgs.vimPlugins; [
         ale
@@ -270,6 +272,7 @@ in
         vim-colorschemes
         vim-fugitive
         vim-gitgutter
+        vim-terraform
         vim-terraform-completion
         xterm-color-table-vim
       ];
