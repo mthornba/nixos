@@ -255,24 +255,37 @@ in
       extraConfig =
         ''
         set number
-        nmap <F2> :NERDTreeToggle<CR>
         colorscheme solarized8_dark
-        let g:terraform_fmt_on_save=1
-        let g:terraform_align=1
         '';
       plugins = with pkgs.vimPlugins; [
         ale
         git-blame-nvim
-        nerdtree
+        { plugin = nerdtree;
+          config = "nmap <F2> :NERDTreeToggle<CR>";
+        }
         nerdtree-git-plugin
-        telescope-nvim
+        telescope-fzf-native-nvim
+        { plugin = telescope-nvim;
+          config = ''
+            " Find files using Telescope command-line sugar.
+            nnoremap <leader>ff <cmd>Telescope find_files<cr>
+            nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+            nnoremap <leader>fb <cmd>Telescope buffers<cr>
+            nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+          '';
+        }
         vim-airline
         vim-airline-themes
         vim-colors-solarized
         vim-colorschemes
         vim-fugitive
         vim-gitgutter
-        vim-terraform
+        { plugin = vim-terraform;
+          config = ''
+            let g:terraform_fmt_on_save=1
+            let g:terraform_align=1
+          '';
+        }
         vim-terraform-completion
         xterm-color-table-vim
       ];
