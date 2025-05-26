@@ -25,6 +25,7 @@
     restic
     sops
     sshs
+    sslscan
     terraform
     terraform-docs
     terraform-ls
