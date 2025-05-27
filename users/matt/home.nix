@@ -64,6 +64,8 @@ in
     dos2unix
     fd
     file
+    gfold
+    gita
     gitnr
     glow
     gurk-rs
