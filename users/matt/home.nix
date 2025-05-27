@@ -192,7 +192,10 @@ in
         credential.helper = "${
             pkgs.git.override { withLibsecret = true; }
           }/bin/git-credential-libsecret";
-        init.templateDir = "~/.git-template";
+        init = {
+	  templateDir = "~/.git-template";
+	  defaultBranch = "main";
+	};
       };
       ignores = [
         "*.DS_Store"
