@@ -83,6 +83,7 @@ in
     nmap
     pv
     ripgrep
+    serpl
     silver-searcher
     sshs
     termscp
