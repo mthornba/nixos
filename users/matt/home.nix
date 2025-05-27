@@ -437,6 +437,35 @@ in
         ];
       };
 
+      initContent = let
+        zshConfigEarlyInit = lib.mkOrder 500 "# Early";
+        zshConfigBeforeCompInit = lib.mkOrder 550 "# BeforeCompInit";
+        zshConfig = lib.mkOrder 1000 ''
+          # Completion styling
+          zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+          # Make "kubecolor" borrow the same completion logic as "kubectl"
+          compdef kubecolor=kubectl
+
+          # krew
+          export PATH="''\${KREW_ROOT:-''\$HOME/.krew}/bin:$PATH"
+
+          # display Vault secrets
+          showCreds() {
+            vault kv get -format=json -mount="''\${1}" "''\${2}" | \
+            jq '.data.data | to_entries|map("\(.key)='"'"'\(.value|tostring)'"'"'")|.[]' -r
+          }
+
+          # source Vault secrets into shell environment
+          getCreds() {
+            eval $(vault kv get -format=json -mount="''\${1}" "''\${2}" | \
+            jq '.data.data | to_entries|map("export \(.key)='"'"'\(.value|tostring)'"'"'")|.[]' -r)
+          }
+        '';
+        zshConfigLate = lib.mkOrder 1500 "# Late";
+      in
+        lib.mkMerge [ zshConfigEarlyInit zshConfigBeforeCompInit zshConfig zshConfigLate ];
+
       shellAliases = {
         # buku
         b = "buku --np";
@@ -498,29 +527,6 @@ in
           };
         }
       ];
-
-      initContent = ''
-        # Completion styling
-        zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-
-        # Make "kubecolor" borrow the same completion logic as "kubectl"
-        compdef kubecolor=kubectl
-
-        # krew
-        export PATH="''\${KREW_ROOT:-''\$HOME/.krew}/bin:$PATH"
-
-        # display Vault secrets
-        showCreds() {
-          vault kv get -format=json -mount="''\${1}" "''\${2}" | \
-          jq '.data.data | to_entries|map("\(.key)='"'"'\(.value|tostring)'"'"'")|.[]' -r
-        }
-
-        # source Vault secrets into shell environment
-        getCreds() {
-          eval $(vault kv get -format=json -mount="''\${1}" "''\${2}" | \
-          jq '.data.data | to_entries|map("export \(.key)='"'"'\(.value|tostring)'"'"'")|.[]' -r)
-        }
-      '';
 
     };
 
