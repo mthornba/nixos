@@ -18,6 +18,7 @@
     minio-client
     openvpn
     packer
+    pgcli
     podman
     podman-compose
     posting
