@@ -262,6 +262,20 @@ in
         ''
         set number
         colorscheme solarized8_dark
+
+        " Set indentation
+        " Use spaces instead of tabs
+        set expandtab
+        " Number of spaces to use for a tab
+        set tabstop=2
+        " Number of spaces to use for autoindenting
+        set shiftwidth=2
+        " Enable autoindenting
+        set autoindent
+        " Enable smart indenting
+        set smartindent
+        " Soft tabstop (optional, but often helpful)
+        set softtabstop=2
         '';
       plugins = with pkgs.vimPlugins; [
         ale
