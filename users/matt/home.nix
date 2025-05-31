@@ -277,11 +277,29 @@ in
         " Soft tabstop (optional, but often helpful)
         set softtabstop=2
         '';
+        extraLuaConfig =
+        ''
+        return require('lazy').setup({
+          {
+            "dustinblackman/oatmeal.nvim",
+            cmd = { "Oatmeal" },
+            keys = {
+                { "<leader>om", mode = "n", desc = "Start Oatmeal session" },
+            },
+            opts = {
+                backend = "gemini",
+                model = "gemini-1.5.flash:latest",
+            },
+          },
+        })
+        '';
       plugins = with pkgs.vimPlugins; [
         ale
         git-blame-nvim
         { plugin = nerdtree;
           config = "nmap <F2> :NERDTreeToggle<CR>";
+        }
+        { plugin = lazy-nvim;
         }
         nerdtree-git-plugin
         telescope-fzf-native-nvim
