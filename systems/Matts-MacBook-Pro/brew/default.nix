@@ -19,6 +19,7 @@ in
     # List of Homebrew formulae to install
     brews = [
       "azure-cli"
+      "oatmeal"
     ];
     casks = pkgs.callPackage ./casks.nix {};
     taps = builtins.attrNames config.nix-homebrew.taps;
