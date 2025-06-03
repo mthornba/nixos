@@ -407,6 +407,15 @@ in
       ];
     };
 
+    pay-respects = {
+      enable = true;
+      enableZshIntegration = true;
+      options = [
+        "--alias"
+        "fuck"
+      ];
+    };
+
     ranger = {
       enable = true;
       settings = {
@@ -424,8 +433,6 @@ in
         line_break.disabled = true;
       };
     };
-
-    thefuck.enable = true;
 
     tmux = {
       enable = true;
