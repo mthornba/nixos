@@ -430,6 +430,23 @@ in
         add_newline = true;
         aws.disabled = true;
         gcloud.disabled = true;
+        kubernetes = {
+          contexts = [
+            {
+              context_pattern = ".*test.*";
+              context_alias = "test";
+              style = "bold yellow";
+              user_alias = "admin";
+            }
+            {
+              context_pattern = ".*prod.*";
+              context_alias = "PROD";
+              style = "bold red";
+              user_alias = "admin";
+            }
+          ];
+          disabled = false;
+        };
         line_break.disabled = true;
       };
     };
