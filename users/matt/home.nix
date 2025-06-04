@@ -296,6 +296,11 @@ in
       plugins = with pkgs.vimPlugins; [
         ale
         git-blame-nvim
+        { plugin = neo-tree-nvim;
+          config = ''
+            nnoremap <leader>nt <cmd>Neotree source=filesystem position=left reveal=true toggle<cr>
+          '';
+        }
         { plugin = nerdtree;
           config = "nmap <F2> :NERDTreeToggle<CR>";
         }
