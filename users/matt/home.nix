@@ -122,6 +122,7 @@ in
     # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # symlink to the Nix store copy.
+    ".config/newsboat/bookmark.sh".source = scripts/newsboat/bookmark.sh;
     ".config/wtf/config.yml".source = dotfiles/wtf/config.yml;
     "zellij/config.kdl".source = dotfiles/zellij/config.kdl;
 
@@ -374,6 +375,7 @@ in
       autoReload = true;
       enable = true;
       extraConfig = ''
+        bookmark-cmd "~/.config/newsboat/bookmark.sh"
         color background color244 default
         color listnormal color244 default
         color listfocus color15 color136
