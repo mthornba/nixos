@@ -404,6 +404,24 @@ in
           ];
           url = "https://lobste.rs/rss";
         }
+        {
+          tags = [
+            "terminal"
+          ];
+          url = "https://github.com/agarrharr/awesome-cli-apps/commits.atom";
+        }
+        {
+          tags = [
+            "terminal"
+          ];
+          url = "https://cli.club/rss.xml";
+        }
+        {
+          tags = [
+            "terminal"
+          ];
+          url = "https://selfh.st/rss/";
+        }
       ];
     };
 
