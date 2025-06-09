@@ -367,6 +367,7 @@ in
         }
         vim-terraform-completion
         xterm-color-table-vim
+        zoomwintab-vim
       ];
       vimAlias = true;
     };
