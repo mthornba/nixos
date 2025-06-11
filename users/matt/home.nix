@@ -262,7 +262,8 @@ in
       extraConfig =
         ''
         set number
-        colorscheme solarized8_dark
+        set notermguicolors
+        colorscheme solarized
 
         " Set indentation
         " Use spaces instead of tabs
