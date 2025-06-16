@@ -393,7 +393,6 @@ in
 
     zellij = {
       enable = true;
-      enableZshIntegration = true;
     };
 
     zsh = {
