@@ -464,6 +464,8 @@ in
         nvim-treesitter-parsers.html
         nvim-treesitter-parsers.markdown
         nvim-treesitter-parsers.markdown_inline
+        nvim-treesitter-parsers.nix
+        nvim-treesitter-parsers.terraform
 
         telescope-fzf-native-nvim
         { plugin = telescope-nvim;
