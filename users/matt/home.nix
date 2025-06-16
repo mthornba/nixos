@@ -306,6 +306,7 @@ in
 
         set number
         set notermguicolors
+        set nowrap
         colorscheme solarized
 
         " Set indentation
