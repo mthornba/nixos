@@ -278,18 +278,19 @@ in
         set smartindent
         " Soft tabstop (optional, but often helpful)
         set softtabstop=2
-        '';
-#      extraLuaConfig = ''
-#        return require('lazy').setup({
-#          {
-#            "dustinblackman/oatmeal.nvim",
-#            cmd = { "Oatmeal" },
-#            keys = {
-#                { "<leader>om", mode = "n", desc = "Start Oatmeal session" },
-#            },
-#          },
-#        })
-#      '';
+      '';
+      extraLuaConfig = ''
+        -- require('lazy').setup({
+        --   {
+        --     "dustinblackman/oatmeal.nvim",
+        --     cmd = { "Oatmeal" },
+        --     keys = {
+        --         { "<leader>om", mode = "n", desc = "Start Oatmeal session" },
+        --     },
+        --   },
+        -- }),
+      '';
+
       plugins = with pkgs.vimPlugins; [
         ale
         git-blame-nvim
