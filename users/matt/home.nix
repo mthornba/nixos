@@ -85,6 +85,7 @@ in
     ripgrep
     serpl
     silver-searcher
+    so
     sshs
     termscp
     tldr
