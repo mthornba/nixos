@@ -245,9 +245,9 @@ in
         selection_foreground = "none";
         selection_background = "none";
         macos_option_as_alt = "left";
-        # include = "~/.config/kitty/current-theme.conf";
+        include = "~/.config/kitty/current-theme.conf";
       };
-      themeFile = "Solarized8_Dark";
+      # themeFile = "Solarized8_Dark";
     };
 
     navi = {

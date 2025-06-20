@@ -54,13 +54,11 @@
       set termguicolors
       set background=dark
       syntax enable
-      colorscheme solarized
+      colorscheme solarized8
       let g:airline_solarized_bg='dark'
       let g:airline_detect_truecolor = 1
-      let g:airline_theme='solarized'
+      let g:airline_theme='solarized_flood'
       " autocmd vimenter * ++nested colorscheme solarized8
-      " colorscheme solarized8
-      " colorscheme NeoSolarized
 
       " Set indentation
       " Use spaces instead of tabs
