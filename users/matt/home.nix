@@ -92,6 +92,7 @@ in
     tldr
     unrar
     unzip
+    viddy
     wtfutil
     zip
     # graphical apps
