@@ -36,6 +36,7 @@
     tfsec
     tshark
     vault
+    vault-medusa
   ];
 
   programs = {
