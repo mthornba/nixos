@@ -57,6 +57,7 @@ in
   # environment.
   home.packages = with pkgs; [
     # cli apps
+    aichat
     bat
     browsh
     buku
