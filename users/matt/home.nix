@@ -61,7 +61,9 @@ in
     browsh
     buku
     carl
+    curlie
     ddgr
+    doggo
     dos2unix
     fd
     file
