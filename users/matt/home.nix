@@ -67,6 +67,7 @@ in
     file
     gfold
     gita
+    frogmouth
     gitnr
     glow
     gurk-rs
