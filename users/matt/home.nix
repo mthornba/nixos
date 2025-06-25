@@ -339,8 +339,13 @@ in
       # custom settings
       settings = {
         add_newline = true;
+        format = "$all";
+        line_break.disabled = true;
+        right_format = "$time";
+
         aws.disabled = true;
         gcloud.disabled = true;
+
         kubernetes = {
           contexts = [
             {
@@ -358,8 +363,15 @@ in
           ];
           disabled = false;
         };
-        line_break.disabled = true;
+
+        time = {
+          disabled = false;
+          format = "[$time]($style)";
+          time_format = "%H:%M:%S";
+          style = "yellow";
+        };
       };
+
     };
 
     tmux = {
