@@ -64,6 +64,7 @@ in
     carl
     curlie
     ddgr
+    delta
     doggo
     dos2unix
     fd
