@@ -145,6 +145,25 @@
 
       require('nvim-treesitter.configs').setup({ highlight = { enable = true } })
 
+      require('lspconfig').terraformls.setup({
+        on_attach = function(client, bufnr)
+          -- keymaps or additional setup
+        end,
+        filetypes = { "terraform", "hcl" },
+      })
+      
+      require('cmp').setup({
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'path' },
+          { name = 'buffer' },
+        },
+        mapping = require('cmp').mapping.preset.insert({
+          ['<C-Space>'] = require('cmp').mapping.complete(),
+          ['<CR>'] = require('cmp').mapping.confirm({ select = true }),
+        }),
+      })
+
       require('render-markdown').setup({
         html = {
           -- Turn on / off all HTML rendering.
@@ -218,6 +237,15 @@
       nvim-treesitter-parsers.markdown_inline
       nvim-treesitter-parsers.nix
       nvim-treesitter-parsers.terraform
+      nvim-lspconfig
+      nvim-cmp
+      cmp-nvim-lsp
+      cmp-buffer
+      cmp-path
+      cmp-cmdline
+      lspkind-nvim
+      luasnip
+      cmp_luasnip
 
       telescope-fzf-native-nvim
       { plugin = telescope-nvim;
