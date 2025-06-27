@@ -85,7 +85,7 @@
       --   },
       -- }),
 
-      return require("toggleterm").setup{
+      require("toggleterm").setup{
         -- size can be a number or function which is passed the current terminal
         function(term)
           if term.direction == "horizontal" then
@@ -141,9 +141,9 @@
           -- default = 0 which means the feature is turned off
           horizontal_breakpoint = 135,
         }
-      },
+      }
 
-      require('nvim-treesitter.configs').setup({ highlight = { enable = true } }),
+      require('nvim-treesitter.configs').setup({ highlight = { enable = true } })
 
       require('render-markdown').setup({
         html = {
@@ -191,7 +191,7 @@
             padding = 1,
             -- Minimum column width to use for padded or trimmed cell.
             min_width = 0,
-        },
+        }
       })
     '';
 
