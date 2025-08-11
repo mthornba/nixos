@@ -491,6 +491,7 @@ in
       shellAliases = {
         # buku
         b = "buku --np";
+        docker = "podman";
         # k8s
         k = "kubecolor";
         kdr = "kubectl --dry-run=client -o yaml";
