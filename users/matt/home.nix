@@ -131,7 +131,7 @@ in
     # symlink to the Nix store copy.
     ".config/newsboat/bookmark.sh".source = scripts/newsboat/bookmark.sh;
     ".config/wtf/config.yml".source = dotfiles/wtf/config.yml;
-    "zellij/config.kdl".source = dotfiles/zellij/config.kdl;
+    ".config/zellij/config.kdl".source = dotfiles/zellij/config.kdl;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
