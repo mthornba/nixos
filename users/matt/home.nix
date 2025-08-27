@@ -484,7 +484,14 @@ in
             jq '.data.data | to_entries|map("export \(.key)='"'"'\(.value|tostring)'"'"'")|.[]' -r)
           }
         '';
-        zshConfigLate = lib.mkOrder 1500 "# Late";
+        zshConfigLate = lib.mkOrder 1500 ''
+          # Late
+
+          ## edit current command in vi
+          autoload -Uz edit-command-line
+          zle -N edit-command-line
+          bindkey '^X^E' edit-command-line
+        '';
       in
         lib.mkMerge [ zshConfigEarlyInit zshConfigBeforeCompInit zshConfig zshConfigLate ];
 
