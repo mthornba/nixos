@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     ansible
+    codex
     commitizen
     drone-cli
     go-task
