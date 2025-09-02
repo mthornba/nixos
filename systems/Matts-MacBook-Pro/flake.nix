@@ -68,6 +68,8 @@
       programs.zsh.enable = true;  # default shell on catalina
       # programs.fish.enable = true;
 
+      system.primaryUser = "matt";
+
       system.defaults = {
         dock = {
           appswitcher-all-displays = true;

@@ -12,18 +12,19 @@
 
   outputs = { nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
+      mkHome = system:
+        let pkgs = nixpkgs.legacyPackages.${system}; in
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ ./home.nix ];
+        };
     in {
-      homeConfigurations."matt" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+      # Home Manager selects the configuration matching "${user}@${host}"
+      # when no flake attribute is specified. Provide per-host configs with
+      # explicit systems to avoid relying on builtins.currentSystem.
+      homeConfigurations = {
+        "matt@neon" = mkHome "x86_64-linux";
+        "matt@Matts-MacBook-Pro" = mkHome "x86_64-darwin";
       };
     };
 }

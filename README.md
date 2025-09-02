@@ -121,3 +121,16 @@ Future runs can now use:
 ```sh
 darwin-rebuild switch --flake ./systems/Matts-MacBook-Pro
 ```
+
+## Support for multiple platforms
+
+Execute a helper script that checks the platform and determines how to apply the configuration.
+```sh
+nix run .
+```
+
+Optionally allow broken packages
+```sh
+NIXPKGS_ALLOW_BROKEN=1 nix run .
+```
+

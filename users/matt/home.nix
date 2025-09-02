@@ -42,7 +42,7 @@ in
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "matt";
-  home.homeDirectory = "/Users/matt";
+  home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/matt" else "/home/matt";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -122,6 +122,13 @@ in
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  # Tip: add OS-specific packages when needed, e.g.:
+  # home.packages = (with pkgs; [
+  #   ripgrep jq
+  # ])
+  # ++ lib.optionals pkgs.stdenv.isDarwin [ iterm2 ]
+  # ++ lib.optionals pkgs.stdenv.isLinux [ xclip ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
