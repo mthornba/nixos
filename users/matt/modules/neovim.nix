@@ -247,6 +247,8 @@
       luasnip
       cmp_luasnip
 
+      nvim-window-picker
+
       telescope-fzf-native-nvim
       { plugin = telescope-nvim;
         config = ''
