@@ -4,7 +4,7 @@
   programs.neovim = {
     defaultEditor = true;
     enable = true;
-    extraConfig = ''
+    extraConfig = /* vim */''
       " Styled and colored underline support
       let &t_AU = "\e[58:5:%dm"
       let &t_8u = "\e[58:2:%lu:%lu:%lum"
@@ -74,7 +74,7 @@
       " Soft tabstop (optional, but often helpful)
       set softtabstop=2
     '';
-    extraLuaConfig = ''
+    extraLuaConfig = /* lua */ ''
       -- require('lazy').setup({
       --   {
       --     "dustinblackman/oatmeal.nvim",
@@ -218,12 +218,12 @@
       ale
       git-blame-nvim
       { plugin = neo-tree-nvim;
-        config = ''
+        config = /* vim */ ''
           nnoremap <leader>nt <cmd>Neotree source=filesystem position=left reveal=true toggle<cr>
         '';
       }
       { plugin = nerdtree;
-        config = "nmap <F2> :NERDTreeToggle<CR>";
+        config = /* vim */ "nmap <F2> :NERDTreeToggle<CR>";
       }
       { plugin = lazy-nvim;
       }
@@ -251,7 +251,7 @@
 
       telescope-fzf-native-nvim
       { plugin = telescope-nvim;
-        config = ''
+        config = /* vim */ ''
           " Find files using Telescope command-line sugar.
           nnoremap <leader>ff <cmd>Telescope find_files<cr>
           nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -260,7 +260,7 @@
         '';
       }
       { plugin = toggleterm-nvim;
-        config = ''
+        config = /* vim */ ''
           " set
           autocmd TermEnter term://*toggleterm#*
                 \ tnoremap <silent><C-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
@@ -288,7 +288,7 @@
       }
       vim-airline
       { plugin = vim-airline-themes;
-        config = ''
+        config = /* vim */ ''
           let g:airline_powerline_fonts = 1
 
           if !exists('g:airline_symbols')
@@ -333,7 +333,7 @@
       vim-fugitive
       vim-gitgutter
       { plugin = vim-terraform;
-        config = ''
+        config = /* vim */ ''
           let g:terraform_fmt_on_save=1
           let g:terraform_align=1
         '';
