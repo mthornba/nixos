@@ -222,12 +222,8 @@
           nnoremap <leader>nt <cmd>Neotree source=filesystem position=left reveal=true toggle<cr>
         '';
       }
-      { plugin = nerdtree;
-        config = /* vim */ "nmap <F2> :NERDTreeToggle<CR>";
-      }
       { plugin = lazy-nvim;
       }
-      nerdtree-git-plugin
 
       render-markdown-nvim
       nvim-web-devicons
