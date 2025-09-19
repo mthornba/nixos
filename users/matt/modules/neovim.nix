@@ -214,7 +214,20 @@
       })
     '';
 
-    plugins = with pkgs.vimPlugins; [
+    plugins = let
+      preludeLeader = pkgs.vimUtils.buildVimPlugin {
+        pname = "prelude-leader";
+        version = "0.1.0";
+        src = pkgs.runCommand "prelude-leader-empty" {} "mkdir -p $out";
+      };
+    in with pkgs.vimPlugins; [
+      { plugin = preludeLeader;
+        config = /* vim */ ''
+          let mapleader = " "
+          let maplocalleader = " "
+          nnoremap <Space> <Nop>
+        '';
+      }
       ale
       git-blame-nvim
       { plugin = neo-tree-nvim;
