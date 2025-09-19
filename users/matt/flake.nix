@@ -25,6 +25,9 @@
       homeConfigurations = {
         "matt@neon" = mkHome "x86_64-linux";
         "matt@Matts-MacBook-Pro" = mkHome "x86_64-darwin";
+        # Some environments (e.g., macOS) expose HOSTNAME with a .local suffix
+        # so make the default selector work without specifying an attribute.
+        "matt@Matts-MacBook-Pro.local" = mkHome "x86_64-darwin";
       };
     };
 }
