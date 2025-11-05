@@ -65,6 +65,22 @@
         "type": "github"
       }
     },
+    "homebrew-devnullvoid": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1761285208,
+        "narHash": "sha256-wEnpJKJcBJUF8GzsxoDcLpqTPaESnasIxWuOSav+rsc=",
+        "owner": "devnullvoid",
+        "repo": "homebrew-pvetui",
+        "rev": "16361194a358b7563d66abbf8c31746d4049a713",
+        "type": "github"
+      },
+      "original": {
+        "owner": "devnullvoid",
+        "repo": "homebrew-pvetui",
+        "type": "github"
+      }
+    },
     "homebrew-dustinblackman": {
       "flake": false,
       "locked": {
@@ -156,6 +172,7 @@
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-devnullvoid": "homebrew-devnullvoid",
         "homebrew-dustinblackman": "homebrew-dustinblackman",
         "homebrew-services": "homebrew-services",
         "nix-darwin": "nix-darwin",

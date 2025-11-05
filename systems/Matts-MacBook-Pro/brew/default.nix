@@ -20,6 +20,7 @@ in
     brews = [
       "azure-cli"
       "oatmeal"
+      "pvetui"
     ];
     casks = pkgs.callPackage ./casks.nix {};
     taps = builtins.attrNames config.nix-homebrew.taps;

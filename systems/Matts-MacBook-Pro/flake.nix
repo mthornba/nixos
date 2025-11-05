@@ -26,6 +26,10 @@
       url = "github:dustinblackman/homebrew-tap";
       flake = false;
     };
+    homebrew-devnullvoid = {
+      url = "github:devnullvoid/homebrew-pvetui";
+      flake = false;
+    };
     homebrew-services = {
       url = "github:homebrew/homebrew-services";
       flake = false;
@@ -133,6 +137,7 @@
               "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
               "homebrew/homebrew-services" = inputs.homebrew-services;
               "dustinblackman/homebrew-tap" = inputs.homebrew-dustinblackman;
+              "devnullvoid/homebrew-pvetui" = inputs.homebrew-devnullvoid;
             };
 
             # Optional: Enable fully-declarative tap management
