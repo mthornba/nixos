@@ -247,7 +247,7 @@ in
       };
       font = {
         name = "Hack Nerd Font Mono";
-        size = 12;
+        size = 11;
       };
       keybindings = {
         "shift+cmd+v" = "paste_from_buffer a1";
