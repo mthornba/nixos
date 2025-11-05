@@ -24,6 +24,19 @@ in
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
+      # Darwin stub for postgresql test hook so pgcli builds without allowing broken
+      (final: prev:
+        if prev.stdenv.isDarwin then
+          let
+            stub = prev.writeTextDir "nix-support/setup-hook" ''
+              # no-op postgresql test hook on darwin
+            '';
+          in {
+            postgresqlTestHook = stub;
+            "postgresql-test-hook" = stub;
+          }
+        else {}
+      )
     ];
     # Configure your nixpkgs instance
     config = {
