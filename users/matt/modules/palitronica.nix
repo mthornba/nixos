@@ -23,6 +23,7 @@
     podman
     podman-compose
     posting
+    powershell
     pre-commit
     restic
     sops
