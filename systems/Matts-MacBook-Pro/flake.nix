@@ -32,7 +32,7 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nix-homebrew, homebrew-bundle, homebrew-core, homebrew-cask, homebrew-dustinblackman, homebrew-services, home-manager, nixpkgs, ... }:
+  outputs = { self, ... } @ inputs:
   let
     user = "matt";
     configuration = { pkgs, ... }: {
@@ -62,7 +62,7 @@
       ];
 
       # Necessary for using flakes on this system.
-      nix.settings.experimental-features = "nix-command flakes";
+      nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
       # Create /etc/zshrc that loads the nix-darwin environment.
       programs.zsh.enable = true;  # default shell on catalina
@@ -111,10 +111,10 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#Matts-MacBook-Pro
-    darwinConfigurations."Matts-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."Matts-MacBook-Pro" = inputs.nix-darwin.lib.darwinSystem {
       modules = [
         configuration
-        nix-homebrew.darwinModules.nix-homebrew
+        inputs.nix-homebrew.darwinModules.nix-homebrew
         {
           nix-homebrew = {
             # Install Homebrew under the default prefix
@@ -128,11 +128,11 @@
 
             # Optional: Declarative tap management
             taps = {
-              "homebrew/homebrew-core" = homebrew-core;
-              "homebrew/homebrew-cask" = homebrew-cask;
-              "homebrew/homebrew-bundle" = homebrew-bundle;
-              "homebrew/homebrew-services" = homebrew-services;
-              "dustinblackman/homebrew-tap" = homebrew-dustinblackman;
+              "homebrew/homebrew-core" = inputs.homebrew-core;
+              "homebrew/homebrew-cask" = inputs.homebrew-cask;
+              "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
+              "homebrew/homebrew-services" = inputs.homebrew-services;
+              "dustinblackman/homebrew-tap" = inputs.homebrew-dustinblackman;
             };
 
             # Optional: Enable fully-declarative tap management
