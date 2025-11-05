@@ -5,6 +5,15 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
   };
 
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+
   outputs = { nixpkgs, ... }:
   let
     # Keep Linux system pin for NixOS host build.
