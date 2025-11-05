@@ -241,6 +241,11 @@ in
     # Let Home Manager install and manage itself.
     home-manager.enable = true;
 
+    intelli-shell = {
+      enable = true;
+      enableZshIntegration = true;
+    };
+
     kitty = {
       enable = true;
       shellIntegration = {
