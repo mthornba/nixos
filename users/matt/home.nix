@@ -219,7 +219,7 @@ in
 
     git = {
       enable = true;
-      extraConfig = {
+      settings = {
         credential.helper = "${
             pkgs.git.override { withLibsecret = true; }
           }/bin/git-credential-libsecret";
@@ -227,13 +227,15 @@ in
           templateDir = "~/.git-template";
           defaultBranch = "main";
         };
+        user = {
+          name  = "Matt Thornback";
+          email = "matt.thornback@palitronica.com";
+        };
       };
       ignores = [
         "*.DS_Store"
         "*.swp"
       ];
-      userName  = "Matt Thornback";
-      userEmail = "matt.thornback@palitronica.com";
     };
 
     # Let Home Manager install and manage itself.
