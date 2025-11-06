@@ -262,6 +262,7 @@ in
         "ctrl+alt+z" = "toggle_layout stack";
       };
       settings = {
+        allow_remote_control = "yes";
         url_style = "dashed";
         copy_on_select = "a1";
         mouse_map = "right press ungrabbed paste_from_buffer a1";
