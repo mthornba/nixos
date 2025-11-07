@@ -196,6 +196,28 @@ in
       };
     };
 
+    clock-rs = {
+      enable = true;
+      settings = {
+        general = {
+          color = "yellow";
+          interval = 250;
+          blink = true;
+          bold = true;
+        };
+        position = {
+          horizontal = "start";
+          vertical = "end";
+        };
+        date = {
+          fmt = "%A, %B %d, %Y";
+          use_12h = true;
+          utc = false;
+          hide_seconds = true;
+        };
+      };
+    };
+
     dircolors.enable = true;
 
     direnv = {
