@@ -455,6 +455,8 @@ in
 
       sessionVariables = {
         HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND = "bg=green,fg=black,bold";
+        INTELLI_SKIP_ESC_BIND = "1";
+        INTELLI_FIX_HOTKEY = "\\C-x\\C-f";
         MANPAGER = "bat --plain --language man";
       };
 
