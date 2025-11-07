@@ -145,12 +145,13 @@
 
       require('nvim-treesitter.configs').setup({ highlight = { enable = true } })
 
-      require('lspconfig').terraformls.setup({
+      vim.lsp.config('terraformls', {
         on_attach = function(client, bufnr)
           -- keymaps or additional setup
         end,
         filetypes = { "terraform", "hcl" },
       })
+      vim.lsp.enable('terraformls')
       
       require('cmp').setup({
         sources = {
@@ -354,4 +355,3 @@
     vimAlias = true;
   };
 }
-
