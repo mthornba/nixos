@@ -37,6 +37,7 @@
     tflint
     tfsec
     tshark
+    vagrant
     vault
     vault-medusa
   ];
