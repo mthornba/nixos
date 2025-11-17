@@ -1,0 +1,9 @@
+os_window_title Dashboard
+
+layout splits
+enabled_layouts splits,stack
+cd /Users/matt
+
+launch 'kitty-unserialize-data={"id": 2, "cmd_at_shell_startup": "zellij a Dashboard"}'
+focus
+

@@ -149,6 +149,7 @@ in
     # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # symlink to the Nix store copy.
+    ".config/kitty/sessions".source = dotfiles/kitty/sessions;
     ".config/newsboat/bookmark.sh".source = scripts/newsboat/bookmark.sh;
     ".config/wtf/config.yml".source = dotfiles/wtf/config.yml;
     ".config/zellij/config.kdl".source = dotfiles/zellij/config.kdl;
@@ -206,8 +207,8 @@ in
           bold = true;
         };
         position = {
-          horizontal = "start";
-          vertical = "end";
+          horizontal = "center";
+          vertical = "center";
         };
         date = {
           fmt = "%A, %B %d, %Y";
@@ -274,28 +275,80 @@ in
         enableZshIntegration = true;
         enableBashIntegration = true;
       };
+      extraConfig = ''
+        # Create a new "manage windows" mode (mw)
+        map --new-mode mw ctrl+a>m
+        
+        # Switch focus to the neighboring window in the indicated direction using arrow keys
+        map --mode mw h neighboring_window left
+        map --mode mw l neighboring_window right
+        map --mode mw k neighboring_window up
+        map --mode mw j neighboring_window down
+        
+        # Move the active window in the indicated direction
+        map --mode mw shift+k move_window up
+        map --mode mw shift+h move_window left
+        map --mode mw shift+l move_window right
+        map --mode mw shift+j move_window down
+        
+        # Resize the active window
+        map --mode mw n resize_window narrower
+        map --mode mw w resize_window wider
+        map --mode mw t resize_window taller
+        map --mode mw s resize_window shorter
+        
+        # Exit the manage window mode
+        map --mode mw esc pop_keyboard_mode
+      '';
       font = {
         name = "Hack Nerd Font Mono";
         size = 11;
       };
       keybindings = {
         "shift+cmd+v" = "paste_from_buffer a1";
-        "ctrl+alt+enter" = "launch --cwd=current";
+        "ctrl+a>%" = "new_window_with_cwd";
+        "ctrl+a>q" = "close_session";
+        "ctrl+a>c" = "new_tab_with_cwd";
         "ctrl+alt+z" = "toggle_layout stack";
+        "ctrl+alt+h" = "resize_window narrower";
+        "ctrl+alt+j" = "resize_window shorter";
+        "ctrl+alt+k" = "resize_window taller";
+        "ctrl+alt+l" = "resize_window wider";
+        "ctrl+a>h" = "neighboring_window left";
+        "ctrl+a>j" = "neighboring_window down";
+        "ctrl+a>k" = "neighboring_window up";
+        "ctrl+a>l" = "neighboring_window right";
+        "ctrl+a>shift+h" = "move_window left";
+        "ctrl+a>shift+j" = "move_window down";
+        "ctrl+a>shift+k" = "move_window up";
+        "ctrl+a>shift+l" = "move_window right";
+        "ctrl+a>f5" = "save_as_session --use-foreground-process --match=session:. .";
+
+        # Sessions
+        "cmd+alt+1" = "goto_session ${config.xdg.configHome}/kitty/sessions/dashboard.kitty-session";
+        "cmd+alt+2" = "goto_session ${config.xdg.configHome}/kitty/sessions/code.kitty-session";
+        "cmd+alt+3" = "goto_session ${config.xdg.configHome}/kitty/sessions/kubernetes.kitty-session";
+
+        # quick picker of all known goto_session entries
+        "cmd+alt+p" = "goto_session --sort-by=alphabetical";
+
       };
       settings = {
         allow_remote_control = "yes";
-        url_style = "dashed";
         copy_on_select = "a1";
         mouse_map = "right press ungrabbed paste_from_buffer a1";
+        mouse_hide_wait	= "-3.0";
+
         enable_audio_bell = "no";
         visual_bell_duration = "0.1";
         bell_on_tab = "\"🔔 \"";
-        tab_bar_style = "fade";
+        tab_bar_style = "powerline";
         hide_window_decorations = "no";
         selection_foreground = "none";
         selection_background = "none";
+        url_style = "dashed";
         macos_option_as_alt = "left";
+
         include = "~/.config/kitty/current-theme.conf";
       };
       # themeFile = "Solarized8_Dark";
