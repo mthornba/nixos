@@ -336,6 +336,8 @@ in
       settings = {
         allow_remote_control = "yes";
         copy_on_select = "a1";
+        cursor_trail = "3";
+        cursor_trail_decay = "0.1 0.4";
         mouse_map = "right press ungrabbed paste_from_buffer a1";
         mouse_hide_wait	= "-3.0";
 
