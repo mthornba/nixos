@@ -26,6 +26,7 @@
     powershell
     pre-commit
     restic
+    skopeo
     sops
     sshs
     sslscan
