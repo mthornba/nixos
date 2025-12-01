@@ -197,6 +197,16 @@ in
       };
     };
 
+    chawan = {
+      enable = true;
+      settings = {
+        buffer = {
+          images = true;
+          autofocus = true;
+        };
+      };
+    };
+
     clock-rs = {
       enable = true;
       settings = {
