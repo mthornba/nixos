@@ -536,6 +536,18 @@ in
         highlight = "fg=#52676f,bg=dim";
       };
 
+      completionInit = ''
+        autoload -Uz compinit
+
+        # Rebuild compinit cache only if the dump is older than a day
+        if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+          compinit -C
+        else
+          compinit
+        fi
+      '';
+
+
       defaultKeymap = "viins";
 
       enableCompletion = true;
@@ -577,7 +589,11 @@ in
       };
 
       initContent = let
-        zshConfigEarlyInit = lib.mkOrder 500 "# Early";
+        zshConfigEarlyInit = lib.mkOrder 500 ''
+          # Early
+          # uncomment to enable profiling
+          #zmodload zsh/zprof
+        '';
         zshConfigBeforeCompInit = lib.mkOrder 550 "# BeforeCompInit";
         zshConfig = lib.mkOrder 1000 ''
           # Completion styling
@@ -597,6 +613,9 @@ in
           autoload -Uz edit-command-line
           zle -N edit-command-line
           bindkey '^X^E' edit-command-line
+
+          # uncomment to enable profiling
+          #zprof
         '';
       in
         lib.mkMerge [ zshConfigEarlyInit zshConfigBeforeCompInit zshConfig zshConfigLate ];
