@@ -315,6 +315,7 @@ in
         size = 11;
       };
       keybindings = {
+        "kitty_mod+enter" = "new_window_with_cwd";
         "shift+cmd+v" = "paste_from_buffer a1";
         "ctrl+a>%" = "new_window_with_cwd";
         "ctrl+a>q" = "close_session";
