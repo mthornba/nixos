@@ -721,6 +721,10 @@ in
         ];
       };
 
+      initExtra = ''
+        bindkey -M viins ' ' magic-space
+      '';
+
       initContent = let
         zshConfigEarlyInit = lib.mkOrder 500 ''
           # Early
