@@ -513,6 +513,7 @@ in
 
     newsboat = {
       autoReload = true;
+      browser = "cha";
       enable = true;
       extraConfig = ''
         bookmark-cmd "~/.config/newsboat/bookmark.sh"
