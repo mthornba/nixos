@@ -296,8 +296,6 @@ in
           alt-shift-z = "move-node-to-workspace Z";
           alt-tab = "workspace-back-and-forth";
           alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
-          alt-up = "macos-native-fullscreen";
-          alt-down = "macos-native-minimize";
           # Disable "hide application" & "hide others"
           cmd-h = [];
           cmd-alt-h = [];
