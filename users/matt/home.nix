@@ -301,8 +301,8 @@ in
           # Disable "hide application" & "hide others"
           cmd-h = [];
           cmd-alt-h = [];
-          alt-right = "workspace --wrap-around next";
-          alt-left = "workspace --wrap-around prev";
+          cmd-alt-right = "workspace --wrap-around next";
+          cmd-alt-left = "workspace --wrap-around prev";
           alt-shift-semicolon = "mode service";
         };
         mode.service.binding = {
