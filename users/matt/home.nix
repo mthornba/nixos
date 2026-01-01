@@ -635,11 +635,34 @@ in
 
     tmux = {
       enable = true;
+      focusEvents = true;
       keyMode = "vi";
       reverseSplit = true;
       terminal = "xterm-256color";
+      extraConfig = ''
+        # Navigate windows with Option+Left/Right
+        bind -n M-Left previous-window
+        bind -n M-Right next-window
+      '';
       plugins = with pkgs; [
-        tmuxPlugins.tilish
+        tmuxPlugins.tmux-powerline
+        tmuxPlugins.sensible
+        tmuxPlugins.vim-tmux-navigator
+        tmuxPlugins.tmux-colors-solarized
+        {
+          plugin = tmuxPlugins.resurrect;
+          extraConfig = ''
+            set -g @resurrect-strategy-nvim 'session'
+            set -g @resurrect-processes 'nvim ~/Users/matt/.nix-profile/bin/nvim->nvim ~/nix/store/.*/bin/nvim->nvim vim k9s wtfutil aerc newsboat'
+          '';
+        }
+        {
+          plugin = tmuxPlugins.continuum;
+          extraConfig = ''
+            set -g @continuum-restore 'on'
+            set -g @continuum-save-interval '5' # minutes
+          '';
+        }
       ];
     };
 
