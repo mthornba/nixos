@@ -336,6 +336,15 @@ in
           images = true;
           autofocus = true;
         };
+        external = {
+          copy-cmd = "pbcopy";
+          download-dir = "~/Downloads";
+        };
+        page = {
+          f = "cmd.pager.toggleLinkHints";
+          M-o = "pager.cursorNextLink()";
+          M-i = "pager.cursorPrevLink()";
+        };
       };
     };
 
