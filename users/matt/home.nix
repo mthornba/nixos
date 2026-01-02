@@ -154,6 +154,8 @@ in
     ".config/newsboat/bookmark.sh".source = scripts/newsboat/bookmark.sh;
     ".config/wtf/config.yml".source = dotfiles/wtf/config.yml;
     ".config/zellij/config.kdl".source = dotfiles/zellij/config.kdl;
+    ".config/tmux-powerline/config.sh".source = dotfiles/tmux-powerline/config.sh;
+    ".config/tmux-powerline/themes/nixos-minimal.sh".source = dotfiles/tmux-powerline/themes/nixos-minimal.sh;
     ".tmuxp/code.yml".source = dotfiles/tmuxp/code.yml;
     ".tmuxp/dashboard.yml".source = dotfiles/tmuxp/dashboard.yml;
     ".tmuxp/kubernetes.yml".source = dotfiles/tmuxp/kubernetes.yml;
