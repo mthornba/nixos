@@ -107,6 +107,7 @@ in
     sshs
     termscp
     tldr
+    tmuxp
     unrar
     unzip
     viddy
@@ -153,6 +154,9 @@ in
     ".config/newsboat/bookmark.sh".source = scripts/newsboat/bookmark.sh;
     ".config/wtf/config.yml".source = dotfiles/wtf/config.yml;
     ".config/zellij/config.kdl".source = dotfiles/zellij/config.kdl;
+    ".tmuxp/code.yml".source = dotfiles/tmuxp/code.yml;
+    ".tmuxp/dashboard.yml".source = dotfiles/tmuxp/dashboard.yml;
+    ".tmuxp/kubernetes.yml".source = dotfiles/tmuxp/kubernetes.yml;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

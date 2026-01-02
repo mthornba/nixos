@@ -1,0 +1,37 @@
+session_name: Code
+windows:
+- layout: d28f,205x67,0,0{102x67,0,0,0,102x67,103,0,1}
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: nvim
+  - pane
+  start_directory: /Users/matt/Code/pve-iac-terragrunt
+  window_name: Terragrunt
+- layout: 5294,205x67,0,0{102x67,0,0,3,102x67,103,0,4}
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: nvim
+  - pane
+  start_directory: /Users/matt/Code
+  window_name: Misc 1
+- layout: 5297,205x67,0,0{102x67,0,0,5,102x67,103,0,6}
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: nvim
+  - pane
+  start_directory: /Users/matt/Code
+  window_name: Misc 2
+- focus: 'true'
+  layout: 49a4,205x67,0,0{102x67,0,0,7,102x67,103,0[102x33,103,0,8,102x33,103,34,9]}
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command:
+    - cd /Users/matt/Code/nixos
+    - nvim
+  - start_directory: /Users/matt/Code/nixos
+  - start_directory: /Users/matt/Code/nixos
+  window_name: Nix

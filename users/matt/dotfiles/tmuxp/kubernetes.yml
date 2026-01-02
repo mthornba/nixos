@@ -1,0 +1,19 @@
+session_name: Kubernetes
+windows:
+- focus: 'true'
+  layout: bbd7,205x67,0,0[205x33,0,0,14,205x33,0,34,15]
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: k9s
+  - pane
+  start_directory: /Users/matt
+  window_name: Test
+- layout: bbda,205x67,0,0[205x33,0,0,16,205x33,0,34,17]
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: k9s
+  - pane
+  start_directory: /Users/matt
+  window_name: Prod

@@ -1,0 +1,13 @@
+session_name: Dashboard
+windows:
+- focus: 'true'
+  layout: 75a1,167x68,0,0{29x68,0,0,39,137x68,30,0[137x34,30,0,40,137x33,30,35{57x33,30,35,41,79x33,88,35,42}]}
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: .wtfutil-wrapped
+  - .aerc-wrapped
+  - newsboat
+  - gurk
+  start_directory: /Users/matt
+  window_name: Dashboard
