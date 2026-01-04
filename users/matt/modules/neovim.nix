@@ -349,6 +349,7 @@
         '';
       }
       vim-terraform-completion
+      vim-tmux-navigator
       xterm-color-table-vim
       zoomwintab-vim
     ];
