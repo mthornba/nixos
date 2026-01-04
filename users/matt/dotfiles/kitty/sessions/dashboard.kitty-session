@@ -1,9 +1,20 @@
+new_os_window
 os_window_title Dashboard
 
-layout splits
-enabled_layouts splits,stack
-cd /Users/matt
+new_tab
+enabled_layouts splits,stack,tall,fat,grid,horizontal,vertical
+layout tall
+cd ~
 
-launch 'kitty-unserialize-data={"id": 2, "cmd_at_shell_startup": "zellij a Dashboard"}'
-focus
+# 1) Top full-width: wtfutil
+launch --title "wtfutil" zsh -cl wtfutil
+
+# 2) Bottom full-width: aerc (hsplit below wtfutil)
+launch --location=split --bias=60 --title "aerc" zsh -cl aerc
+
+# 3) Bottom-right: gurk (vsplit right of aerc)
+launch --location=split --title "gurk" zsh -cl gurk
+
+# 4) Bottom-right bottom: newsboat (hsplit below gurk)
+launch --location=split --title "newsboat" zsh -cl newsboat
 
