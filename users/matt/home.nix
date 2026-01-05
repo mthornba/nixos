@@ -641,6 +641,7 @@ in
       enable = true;
       focusEvents = true;
       keyMode = "vi";
+      mouse = true;
       reverseSplit = true;
       terminal = "xterm-256color";
       extraConfig = ''
