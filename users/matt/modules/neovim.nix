@@ -165,6 +165,28 @@
         }),
       })
 
+      local cwd = vim.fn.fnamemodify(vim.fn.getcwd(), ":p")
+      local code_root = vim.fn.expand("~/Code") .. "/"
+      local manage_session = cwd:sub(1, #code_root) == code_root
+
+      require("auto-session").setup({
+        auto_session_enabled = manage_session,
+        auto_save_enabled = manage_session,
+        auto_restore_enabled = manage_session,
+        session_lens = {
+          load_on_setup = true,
+        },
+      })
+
+      local telescope = require("telescope")
+      telescope.load_extension("session-lens")
+      vim.keymap.set(
+        "n",
+        "<leader>fs",
+        telescope.extensions["session-lens"].search_session,
+        { desc = "Find sessions" }
+      )
+
       require('render-markdown').setup({
         html = {
           -- Turn on / off all HTML rendering.
@@ -258,6 +280,8 @@
       cmp_luasnip
 
       nvim-window-picker
+
+      auto-session
 
       telescope-fzf-native-nvim
       { plugin = telescope-nvim;
