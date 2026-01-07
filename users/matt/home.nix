@@ -645,6 +645,12 @@ in
       reverseSplit = true;
       terminal = "xterm-256color";
       extraConfig = ''
+
+        # Ensure new splits start in the active pane's directory
+        unbind %
+        bind % split-window -h -c "#{pane_current_path}"
+        unbind '"'
+        bind '"' split-window -c "#{pane_current_path}"
         # Navigate windows with Option+Left/Right
         bind -n M-Left previous-window
         bind -n M-Right next-window
