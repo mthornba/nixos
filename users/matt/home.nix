@@ -470,6 +470,9 @@ in
         "ctrl+alt+j" = "resize_window shorter";
         "ctrl+alt+k" = "resize_window taller";
         "ctrl+alt+l" = "resize_window wider";
+        # Pass Ctrl+Tab / Ctrl+Shift+Tab through to tmux
+        "ctrl+tab" = "send_text all \\u001b[1;5I";
+        "ctrl+shift+tab" = "send_text all \\u001b[1;6I";
         "ctrl+a>h" = "neighboring_window left";
         "ctrl+a>j" = "neighboring_window down";
         "ctrl+a>k" = "neighboring_window up";
@@ -645,15 +648,20 @@ in
       reverseSplit = true;
       terminal = "xterm-256color";
       extraConfig = ''
+        # Enable richer key reports (needed for Ctrl+Tab passthrough from kitty)
+        set -g xterm-keys on
+        set -s user-keys[0] "\e[1;5I"  # Ctrl+Tab
+        set -s user-keys[1] "\e[1;6I"  # Ctrl+Shift+Tab
 
         # Ensure new splits start in the active pane's directory
         unbind %
         bind % split-window -h -c "#{pane_current_path}"
         unbind '"'
         bind '"' split-window -c "#{pane_current_path}"
-        # Navigate windows with Option+Left/Right
-        bind -n M-Left previous-window
-        bind -n M-Right next-window
+
+        # Navigate windows with Ctrl+Tab / Ctrl+Shift+Tab (via user-keys)
+        bind -n User0 next-window
+        bind -n User1 previous-window
       '';
       plugins = with pkgs; [
         tmuxPlugins.tmux-powerline
