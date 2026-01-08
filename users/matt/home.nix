@@ -593,13 +593,6 @@ in
       ];
     };
 
-    ranger = {
-      enable = true;
-      settings = {
-        preview_images_method = "kitty";
-      };
-    };
-
     starship = {
       enable = true;
       # custom settings
@@ -710,6 +703,10 @@ in
         modeline = true;
         number = true;
       };
+    };
+
+    yazi = {
+      enable = true;
     };
 
     zellij = {
