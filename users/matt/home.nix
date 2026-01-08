@@ -643,6 +643,8 @@ in
       extraConfig = ''
         # Enable richer key reports (needed for Ctrl+Tab passthrough from kitty)
         set -g xterm-keys on
+        set -g base-index 1
+        set -g renumber-windows on
         set -s user-keys[0] "\e[1;5I"  # Ctrl+Tab
         set -s user-keys[1] "\e[1;6I"  # Ctrl+Shift+Tab
 
