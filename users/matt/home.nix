@@ -665,6 +665,7 @@ in
       '';
       plugins = with pkgs; [
         tmuxPlugins.tmux-powerline
+        tmuxPlugins.tmux-floax
         tmuxPlugins.sensible
         tmuxPlugins.vim-tmux-navigator
         tmuxPlugins.tmux-colors-solarized
