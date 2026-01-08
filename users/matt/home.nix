@@ -664,8 +664,10 @@ in
         bind -n User1 previous-window
       '';
       plugins = with pkgs; [
+        tmuxPlugins.tmux-fzf
         tmuxPlugins.tmux-powerline
         tmuxPlugins.tmux-floax
+        tmuxPlugins.tmux-sessionx
         tmuxPlugins.sensible
         tmuxPlugins.vim-tmux-navigator
         tmuxPlugins.tmux-colors-solarized
