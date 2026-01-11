@@ -8,14 +8,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ekphos.url = "github:hanebox/ekphos";
+    ekphos.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = { nixpkgs, home-manager, ekphos, ... }:
     let
       mkHome = system:
         let pkgs = nixpkgs.legacyPackages.${system}; in
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
+          extraSpecialArgs = { inherit ekphos; };
           modules = [ ./home.nix ];
         };
     in {

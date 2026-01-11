@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, ekphos, ... }:
 
 let
   defaultImports = [
@@ -37,7 +37,42 @@ in
           }
         else {}
       )
+
+      # Build ekphos from the upstream flake source, avoiding the removed
+      # darwin.apple_sdk_11_0 stub by using current SDK frameworks.
+      (final: prev:
+        let
+          src = ekphos;
+        in {
+          ekphos = final.rustPlatform.buildRustPackage {
+            pname = "ekphos";
+            version = "0.15.0";
+            src = src;
+            cargoLock.lockFile = "${src}/Cargo.lock";
+            nativeBuildInputs = with final; [ pkg-config ];
+            buildInputs =
+              with final;
+              lib.optionals stdenv.isDarwin [
+                darwin.apple_sdk.frameworks.AppKit
+              ]
+              ++ lib.optionals stdenv.isLinux [
+                xorg.libxcb
+                xorg.libX11
+                xorg.libXcursor
+                xorg.libXrandr
+                xorg.libXi
+              ];
+            meta = with final.lib; {
+              description = "A lightweight, fast, terminal-based markdown research tool";
+              homepage = "https://github.com/hanebox/ekphos";
+              license = licenses.mit;
+              mainProgram = "ekphos";
+              platforms = platforms.linux ++ platforms.darwin;
+            };
+          };
+        })
     ];
+
     # Configure your nixpkgs instance
     config = {
       # Disable if you don't want unfree packages
@@ -80,6 +115,7 @@ in
     delta
     doggo
     dos2unix
+    ekphos
     fd
     file
     gfold
