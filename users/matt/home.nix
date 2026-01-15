@@ -110,6 +110,7 @@ in
     browsh
     buku
     carl
+    copilot-language-server
     curlie
     ddgr
     delta
@@ -121,6 +122,7 @@ in
     gfold
     gita
     frogmouth
+    github-copilot-cli
     gitnr
     glow
     gurk-rs

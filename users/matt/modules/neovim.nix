@@ -180,11 +180,18 @@
 
       local telescope = require("telescope")
       telescope.load_extension("session-lens")
+      telescope.load_extension("gh")
       vim.keymap.set(
         "n",
         "<leader>fs",
         telescope.extensions["session-lens"].search_session,
         { desc = "Find sessions" }
+      )
+      vim.keymap.set(
+        "n",
+        "<leader>pr",
+        telescope.extensions.gh.pull_request,
+        { desc = "GitHub Pull Requests" }
       )
 
       require('render-markdown').setup({
@@ -253,6 +260,15 @@
       }
       ale
       git-blame-nvim
+
+      ## GitHub
+      telescope-github-nvim
+      open-browser-vim
+      open-browser-github-vim
+      copilot-vim
+      copilot-lsp
+      CopilotChat-nvim
+
       { plugin = neo-tree-nvim;
         config = /* vim */ ''
           nnoremap <leader>nt <cmd>Neotree source=filesystem position=left reveal=true toggle<cr>
@@ -278,12 +294,18 @@
       lspkind-nvim
       luasnip
       cmp_luasnip
+      { plugin = copilot-vim;
+        config = /* vim */ ''
+          let g:copilot_filetypes = { '*': v:true }
+        '';
+      }
 
       nvim-window-picker
 
       auto-session
 
       telescope-fzf-native-nvim
+
       { plugin = telescope-nvim;
         config = /* vim */ ''
           " Find files using Telescope command-line sugar.
