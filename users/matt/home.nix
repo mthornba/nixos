@@ -122,6 +122,7 @@ in
     gfold
     gita
     frogmouth
+    ghq
     github-copilot-cli
     gitnr
     glow
