@@ -684,6 +684,11 @@ in
         set -g xterm-keys on
         set -g base-index 1
         set -g renumber-windows on
+        # Set terminal/OS window title to the tmux session name
+        set -g set-titles on
+        set -g set-titles-string '#S'
+        set -g automatic-rename on
+        set -g automatic-rename-format '#{?#{==:#{pane_current_command},ssh},#{pane_title},#{b:pane_current_path}}'
         set -s user-keys[0] "\e[1;5I"  # Ctrl+Tab
         set -s user-keys[1] "\e[1;6I"  # Ctrl+Shift+Tab
 
