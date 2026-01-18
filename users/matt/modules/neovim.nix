@@ -194,6 +194,27 @@
         { desc = "GitHub Pull Requests" }
       )
 
+      require("CopilotChat").setup({
+        model = 'gpt-4',
+        temperature = 0.1,
+        window = {
+          layout = 'float',
+          width = 80,
+          height = 20,
+          border = 'rounded',
+          title = '\u{ec1e} AI Assistant',
+          zindex = 100,
+        },
+        headers = {
+          user = '\u{f007} You',
+          assistant = '\u{ec1e} Copilot',
+          tool = '\u{f0ad} Tool',
+        },
+        separator = '━━',
+        auto_fold = true,
+        auto_insert_mode = true,
+      })
+
       require('render-markdown').setup({
         html = {
           -- Turn on / off all HTML rendering.
@@ -267,7 +288,11 @@
       open-browser-github-vim
       copilot-vim
       copilot-lsp
-      CopilotChat-nvim
+      { plugin = CopilotChat-nvim;
+        config = /* vim */ ''
+          nnoremap <leader>cc <cmd>CopilotChatToggle<cr>
+        '';
+      }
 
       { plugin = neo-tree-nvim;
         config = /* vim */ ''
