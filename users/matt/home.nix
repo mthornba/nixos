@@ -136,7 +136,7 @@ in
     keychain
     lsd
     ncdu
-    nerd-fonts.hack
+    nerd-fonts.fira-code
     nmap
     pv
     ripgrep
@@ -495,7 +495,7 @@ in
         map --mode mw esc pop_keyboard_mode
       '';
       font = {
-        name = "Hack Nerd Font Mono";
+        name = "FiraCode Nerd Font";
         size = 11;
       };
       keybindings = {
