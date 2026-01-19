@@ -4,6 +4,9 @@
   programs.neovim = {
     defaultEditor = true;
     enable = true;
+    extraPackages = with pkgs; [
+      glow
+    ];
     extraConfig = /* vim */''
       " Styled and colored underline support
       let &t_AU = "\e[58:5:%dm"
@@ -228,55 +231,6 @@
         auto_fold = true,
         auto_insert_mode = true,
       })
-
-      require('render-markdown').setup({
-        html = {
-          -- Turn on / off all HTML rendering.
-          enabled = true,
-          -- Additional modes to render HTML.
-          render_modes = false,
-          comment = {
-              -- Turn on / off HTML comment concealing.
-              conceal = true,
-              -- Optional text to inline before the concealed comment.
-              text = nil,
-              -- Highlight for the inlined text.
-              highlight = 'RenderMarkdownHtmlComment',
-          },
-          -- HTML tags whose start and end will be hidden and icon shown.
-          -- The key is matched against the tag name, value type below.
-          -- | icon      | gets inlined at the start |
-          -- | highlight | highlight for the icon    |
-          tag = {},
-        },
-        pipe_table = {
-            -- Turn on / off pipe table rendering.
-            enabled = true,
-            -- Additional modes to render pipe tables.
-            render_modes = false,
-            -- Pre configured settings largely for setting table border easier.
-            -- | heavy  | use thicker border characters     |
-            -- | double | use double line border characters |
-            -- | round  | use round border corners          |
-            -- | none   | does nothing                      |
-            preset = 'none',
-            -- Determines how the table as a whole is rendered.
-            -- | none   | disables all rendering                                                  |
-            -- | normal | applies the 'cell' style rendering to each row of the table             |
-            -- | full   | normal + a top & bottom line that fill out the table when lengths match |
-            style = 'full',
-            -- Determines how individual cells of a table are rendered.
-            -- | overlay | writes completely over the table, removing conceal behavior and highlights |
-            -- | raw     | replaces only the '|' characters in each row, leaving the cells unmodified |
-            -- | padded  | raw + cells are padded to maximum visual width for each column             |
-            -- | trimmed | padded except empty space is subtracted from visual width calculation      |
-            cell = 'trimmed',
-            -- Amount of space to put between cell contents and border.
-            padding = 1,
-            -- Minimum column width to use for padded or trimmed cell.
-            min_width = 0,
-        }
-      })
     '';
 
     plugins = let
@@ -316,7 +270,41 @@
       { plugin = lazy-nvim;
       }
 
-      render-markdown-nvim
+      { plugin = markdown-preview-nvim;
+        config = /* vim */ ''
+          " Markdown preview in browser
+          nmap <leader>mpb <Plug>MarkdownPreviewToggle
+        '';
+      }
+      { plugin = pkgs.vimUtils.buildVimPlugin {
+          pname = "glowing-vim-markdown-preview";
+          version = "1.0.0";
+          src = pkgs.fetchFromGitHub {
+            owner = "drewipson";
+            repo = "glowing-vim-markdown-preview";
+            rev = "main";
+            sha256 = "sha256-UL904u1JwoadlZ1UOHpbxsDokCorrAXL/PRYANg8/LM=";
+          };
+          # The plugin has markdown-preview.vim at root, need to put it in plugin/
+          postInstall = ''
+            mkdir -p $out/plugin
+            cp $out/markdown-preview.vim $out/plugin/
+          '';
+        };
+        config = /* vim */ ''
+          " Markdown preview in vim pane using glow
+          " Create a simpler command that definitely uses glow
+          function! GlowPreview()
+            let l:temp_file = tempname() . '.md'
+            call writefile(getline(1, '$'), l:temp_file)
+            execute 'rightbelow vsplit | terminal glow -s dark ' . l:temp_file
+            " Clean up temp file when buffer is deleted
+            execute 'autocmd BufDelete <buffer> call delete("' . l:temp_file . '")'
+          endfunction
+          
+          nnoremap <leader>mpg :call GlowPreview()<CR>
+        '';
+      }
       nvim-web-devicons
       nvim-treesitter
       nvim-treesitter-parsers.html
