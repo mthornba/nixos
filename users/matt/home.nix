@@ -440,6 +440,10 @@ in
         credential.helper = "${
             pkgs.git.override { withLibsecret = true; }
           }/bin/git-credential-libsecret";
+        ghq = {
+          root = "~/Code";
+          user = "palitronica";
+        };
         init = {
           templateDir = "~/.git-template";
           defaultBranch = "main";
