@@ -114,6 +114,7 @@ in
     curlie
     ddgr
     delta
+    docker-client  # Docker CLI for use with OrbStack
     doggo
     dos2unix
     ekphos
@@ -862,7 +863,6 @@ in
       shellAliases = {
         # buku
         b = "buku --np";
-        docker = "podman";
         # k8s
         k = "kubecolor";
         kdr = "kubectl --dry-run=client -o yaml";
