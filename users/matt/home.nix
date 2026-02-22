@@ -759,6 +759,24 @@ in
 
     yazi = {
       enable = true;
+      extraPackages = with pkgs; [
+        glow
+      ];
+      plugins = {
+        # Use custom glow plugin with fixed deprecation warning
+        glow = ./dotfiles/yazi/plugins/glow.yazi;
+      };
+      settings = {
+        plugin = {
+          prepend_previewers = [
+            { name = "*.md"; run = "glow"; }
+            { name = "*.markdown"; run = "glow"; }
+          ];
+        };
+      };
+      initLua = ''
+        require("git"):setup()
+      '';
     };
 
     zellij = {
