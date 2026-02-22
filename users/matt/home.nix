@@ -825,15 +825,14 @@ in
         ];
       };
 
-      initExtra = ''
-        bindkey -M viins ' ' magic-space
-      '';
-
       initContent = let
         zshConfigEarlyInit = lib.mkOrder 500 ''
           # Early
           # uncomment to enable profiling
           #zmodload zsh/zprof
+          
+          # Magic space for history expansion
+          bindkey -M viins ' ' magic-space
         '';
         zshConfigBeforeCompInit = lib.mkOrder 550 "# BeforeCompInit";
         zshConfig = lib.mkOrder 1000 ''
