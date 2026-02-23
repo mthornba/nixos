@@ -414,7 +414,11 @@
       #vim-colorschemes
       NeoSolarized
       vim-fugitive
-      vim-gitgutter
+      { plugin = vim-gitgutter;
+        config = /* vim */ ''
+          nmap <leader>hs <Plug>(GitGutterStageHunk)
+        '';
+      }
       { plugin = vim-terraform;
         config = /* vim */ ''
           let g:terraform_fmt_on_save=1
