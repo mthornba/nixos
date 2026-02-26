@@ -273,6 +273,7 @@
       { plugin = markdown-preview-nvim;
         config = /* vim */ ''
           " Markdown preview in browser
+          let g:mkdp_browser = 'qutebrowser'
           nmap <leader>mpb <Plug>MarkdownPreviewToggle
         '';
       }
