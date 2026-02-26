@@ -219,7 +219,6 @@ in
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     BUKU_COLORS = "FCexd";
-    GHQ_ROOT = "~/Code";
   };
 
   # Programs
@@ -425,7 +424,7 @@ in
             pkgs.git.override { withLibsecret = true; }
           }/bin/git-credential-libsecret";
         ghq = {
-          root = "~/Code";
+          root = "${config.home.homeDirectory}/Code";
           user = "palitronica";
         };
         init = {
