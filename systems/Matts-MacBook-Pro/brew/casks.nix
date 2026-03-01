@@ -5,6 +5,7 @@ _:
   "orbstack"
   "plexamp"
   "unnaturalscrollwheels"
+  "utm"
   "virtualbox"
   "vivaldi"
 ]
