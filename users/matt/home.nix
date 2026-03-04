@@ -555,7 +555,7 @@ in
 
     newsboat = {
       autoReload = true;
-      browser = "cha";
+      browser = "qutebrowser";
       enable = true;
       extraConfig = ''
         bookmark-cmd "~/.config/newsboat/bookmark.sh"
