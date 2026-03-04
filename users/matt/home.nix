@@ -619,6 +619,10 @@ in
       ];
     };
 
+    qutebrowser = {
+      enable = true;
+    };
+
     starship = {
       enable = true;
       # custom settings
