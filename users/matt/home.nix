@@ -245,6 +245,25 @@ in
         default-root-container-orientation = "auto";
         on-focused-monitor-changed = [ "move-mouse monitor-lazy-center" ];
         automatically-unhide-macos-hidden-apps = false;
+        
+        # Windows that should always float
+        on-window-detected = [
+          # System Preferences/Settings
+          { "if" = { app-id = "com.apple.systempreferences"; }; run = "layout floating"; }
+          # Calculator
+          { "if" = { app-id = "com.apple.calculator"; }; run = "layout floating"; }
+          # Activity Monitor
+          { "if" = { app-id = "com.apple.ActivityMonitor"; }; run = "layout floating"; }
+          # Archive Utility
+          { "if" = { app-id = "com.apple.archiveutility"; }; run = "layout floating"; }
+          # Software Update
+          { "if" = { app-id = "com.apple.SoftwareUpdate"; }; run = "layout floating"; }
+          # Finder preferences, info windows
+          { "if" = { app-id = "com.apple.finder"; }; run = "layout floating"; }
+          # UTM
+          { "if" = { app-id = "com.utmapp.UTM"; }; run = "layout floating"; }
+        ];
+        
         persistent-workspaces = [
           "B"
           "C"
