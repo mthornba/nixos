@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+# Display the 16 standard terminal colors with their names and attempt to show hex codes
+
+echo "Standard 16 Terminal Colors:"
+echo ""
+
+# Array of color names
+colors=(
+  "Black"
+  "Red"
+  "Green"
+  "Yellow"
+  "Blue"
+  "Magenta"
+  "Cyan"
+  "White"
+  "Bright Black (Gray)"
+  "Bright Red"
+  "Bright Green"
+  "Bright Yellow"
+  "Bright Blue"
+  "Bright Magenta"
+  "Bright Cyan"
+  "Bright White"
+)
+
+# Print each color with a block
+for i in {0..15}; do
+  # Print color block with background color
+  printf "\e[48;5;%dm    \e[0m " "$i"
+  
+  # Print color name and number
+  printf "Color %2d: %-25s " "$i" "${colors[$i]}"
+  
+  # Print text in that color
+  printf "\e[38;5;%dm Sample Text \e[0m" "$i"
+  
+  echo ""
+done
+
+echo ""
+echo "To see the actual hex codes used by your terminal,"
+echo "check your terminal's color scheme settings."
+echo ""
+echo "For Solarized Dark, the standard mapping is:"
+echo "  0=base02   1=red      2=green    3=yellow"
+echo "  4=blue     5=magenta  6=cyan     7=base2"
+echo "  8=base03   9=orange   10=base01  11=base00"
+echo "  12=base0   13=violet  14=base1   15=base3"
+echo ""
+
+echo "Background/Foreground contrast test:"
+echo ""
+
+# Test some problematic combinations
+for bg in 0 8; do
+  for fg in {0..15}; do
+    printf "\e[48;5;%d;38;5;%dm %2d on %d \e[0m " "$bg" "$fg" "$fg" "$bg"
+  done
+  echo ""
+done
