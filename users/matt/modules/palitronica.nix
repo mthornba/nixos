@@ -42,6 +42,7 @@
     vagrant
     vault
     vault-medusa
+    zarf
   ];
 
   programs = {
