@@ -469,6 +469,56 @@ in
     intelli-shell = {
       enable = true;
       enableZshIntegration = true;
+      shellHotkeys = {
+        search_hotkey = "\\C-@";  # Ctrl+Space (ASCII NUL character)
+        bookmark_hotkey = "\\C-b"; # Ctrl+b (default)
+        variable_hotkey = "\\C-l"; # Ctrl+l (default)
+        fix_hotkey = "\\C-x";      # Ctrl+x (default)
+      };
+      settings = {
+        check_updates = true;
+        inline = true;
+        search = {
+          delay = 250;
+          mode = "auto";
+          user_only = false;
+          exec_on_alias_match = false;
+        };
+        logs = {
+          enabled = false;
+          filter = "info";
+        };
+        keybindings = {
+          quit = "esc";
+          update = ["ctrl-u" "ctrl-e" "F2"];
+          delete = "ctrl-d";
+          confirm = ["tab" "enter"];
+          execute = ["ctrl-enter" "ctrl-r"];
+          ai = ["ctrl-i" "ctrl-x"];
+          search_mode = "ctrl-s";
+          search_user_only = "ctrl-o";
+          variable_next = "ctrl-tab";
+          variable_prev = ["shift-tab" "shift-backtab"];
+        };
+        theme = {
+          # Solarized Dark theme using hex codes
+          # Base colors: base03=#002b36 base02=#073642 base01=#586e75 base00=#657b83
+          # Content: base0=#839496 base1=#93a1a1 base2=#eee8d5 base3=#fdf6e3
+          # Accent: yellow=#b58900 orange=#cb4b16 red=#dc322f magenta=#d33682
+          #         violet=#6c71c4 blue=#268bd2 cyan=#2aa198 green=#859900
+          primary = "#2aa198";           # Solarized cyan for primary text
+          secondary = "#268bd2";         # Solarized blue for secondary
+          accent = "#b58900";            # Solarized yellow for highlights
+          comment = "italic #859900";    # Solarized green for comments
+          error = "#dc322f";             # Solarized red for errors
+          highlight = "#073642";         # Solarized base02 for highlight bg
+          highlight_symbol = "» ";
+          highlight_primary = "#93a1a1";    # Solarized base1 (bright content)
+          highlight_secondary = "#2aa198";  # Solarized cyan for secondary highlight
+          highlight_accent = "#b58900";     # Solarized yellow for accent
+          highlight_comment = "italic #859900";  # Solarized green
+        };
+      };
     };
 
     kitty = {
