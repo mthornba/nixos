@@ -92,7 +92,7 @@
           persistent-others = [
             "/Users/${user}/Applications"
           ];
-          wvous-bl-corner = 11; # Launchpad
+          wvous-bl-corner = 1; # Launchpad
           wvous-br-corner = 2; # Mission Control
 
         };
@@ -106,6 +106,32 @@
           NSAutomaticCapitalizationEnabled = false;
           NSWindowShouldDragOnGesture = true; # drag windows from anywhere
         };
+
+        # Disable Ctrl+Space for input source switching
+        # This allows Ctrl+Space to be used by terminal applications like intelli-shell
+        # Symbolic hotkey 60 = "Select the previous input source"
+        # Symbolic hotkey 61 = "Select next source in Input menu"
+        CustomUserPreferences = {
+          "com.apple.symbolichotkeys" = {
+            AppleSymbolicHotKeys = {
+              "60" = {
+                enabled = false;
+                value = {
+                  parameters = [ 32 49 1048576 ];
+                  type = "standard";
+                };
+              };
+              "61" = {
+                enabled = false;
+                value = {
+                  parameters = [ 32 49 1572864 ];
+                  type = "standard";
+                };
+              };
+            };
+          };
+        };
+
         LaunchServices.LSQuarantine = false;
       };
 
