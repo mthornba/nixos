@@ -759,6 +759,10 @@ in
         bind % split-window -h -c "#{pane_current_path}"
         unbind '"'
         bind '"' split-window -c "#{pane_current_path}"
+        
+        # Ensure new windows start in home directory
+        unbind c
+        bind c new-window -c ~
 
         # Navigate windows with Ctrl+Tab / Ctrl+Shift+Tab (via user-keys)
         bind -n User0 next-window
