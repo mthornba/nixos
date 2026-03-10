@@ -937,6 +937,8 @@ in
       shellAliases = {
         # buku
         b = "buku --np";
+        # ghq
+        cdr = "cd $(ghq list -p | fzf)";
         # k8s
         k = "kubecolor";
         kdr = "kubectl --dry-run=client -o yaml";
