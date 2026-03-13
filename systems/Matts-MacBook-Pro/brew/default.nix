@@ -41,6 +41,7 @@ in
       "bitwarden" = 1352778147;
       "Microsoft Excel" = 462058435;
       "Microsoft PowerPoint" = 462062816;
+      "OneDrive" = 823766827;
       "wireguard" = 1451685025;
     };
   };
