@@ -29,13 +29,15 @@
         # NixOS
         "matt@neon" = mkHome "x86_64-linux";
         
-        # Intel MacBook Pro
+        # Intel MacBook Pro (various hostname suffixes)
         "matt@Matts-MacBook-Pro" = mkHome "x86_64-darwin";
         "matt@Matts-MacBook-Pro.local" = mkHome "x86_64-darwin";
+        "matt@Matts-MacBook-Pro.home.arpa" = mkHome "x86_64-darwin";
         
-        # M5 MacBook (Apple Silicon)
+        # M5 MacBook (Apple Silicon, various hostname suffixes)
         "matt@Matts-M5" = mkHome "aarch64-darwin";
         "matt@Matts-M5.local" = mkHome "aarch64-darwin";
+        "matt@Matts-M5.home.arpa" = mkHome "aarch64-darwin";
       };
     };
 }
