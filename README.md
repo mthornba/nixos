@@ -107,6 +107,13 @@ programs.home-manager.enable = true;
 #### Upgrading Packages
 
 ```sh
+cd users/matt
+nix flake update
+home-manager switch --flake .
+```
+
+Or use the simpler command:
+```sh
 home-manager switch --flake ./users/matt --recreate-lock-file
 ```
 
