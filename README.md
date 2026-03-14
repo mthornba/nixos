@@ -141,3 +141,77 @@ Optionally allow broken packages
 NIXPKGS_ALLOW_BROKEN=1 nix run .
 ```
 
+## Aerospace
+
+[AeroSpace](https://github.com/nikitabobko/AeroSpace) is an i3-like tiling window manager for macOS.
+
+### Configuration
+
+The Aerospace configuration is managed in `users/matt/home.nix` under `programs.aerospace.settings`.
+
+### Adding Apps to Floating Window List
+
+Some apps work better as floating windows (e.g., Calculator, System Preferences). To add an app to the floating list:
+
+1. **Find the app's bundle ID:**
+   ```sh
+   osascript -e 'id of app "Application Name"'
+   ```
+   
+   Example:
+   ```sh
+   osascript -e 'id of app "Calculator"'
+   # Output: com.apple.calculator
+   ```
+
+2. **Add to `users/matt/home.nix`:**
+   
+   Find the `on-window-detected` section and add a new entry:
+   ```nix
+   programs.aerospace.settings = {
+     on-window-detected = [
+       # ... existing entries ...
+       
+       # Your new app
+       { "if" = { app-id = "com.example.app"; }; run = "layout floating"; }
+     ];
+   };
+   ```
+
+3. **Optional: Match by window title:**
+   
+   To float only specific windows (e.g., preferences):
+   ```nix
+   { "if" = { 
+       app-id = "com.example.app"; 
+       window-title-regex-substring = "Preferences"; 
+     }; 
+     run = "layout floating"; 
+   }
+   ```
+
+4. **Apply the changes:**
+   ```sh
+   cd users/matt
+   home-manager switch --flake .
+   ```
+   
+   Aerospace will automatically reload with the new configuration.
+
+### Currently Floating Apps
+
+- System Preferences/Settings
+- Calculator
+- Activity Monitor
+- Archive Utility
+- Software Update
+- Finder Info/Preferences windows
+- UTM
+
+### Key Bindings
+
+- `Alt + Shift + Space`: Toggle between tiling and floating for current window
+- `Alt + /`: Toggle between horizontal and vertical tiling layouts
+- `Alt + ,`: Toggle accordion layout
+- See full keybindings in `users/matt/home.nix` under `mode.main.binding`
+
