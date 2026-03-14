@@ -157,8 +157,6 @@ in
     wtfutil
     zip
     # graphical apps
-    # logseq
-    # vivaldi # unfree
     slack
     vscode # unfree
 
