@@ -276,35 +276,7 @@
           nmap <leader>mpb <Plug>MarkdownPreviewToggle
         '';
       }
-      { plugin = pkgs.vimUtils.buildVimPlugin {
-          pname = "glowing-vim-markdown-preview";
-          version = "1.0.0";
-          src = pkgs.fetchFromGitHub {
-            owner = "drewipson";
-            repo = "glowing-vim-markdown-preview";
-            rev = "main";
-            sha256 = "sha256-UL904u1JwoadlZ1UOHpbxsDokCorrAXL/PRYANg8/LM=";
-          };
-          # The plugin has markdown-preview.vim at root, need to put it in plugin/
-          postInstall = ''
-            mkdir -p $out/plugin
-            cp $out/markdown-preview.vim $out/plugin/
-          '';
-        };
-        config = /* vim */ ''
-          " Markdown preview in vim pane using glow
-          " Create a simpler command that definitely uses glow
-          function! GlowPreview()
-            let l:temp_file = tempname() . '.md'
-            call writefile(getline(1, '$'), l:temp_file)
-            execute 'rightbelow vsplit | terminal glow -s dark ' . l:temp_file
-            " Clean up temp file when buffer is deleted
-            execute 'autocmd BufDelete <buffer> call delete("' . l:temp_file . '")'
-          endfunction
-          
-          nnoremap <leader>mpg :call GlowPreview()<CR>
-        '';
-      }
+
       nvim-web-devicons
       nvim-treesitter
       nvim-treesitter-parsers.html
