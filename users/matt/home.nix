@@ -146,6 +146,7 @@ in
     serpl
     silver-searcher
     so
+    spec-kit
     sshs
     termscp
     tldr
