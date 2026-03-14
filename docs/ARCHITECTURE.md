@@ -5,61 +5,61 @@
 ```mermaid
 graph TD
     %% Root Flake
-    Root[flake.nix<br/>Root Entry Point]
+    Root["flake.nix - Root Entry Point"]
     
     %% Inputs
-    Root --> |imports| NixPkgs[nixpkgs]
-    Root --> |imports| NixDarwin[nix-darwin]
-    Root --> |imports| NixHomebrew[nix-homebrew]
-    Root --> |imports| Homebrew[homebrew taps]
+    Root -->|imports| NixPkgs[nixpkgs]
+    Root -->|imports| NixDarwin[nix-darwin]
+    Root -->|imports| NixHomebrew[nix-homebrew]
+    Root -->|imports| Homebrew[homebrew taps]
     
     %% NixOS Configuration
-    Root --> |nixosConfigurations.neon| NeonConfig[systems/neon/configuration.nix]
-    NeonConfig --> |imports| T3610[systems/neon/t3610.nix<br/>Hardware Config]
-    NeonConfig --> |imports| OctoPrint[modules/octoprint.nix]
-    NeonConfig --> |imports| Syncthing[modules/syncthing.nix]
+    Root -->|nixosConfigurations.neon| NeonConfig["systems/neon/configuration.nix"]
+    NeonConfig -->|imports| T3610["systems/neon/t3610.nix - Hardware Config"]
+    NeonConfig -->|imports| OctoPrint["modules/octoprint.nix"]
+    NeonConfig -->|imports| Syncthing["modules/syncthing.nix"]
     
     %% Darwin Configuration
-    Root --> |darwinConfigurations| DarwinModule[systems/darwin/flake-module.nix<br/>Darwin Factory]
+    Root -->|darwinConfigurations| DarwinModule["systems/darwin/flake-module.nix - Darwin Factory"]
     
-    DarwinModule --> |generates| IntelMac[Matts-MacBook-Pro<br/>x86_64-darwin]
-    DarwinModule --> |generates| M5Mac[Matts-M5<br/>aarch64-darwin]
+    DarwinModule -->|generates| IntelMac["Matts-MacBook-Pro - x86_64-darwin"]
+    DarwinModule -->|generates| M5Mac["Matts-M5 - aarch64-darwin"]
     
     %% Common Darwin Config
-    IntelMac --> |imports| CommonDarwin[systems/darwin/common/default.nix<br/>Shared macOS Config]
-    IntelMac --> |imports| CommonBrew[systems/darwin/common/brew.nix<br/>Shared Homebrew]
-    IntelMac --> |imports| IntelHost[systems/darwin/hosts/Matts-MacBook-Pro.nix<br/>Intel-Specific]
+    IntelMac -->|imports| CommonDarwin["systems/darwin/common/default.nix - Shared macOS Config"]
+    IntelMac -->|imports| CommonBrew["systems/darwin/common/brew.nix - Shared Homebrew"]
+    IntelMac -->|imports| IntelHost["systems/darwin/hosts/Matts-MacBook-Pro.nix - Intel-Specific"]
     
-    M5Mac --> |imports| CommonDarwin
-    M5Mac --> |imports| CommonBrew
-    M5Mac --> |imports| M5Host[systems/darwin/hosts/Matts-M5.nix<br/>Apple Silicon-Specific]
+    M5Mac -->|imports| CommonDarwin
+    M5Mac -->|imports| CommonBrew
+    M5Mac -->|imports| M5Host["systems/darwin/hosts/Matts-M5.nix - Apple Silicon-Specific"]
     
     %% Home Manager
-    Root --> |runs after system| HomeFlake[users/matt/flake.nix<br/>Home Manager Entry]
+    Root -->|runs after system| HomeFlake["users/matt/flake.nix - Home Manager Entry"]
     
-    HomeFlake --> |homeConfigurations| HomeConfigs{Architecture<br/>Detection}
-    HomeConfigs --> |x86_64-linux| NeonHome[matt@neon]
-    HomeConfigs --> |x86_64-darwin| IntelHome[matt@Matts-MacBook-Pro]
-    HomeConfigs --> |aarch64-darwin| M5Home[matt@Matts-M5]
+    HomeFlake -->|homeConfigurations| HomeConfigs{"Architecture Detection"}
+    HomeConfigs -->|x86_64-linux| NeonHome["matt@neon"]
+    HomeConfigs -->|x86_64-darwin| IntelHome["matt@Matts-MacBook-Pro"]
+    HomeConfigs -->|aarch64-darwin| M5Home["matt@Matts-M5"]
     
     %% Home Manager Modules
-    NeonHome --> |imports| HomeNix[users/matt/home.nix<br/>Main Home Config]
-    IntelHome --> |imports| HomeNix
-    M5Home --> |imports| HomeNix
+    NeonHome -->|imports| HomeNix["users/matt/home.nix - Main Home Config"]
+    IntelHome -->|imports| HomeNix
+    M5Home -->|imports| HomeNix
     
-    HomeNix --> |imports| Neovim[users/matt/modules/neovim.nix]
-    HomeNix --> |imports| TaskWarrior[users/matt/modules/taskwarrior.nix]
-    HomeNix --> |imports| Palitronica[users/matt/modules/palitronica.nix]
+    HomeNix -->|imports| Neovim["users/matt/modules/neovim.nix"]
+    HomeNix -->|imports| TaskWarrior["users/matt/modules/taskwarrior.nix"]
+    HomeNix -->|imports| Palitronica["users/matt/modules/palitronica.nix"]
     
     %% Linux-Only Modules
-    HomeNix --> |Linux only| I3[users/matt/modules/i3.nix]
-    HomeNix --> |Linux only| Polybar[users/matt/modules/polybar.nix]
-    HomeNix --> |Linux only| Rofi[users/matt/modules/rofi.nix]
-    HomeNix --> |Linux only| CodeServer[users/matt/modules/code-server.nix]
-    HomeNix --> |Linux only| Neomutt[users/matt/modules/neomutt.nix]
+    HomeNix -->|Linux only| I3["users/matt/modules/i3.nix"]
+    HomeNix -->|Linux only| Polybar["users/matt/modules/polybar.nix"]
+    HomeNix -->|Linux only| Rofi["users/matt/modules/rofi.nix"]
+    HomeNix -->|Linux only| CodeServer["users/matt/modules/code-server.nix"]
+    HomeNix -->|Linux only| Neomutt["users/matt/modules/neomutt.nix"]
     
     %% Legacy (Gitignored)
-    LegacyMac[systems/Matts-MacBook-Pro/<br/>Legacy - Gitignored]
+    LegacyMac["systems/Matts-MacBook-Pro/ - Legacy - Gitignored"]
     
     %% Styling
     classDef rootNode fill:#268bd2,stroke:#073642,stroke-width:3px,color:#fdf6e3
