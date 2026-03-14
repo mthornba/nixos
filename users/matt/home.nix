@@ -945,6 +945,7 @@ in
         b = "buku --np";
         # ghq
         cdr = "cd $(ghq list -p | fzf)";
+        gclone = "ghq get -l -p";
         # k8s
         k = "kubecolor";
         kdr = "kubectl --dry-run=client -o yaml";
