@@ -110,6 +110,7 @@ in
     browsh
     buku
     carl
+    chatgpt-cli
     copilot-language-server
     curlie
     ddgr
