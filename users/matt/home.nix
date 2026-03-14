@@ -769,6 +769,12 @@ in
         # Navigate windows with Ctrl+Tab / Ctrl+Shift+Tab (via user-keys)
         bind -n User0 next-window
         bind -n User1 previous-window
+
+        # Pass-through bindings: prefix + Ctrl+vim-keys sends the keystroke to TUI apps
+        bind C-h send-keys C-h
+        bind C-j send-keys C-j
+        bind C-k send-keys C-k
+        bind C-l send-keys C-l
       '';
       plugins = with pkgs; [
         tmuxPlugins.tmux-fzf
