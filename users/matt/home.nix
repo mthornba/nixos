@@ -842,9 +842,6 @@ in
           ];
         };
       };
-      initLua = ''
-        require("git"):setup()
-      '';
     };
 
     zellij = {
