@@ -135,6 +135,8 @@ in
     jq
     jqp
     keychain
+    lazygit
+    lazyssh
     lsd
     ncdu
     nerd-fonts.fira-code
