@@ -1,0 +1,99 @@
+{ config, pkgs, lib, ... }:
+
+{
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+  };
+
+  # List packages installed in system profile
+  environment.systemPackages = with pkgs; [
+    ansible
+    curl
+    lima
+    qemu
+    raycast
+    vim
+    wget
+  ] ++ lib.optionals (!pkgs.stdenv.isDarwin || pkgs.stdenv.hostPlatform.isx86_64) [
+    # iproute2mac only needed/working on Intel
+    iproute2mac
+  ];
+
+  # Necessary for using flakes on this system
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.substituters = [
+    "https://cache.nixos.org"
+    "https://nix-community.cachix.org"
+  ];
+  nix.settings.trusted-public-keys = [
+    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+  ];
+  nix.settings.trusted-users = [ "@admin" "matt" ];
+
+  # Create /etc/zshrc that loads the nix-darwin environment
+  programs.zsh.enable = true;
+
+  system.primaryUser = "matt";
+
+  system.defaults = {
+    dock = {
+      appswitcher-all-displays = true;
+      autohide = true;
+      persistent-apps = [
+        "/Applications/Vivaldi.app"
+      ];
+      persistent-others = [
+        "/Users/matt/Applications"
+      ];
+      wvous-bl-corner = 1; # Disabled
+      wvous-br-corner = 2; # Mission Control
+    };
+    
+    NSGlobalDomain = {
+      _HIHideMenuBar = true; # autohide menu bar
+      AppleInterfaceStyle = "Dark";
+      # Disable press and hold for diacritics (to allow holding down vim keys in vscode)
+      ApplePressAndHoldEnabled = false;
+      AppleShowAllFiles = true; # show hidden files
+      KeyRepeat = 2; # how fast keys repeat
+      NSAutomaticCapitalizationEnabled = false;
+      NSWindowShouldDragOnGesture = true; # drag windows from anywhere
+    };
+    
+    # Disable Ctrl+Space for input source switching
+    # This allows Ctrl+Space to be used by terminal applications like intelli-shell
+    # Symbolic hotkey 60 = "Select the previous input source"
+    # Symbolic hotkey 61 = "Select next source in Input menu"
+    CustomUserPreferences = {
+      "com.apple.symbolichotkeys" = {
+        AppleSymbolicHotKeys = {
+          "60" = {
+            enabled = false;
+            value = {
+              parameters = [ 32 49 1048576 ];
+              type = "standard";
+            };
+          };
+          "61" = {
+            enabled = false;
+            value = {
+              parameters = [ 32 49 1572864 ];
+              type = "standard";
+            };
+          };
+        };
+      };
+    };
+    
+    LaunchServices.LSQuarantine = false;
+  };
+
+  # Set Git commit hash for darwin-version
+  system.configurationRevision = null;
+
+  # Used for backwards compatibility
+  system.stateVersion = 4;
+}

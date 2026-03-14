@@ -1,24 +1,28 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-- Root flake: `flake.nix` defines `nixosConfigurations.neon` (NixOS). Host configs live under `systems/<host>/` (e.g., `systems/neon/`).
-- macOS (nix-darwin): separate flake in `systems/Matts-MacBook-Pro/flake.nix` and related `brew/` module.
+- Root flake: `flake.nix` defines `nixosConfigurations.neon` (NixOS) and `darwinConfigurations` (macOS).
+- NixOS: Host configs live under `systems/neon/`.
+- macOS (nix-darwin): Shared config in `systems/darwin/common/`, host-specific in `systems/darwin/hosts/`.
+  - Supports multiple architectures: x86_64-darwin (Intel) and aarch64-darwin (Apple Silicon)
+  - Host configurations: `Matts-MacBook-Pro` (Intel), `Matts-M5` (Apple Silicon)
 - Shared NixOS modules: `modules/*.nix` (e.g., `octoprint.nix`, `syncthing.nix`).
 - Home Manager: `users/matt/{flake.nix,home.nix,modules/}` for user-level configuration and dotfiles.
-- Docs and notes: `docs/` (e.g., setup notes, TODOs).
+- Docs and notes: `docs/` (e.g., setup notes, TODOs, migration guides).
 - Build artifacts: `result` symlinks (gitignored), `*.log` files.
 
 ## Quick Commands
-- **Full system rebuild**: `nix run .` (auto-detects macOS/NixOS, then runs home-manager)
+- **Full system rebuild**: `nix run .` (auto-detects OS and hostname, then runs home-manager)
 - **Build only (no switch)**: Platform-specific commands below
 
 ## Build, Test, and Development Commands
-- **Unified entry point**: `nix run .` auto-detects OS and rebuilds system + home-manager
+- **Unified entry point**: `nix run .` auto-detects OS, hostname, and architecture, rebuilds system + home-manager
 - NixOS build: `sudo nixos-rebuild build --flake .#neon` (validate without switching).
 - NixOS switch: `sudo nixos-rebuild switch --flake .#neon` (apply to host).
-- macOS build/switch: `darwin-rebuild build|switch --flake ./systems/Matts-MacBook-Pro`.
+- macOS build: `darwin-rebuild build --flake .#<hostname>` (hostname: Matts-MacBook-Pro or Matts-M5)
+- macOS switch: `darwin-rebuild switch --flake .#<hostname>`
 - Home Manager: `home-manager switch --flake ./users/matt` or `--dry-run` to preview.
-- Update inputs: run `nix flake update` in the target flake directory (root, `users/matt`, or `systems/Matts-MacBook-Pro`).
+- Update inputs: run `nix flake update` in the target flake directory (root, `users/matt`).
 
 ## Coding Style & Naming Conventions
 - Nix files: 2-space indentation, trailing commas, concise comments for non-obvious options.

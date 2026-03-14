@@ -26,11 +26,16 @@
       # when no flake attribute is specified. Provide per-host configs with
       # explicit systems to avoid relying on builtins.currentSystem.
       homeConfigurations = {
+        # NixOS
         "matt@neon" = mkHome "x86_64-linux";
+        
+        # Intel MacBook Pro
         "matt@Matts-MacBook-Pro" = mkHome "x86_64-darwin";
-        # Some environments (e.g., macOS) expose HOSTNAME with a .local suffix
-        # so make the default selector work without specifying an attribute.
         "matt@Matts-MacBook-Pro.local" = mkHome "x86_64-darwin";
+        
+        # M5 MacBook (Apple Silicon)
+        "matt@Matts-M5" = mkHome "aarch64-darwin";
+        "matt@Matts-M5.local" = mkHome "aarch64-darwin";
       };
     };
 }

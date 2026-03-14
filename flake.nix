@@ -3,6 +3,15 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
+    homebrew-bundle = { url = "github:homebrew/homebrew-bundle"; flake = false; };
+    homebrew-core = { url = "github:homebrew/homebrew-core"; flake = false; };
+    homebrew-cask = { url = "github:homebrew/homebrew-cask"; flake = false; };
+    homebrew-dustinblackman = { url = "github:dustinblackman/homebrew-tap"; flake = false; };
+    homebrew-devnullvoid = { url = "github:devnullvoid/homebrew-pvetui"; flake = false; };
+    homebrew-services = { url = "github:homebrew/homebrew-services"; flake = false; };
   };
 
   nixConfig = {
@@ -14,7 +23,7 @@
     ];
   };
 
-  outputs = { nixpkgs, ... }:
+  outputs = { nixpkgs, nix-darwin, ... } @ inputs:
   let
     # Keep Linux system pin for NixOS host build.
     system = "x86_64-linux";
@@ -27,7 +36,7 @@
     lib = nixpkgs.lib;
 
     # Helper to expose apps for both Linux and Darwin so we can `nix run`.
-    supportedSystems = [ "x86_64-linux" "x86_64-darwin" ];
+    supportedSystems = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
     forAllSystems = f: lib.genAttrs supportedSystems (s: f s);
   in {
     nixosConfigurations = {
@@ -39,6 +48,9 @@
         ];
       };
     };
+
+    # Darwin configurations for macOS systems
+    darwinConfigurations = import ./systems/darwin/flake-module.nix { inherit inputs; };
 
     # Unified entrypoint: `nix run .` will detect OS and rebuild the right host
     # (NixOS vs. nix-darwin) and then apply Home Manager from users/matt.
@@ -65,7 +77,9 @@
 
           case "$OS" in
             Darwin)
-              DARWIN_FLAKE_REF="$FLAKE_ROOT/systems/Matts-MacBook-Pro#Matts-MacBook-Pro"
+              # Detect hostname and use appropriate darwin configuration
+              HOSTNAME="$(hostname -s)"
+              DARWIN_FLAKE_REF="$FLAKE_ROOT#$HOSTNAME"
               echo "+ sudo darwin-rebuild switch $IMPURE_FLAG --flake \"$DARWIN_FLAKE_REF\""
               sudo darwin-rebuild switch $IMPURE_FLAG --flake "$DARWIN_FLAKE_REF"
               ;;

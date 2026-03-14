@@ -18,3 +18,6 @@ result-*
 
 # Logs
 *.log
+
+# Legacy system directories (kept for reference during migration)
+systems/Matts-MacBook-Pro/
