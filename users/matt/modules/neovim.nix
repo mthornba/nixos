@@ -149,10 +149,9 @@
       require('nvim-treesitter.configs').setup({ highlight = { enable = true } })
 
       vim.lsp.config('terraformls', {
-        on_attach = function(client, bufnr)
-          -- keymaps or additional setup
-        end,
-        filetypes = { "terraform", "hcl" },
+        cmd = { 'terraform-ls', 'serve' },
+        filetypes = { 'terraform', 'hcl' },
+        root_dir = vim.fs.root(0, { '.terraform', '.git' }),
       })
       vim.lsp.enable('terraformls')
       
