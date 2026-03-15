@@ -106,27 +106,36 @@ programs.home-manager.enable = true;
 
 #### Upgrading Packages
 
+Update all flake inputs (root includes NixOS and darwin, users/matt is home-manager):
+```sh
+nix flake update && (cd users/matt && nix flake update)
+```
+
+Then rebuild:
+```sh
+nix run .  # Auto-detects OS and hostname
+```
+
+Or update and rebuild home-manager only:
 ```sh
 cd users/matt
 nix flake update
 home-manager switch --flake .
 ```
 
-Or use the simpler command:
-```sh
-home-manager switch --flake ./users/matt --recreate-lock-file
-```
-
 ## nix-darwin
+
+The darwin configuration is now managed via the root flake at `systems/darwin/`.
 
 First run:
 ```sh
-nix run nix-darwin -- switch --flake ./systems/Matts-MacBook-Pro
+nix run .  # Auto-detects hostname
 ```
 
-Future runs can now use:
+Or explicitly:
 ```sh
-darwin-rebuild switch --flake ./systems/Matts-MacBook-Pro
+darwin-rebuild switch --flake .#Matts-MacBook-Pro  # Intel
+darwin-rebuild switch --flake .#Matts-M5           # Apple Silicon
 ```
 
 ## Support for multiple platforms
