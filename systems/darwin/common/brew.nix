@@ -14,6 +14,7 @@
     # List of Homebrew formulae to install
     brews = [
       "azure-cli"
+      "ekphos"
       "oatmeal"
       "pvetui"
     ];
