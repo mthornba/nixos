@@ -125,25 +125,28 @@ in
     # graphical apps
     slack
     vscode # unfree
-
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "Hack" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+  ] ++ lib.optionals pkgs.stdenv.isDarwin [
+    # macOS-only packages
+    (pkgs.stdenvNoCC.mkDerivation {
+      pname = "macuake";
+      version = "0.1.3";
+      src = pkgs.fetchurl {
+        url = "https://github.com/menemy/macuake/releases/download/v0.1.3/Macuake.dmg";
+        hash = "sha256-HtI49e3Ng2iGyreHUOz3bHvCnSbcOMGB2Djnk6N7/rc=";
+      };
+      nativeBuildInputs = [ pkgs._7zz ];
+      sourceRoot = ".";
+      unpackPhase = ''
+        7zz x $src
+      '';
+      installPhase = ''
+        mkdir -p $out/Applications
+        cp -r Macuake.app $out/Applications/
+      '';
+    })
+  ] ++ [
+    # Custom scripts
     (pkgs.writeShellScriptBin "termcolors" (builtins.readFile ./dotfiles/scripts/termcolors))
-
   ];
 
   # Tip: add OS-specific packages when needed, e.g.:
