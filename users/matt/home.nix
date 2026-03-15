@@ -127,6 +127,7 @@ in
     vscode # unfree
   ] ++ lib.optionals pkgs.stdenv.isDarwin [
     # macOS-only packages
+    pkgs.ghostty-bin  # For Macuake to use
     (pkgs.stdenvNoCC.mkDerivation {
       pname = "macuake";
       version = "0.1.3";
