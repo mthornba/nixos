@@ -234,6 +234,17 @@ exec $SHELL
 
 After bootstrap, both `darwin-rebuild` and `home-manager` are installed.
 
+### Post-Installation Setup
+
+**Set kitty theme** (after home-manager bootstrap):
+
+```sh
+kitten themes --dump-theme "Solarized Dark" > ~/.config/kitty/Solarized-Dark.conf
+ln -s ~/.config/kitty/Solarized-Dark.conf ~/.config/kitty/current-theme.conf
+```
+
+Then restart kitty or reload with `kill -SIGUSR1 $(pgrep kitty)`. The `--dump-theme` flag outputs the theme without modifying the nix-managed kitty.conf. You can change themes later by re-running these commands with a different theme name.
+
 ### Subsequent Builds
 
 After the initial bootstrap, use the simpler commands:
