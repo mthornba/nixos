@@ -1,5 +1,52 @@
 # NixOS Configs
 
+## Installing Nix on macOS (Darwin)
+
+### Option 1: Determinate Systems Installer (Recommended for M5)
+
+The [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer) provides a modern, opinionated installation with better defaults:
+
+```sh
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+```
+
+**Benefits:**
+- Flakes and nix-command enabled by default
+- Better uninstall support
+- Optimized for modern macOS (including Apple Silicon)
+- Maintained by Determinate Systems
+
+### Option 2: Official Multi-User Install
+
+The traditional Nix installation:
+
+```sh
+sh <(curl -L https://nixos.org/nix/install)
+```
+
+Then enable flakes by adding to `~/.config/nix/nix.conf`:
+```
+experimental-features = nix-command flakes
+```
+
+### After Installation
+
+1. Restart your terminal or source the nix profile:
+   ```sh
+   source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+   ```
+
+2. Verify installation:
+   ```sh
+   nix --version
+   ```
+
+3. Clone this repository and apply configuration (see sections below)
+
+---
+
+## NixOS Installation
+
 - Perform intiial install from USB, creating my user
 - reboot
 
