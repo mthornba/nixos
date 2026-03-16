@@ -1010,7 +1010,7 @@ in
             owner = "ohmyzsh";
             repo = "ohmyzsh";
             rev = "master";
-            sha256 = "TyFy7bHiOuD72Kv6sWbu71crftIF2wqD9Gaege1iVgI=";
+            sha256 = "QkiUAvefSD4RauHP9j+TJaEgL4aBhDIe1UcXKHG9ATQ=";
           };
         }
         {
@@ -1020,7 +1020,7 @@ in
             owner = "ohmyzsh";
             repo = "ohmyzsh";
             rev = "master";
-            sha256 = "TyFy7bHiOuD72Kv6sWbu71crftIF2wqD9Gaege1iVgI=";
+            sha256 = "QkiUAvefSD4RauHP9j+TJaEgL4aBhDIe1UcXKHG9ATQ=";
           };
         }
       ];
