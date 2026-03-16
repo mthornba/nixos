@@ -74,6 +74,7 @@ in
     aichat
     bat
     browsh
+    btop
     buku
     carl
     chatgpt-cli
