@@ -222,7 +222,8 @@ exec $SHELL
 **Step 3: Bootstrap home-manager**:
 
 ```sh
-nix run home-manager/release-25.11 -- switch --flake ./users/matt
+nix run home-manager/release-25.11 -- switch --flake ./users/matt#matt@Matts-MacBook-Pro  # Intel
+nix run home-manager/release-25.11 -- switch --flake ./users/matt#matt@Matts-M5          # M5
 ```
 
 **Step 4: Restart shell again** to pick up home-manager in PATH:
