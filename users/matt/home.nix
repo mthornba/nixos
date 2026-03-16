@@ -843,6 +843,7 @@ in
           ];
         };
       };
+      shellWrapperName = "y";  # Use new default wrapper name
     };
 
     zellij = {
