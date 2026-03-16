@@ -2,6 +2,22 @@
 
 ## Installing Nix on macOS (Darwin)
 
+### Prerequisites
+
+Before installing Nix, you need the Xcode Command Line Tools (required for git, compilers, and build tools):
+
+```sh
+xcode-select --install
+```
+
+Or allow macOS to prompt you when you first try to use `git`. This installs the lightweight tools (~1GB), not the full Xcode app.
+
+Verify installation:
+```sh
+xcode-select -p
+# Should output: /Library/Developer/CommandLineTools
+```
+
 ### Option 1: Determinate Systems Installer (Recommended for M5)
 
 The [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer) provides a modern, opinionated installation with better defaults:
