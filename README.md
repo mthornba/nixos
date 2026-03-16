@@ -4,6 +4,8 @@
 
 ### Prerequisites
 
+**1. Xcode Command Line Tools (Required)**
+
 Before installing Nix, you need the Xcode Command Line Tools (required for git, compilers, and build tools):
 
 ```sh
@@ -17,6 +19,16 @@ Verify installation:
 xcode-select -p
 # Should output: /Library/Developer/CommandLineTools
 ```
+
+**2. Rosetta 2 (Apple Silicon only)**
+
+If you're on an M-series Mac (M5, M4, M3, etc.) and plan to use Intel Homebrew packages, install Rosetta 2:
+
+```sh
+softwareupdate --install-rosetta
+```
+
+This allows running x86_64 binaries on ARM. Required for `nix-homebrew.enableRosetta = true` in the configuration.
 
 ### Option 1: Determinate Systems Installer (Recommended for M5)
 
