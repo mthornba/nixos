@@ -204,14 +204,34 @@ The darwin configuration is now managed via the root flake at `systems/darwin/`.
 
 ### First Time Setup (Bootstrap)
 
-On a fresh Nix installation, you need to bootstrap nix-darwin (requires sudo for system activation):
+On a fresh Nix installation, bootstrap in this order:
+
+**Step 1: Bootstrap nix-darwin** (requires sudo for system activation):
 
 ```sh
 sudo nix run nix-darwin -- switch --flake .#Matts-MacBook-Pro  # Intel
 sudo nix run nix-darwin -- switch --flake .#Matts-M5           # M5
 ```
 
-This installs nix-darwin and applies your configuration in one step.
+**Step 2: Restart your shell** to pick up darwin-rebuild in PATH:
+
+```sh
+exec $SHELL
+```
+
+**Step 3: Bootstrap home-manager**:
+
+```sh
+nix run home-manager/release-25.11 -- switch --flake ./users/matt
+```
+
+**Step 4: Restart shell again** to pick up home-manager in PATH:
+
+```sh
+exec $SHELL
+```
+
+After bootstrap, both `darwin-rebuild` and `home-manager` are installed.
 
 ### Subsequent Builds
 
