@@ -245,6 +245,39 @@ ln -s ~/.config/kitty/Solarized-Dark.conf ~/.config/kitty/current-theme.conf
 
 Then restart kitty or reload with `kill -SIGUSR1 $(pgrep kitty)`. The `--dump-theme` flag outputs the theme without modifying the nix-managed kitty.conf. You can change themes later by re-running these commands with a different theme name.
 
+**Configure DNS search domain** (for automatic hostname resolution):
+
+If you need to resolve internal company hostnames (e.g., `server.company.com`), set the DNS search domain:
+
+```sh
+sudo networksetup -setsearchdomains Wi-Fi your-company-domain.com
+```
+
+Replace `your-company-domain.com` with your internal domain (e.g., `palitronica.local`, `company.internal`).
+
+Verify it was set:
+```sh
+networksetup -getsearchdomains Wi-Fi
+```
+
+Alternatively, configure via **System Settings** > **Network** > **Wi-Fi** > **Details** > **DNS** > **Search Domains**.
+
+**Configure system hostname** (for nix flake hostname detection):
+
+Set the system hostname to match your nix-darwin configuration name:
+
+```sh
+sudo scutil --set HostName Matts-M5  # or Matts-MacBook-Pro for Intel
+```
+
+Verify with:
+```sh
+hostname -s
+```
+
+This ensures `nix run` can automatically detect and use the correct configuration.
+
+
 ### Subsequent Builds
 
 After the initial bootstrap, use the simpler commands:
