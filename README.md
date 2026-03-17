@@ -345,3 +345,89 @@ Some apps work better as floating windows (e.g., Calculator, System Preferences)
 - `Alt + ,`: Toggle accordion layout
 - See full keybindings in `users/matt/home.nix` under `mode.main.binding`
 
+## SSH Key Management
+
+### Creating a New SSH Key
+
+Generate an Ed25519 SSH key for the current machine:
+
+```sh
+ssh-keygen -t ed25519 -C "matt@$(hostname -s)"
+```
+
+Press Enter to accept the default location (`~/.ssh/id_ed25519`), and optionally set a passphrase.
+
+### Adding Key to macOS Keychain
+
+To cache your SSH key passphrase in macOS Keychain (enter once, works until reboot):
+
+1. **Add the key to keychain:**
+   ```sh
+   ssh-add --apple-use-keychain ~/.ssh/id_ed25519
+   ```
+
+2. **Configure SSH to use Keychain** by adding to `~/.ssh/config`:
+   ```
+   Host *
+     UseKeychain yes
+     AddKeysToAgent yes
+   ```
+
+The key passphrase will be stored in macOS Keychain and automatically loaded by ssh-agent. You'll only need to enter the passphrase once after each reboot.
+
+**Note:** If you get "Connection refused" from ssh-add, open a fresh terminal window to get the correct `SSH_AUTH_SOCK` environment variable.
+
+### Distributing SSH Key to Services
+
+After generating your key, add the public key to various services:
+
+**1. GitHub:**
+```sh
+# Copy public key to clipboard
+cat ~/.ssh/id_ed25519.pub | pbcopy
+
+# Open GitHub SSH settings
+open https://github.com/settings/ssh/new
+```
+
+Or use the GitHub CLI:
+```sh
+gh ssh-key add ~/.ssh/id_ed25519.pub --title "$(hostname -s)"
+```
+
+**2. GitLab:**
+```sh
+# Copy public key to clipboard
+cat ~/.ssh/id_ed25519.pub | pbcopy
+
+# Open GitLab SSH settings
+open https://gitlab.com/-/profile/keys
+```
+
+**3. Other Git Services:**
+
+Most Git hosting services have an SSH key management page in their settings. Copy your public key:
+```sh
+cat ~/.ssh/id_ed25519.pub
+```
+
+And paste it into the service's SSH key configuration page.
+
+**4. Remote Servers:**
+
+For SSH access to remote servers:
+```sh
+ssh-copy-id user@hostname
+```
+
+Or manually append to `~/.ssh/authorized_keys` on the remote server.
+
+### Verifying SSH Key
+
+Test GitHub SSH connection:
+```sh
+ssh -T git@github.com
+```
+
+You should see: "Hi username! You've successfully authenticated..."
+
