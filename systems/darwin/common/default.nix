@@ -64,10 +64,11 @@
       NSWindowShouldDragOnGesture = true; # drag windows from anywhere
     };
     
-    # Disable Ctrl+Space for input source switching
-    # This allows Ctrl+Space to be used by terminal applications like intelli-shell
+    # Disable keyboard shortcuts that conflict with terminal applications
     # Symbolic hotkey 60 = "Select the previous input source"
     # Symbolic hotkey 61 = "Select next source in Input menu"
+    # Symbolic hotkey 64 = "Show Spotlight search"
+    # Symbolic hotkey 65 = "Show Finder search window"
     CustomUserPreferences = {
       "com.apple.symbolichotkeys" = {
         AppleSymbolicHotKeys = {
@@ -82,6 +83,20 @@
             enabled = false;
             value = {
               parameters = [ 32 49 1572864 ];
+              type = "standard";
+            };
+          };
+          "64" = {
+            enabled = false;
+            value = {
+              parameters = [ 65535 49 1048576 ];
+              type = "standard";
+            };
+          };
+          "65" = {
+            enabled = false;
+            value = {
+              parameters = [ 65535 49 1572864 ];
               type = "standard";
             };
           };
