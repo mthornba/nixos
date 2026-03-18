@@ -24,6 +24,7 @@
       "logseq"
       "orbstack"
       "plexamp"
+      "truetree"
       "unnaturalscrollwheels"
       "utm"
       "vivaldi"

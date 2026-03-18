@@ -108,6 +108,8 @@ in
     ncdu
     nerd-fonts.fira-code
     nmap
+    procs
+    pstree
     pv
     ripgrep
     serpl
