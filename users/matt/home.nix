@@ -951,7 +951,6 @@ in
         b = "buku --np";
         # ghq
         cdr = "cd $(ghq list -p | fzf)";
-        gclone = "ghq get -l -p";
         # k8s
         k = "kubecolor";
         kdr = "kubectl --dry-run=client -o yaml";
@@ -985,6 +984,11 @@ in
         getCreds = ''
           eval $(vault kv get -format=json -mount="''\${1}" "''\${2}" | \
           jq '.data.data | to_entries|map("export \(.key)='"'"'\(.value|tostring)'"'"'")|.[]' -r)
+        '';
+
+        # Clone with ghq and cd into the cloned directory
+        gclone = ''
+          ghq get -p "$@" && cd "$(ghq list -p -e "$(echo "$1" | sed 's|^.*://||' | sed 's|\.git$||')")"
         '';
       };
 
