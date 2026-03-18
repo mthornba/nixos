@@ -15,6 +15,7 @@
     brews = [
       "azure-cli"
       "ekphos"
+      "mas"
       "oatmeal"
       "pvetui"
     ];
