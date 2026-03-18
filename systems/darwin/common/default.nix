@@ -42,6 +42,7 @@
     dock = {
       appswitcher-all-displays = true;
       autohide = true;
+      expose-group-apps = true; # Group windows by application
       persistent-apps = [
         "/Applications/Vivaldi.app"
       ];
@@ -52,6 +53,8 @@
       wvous-br-corner = 2; # Mission Control
     };
     
+    spaces.spans-displays = true; # Disable "Displays have separate spaces"
+
     NSGlobalDomain = {
       _HIHideMenuBar = false; # autohide menu bar
       AppleInterfaceStyle = "Dark";
