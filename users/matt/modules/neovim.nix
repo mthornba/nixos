@@ -215,7 +215,7 @@
       )
 
       require("CopilotChat").setup({
-        model = 'claude-3.5-sonnet',
+        model = 'claude-sonnet-4.5',
         temperature = 0.1,
         resources = 'buffer', -- Include buffer context by default
         window = {
@@ -234,8 +234,11 @@
         separator = '━━',
         auto_fold = true,
         auto_insert_mode = false,
-        keymaps = {
-          clear_window = "<leader>cl", -- Replace Ctrl-l with <leader>cl
+        mappings = {
+          reset = {
+            normal = ''',
+            insert = ''',
+          },
         },
       })
     '';
