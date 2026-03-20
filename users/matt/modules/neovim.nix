@@ -59,6 +59,7 @@
       set nowrap
       set termguicolors
       set background=dark
+      set splitright
       syntax enable
       colorscheme solarized8
       let g:airline_solarized_bg='dark'
@@ -214,8 +215,9 @@
       )
 
       require("CopilotChat").setup({
-        model = 'gpt-4o',
+        model = 'claude-3.5-sonnet',
         temperature = 0.1,
+        resources = 'buffer', -- Include buffer context by default
         window = {
           layout = 'vertical', -- or 'horizontal', 'float'
           width = 0.4,  -- 40% of screen width for vertical split
@@ -231,7 +233,10 @@
         },
         separator = '━━',
         auto_fold = true,
-        auto_insert_mode = true,
+        auto_insert_mode = false,
+        keymaps = {
+          clear_window = "<leader>cl", -- Replace Ctrl-l with <leader>cl
+        },
       })
     '';
 
@@ -263,7 +268,9 @@
         config = /* vim */ ''
           " Toggle CopilotChat window
           nnoremap <leader>cc <cmd>CopilotChatToggle<cr>
-          " Quick prompts
+          " Ask with buffer context
+          nnoremap <leader>cq <cmd>lua require('CopilotChat').ask(vim.fn.input('Quick Chat: '), { selection = require('CopilotChat.select').buffer })<cr>
+          " Quick prompts (work on visual selection or buffer)
           nnoremap <leader>ce <cmd>CopilotChatExplain<cr>
           vnoremap <leader>ce <cmd>CopilotChatExplain<cr>
           nnoremap <leader>cr <cmd>CopilotChatReview<cr>
