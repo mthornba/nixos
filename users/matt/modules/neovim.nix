@@ -80,6 +80,14 @@
       set smartindent
       " Soft tabstop (optional, but often helpful)
       set softtabstop=2
+
+      " Highlight trailing whitespace
+      highlight ExtraWhitespace ctermbg=red guibg=red
+      match ExtraWhitespace /\s\+$/
+      autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+      autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+      autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+      autocmd BufWinLeave * call clearmatches()
     '';
     extraLuaConfig = /* lua */ ''
       -- require('lazy').setup({
