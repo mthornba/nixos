@@ -257,7 +257,17 @@
       copilot-lsp
       { plugin = CopilotChat-nvim;
         config = /* vim */ ''
+          " Toggle CopilotChat window
           nnoremap <leader>cc <cmd>CopilotChatToggle<cr>
+          " Quick prompts
+          nnoremap <leader>ce <cmd>CopilotChatExplain<cr>
+          vnoremap <leader>ce <cmd>CopilotChatExplain<cr>
+          nnoremap <leader>cr <cmd>CopilotChatReview<cr>
+          vnoremap <leader>cr <cmd>CopilotChatReview<cr>
+          nnoremap <leader>cf <cmd>CopilotChatFix<cr>
+          vnoremap <leader>cf <cmd>CopilotChatFix<cr>
+          nnoremap <leader>co <cmd>CopilotChatOptimize<cr>
+          vnoremap <leader>co <cmd>CopilotChatOptimize<cr>
         '';
       }
 
