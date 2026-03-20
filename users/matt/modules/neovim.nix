@@ -6,6 +6,9 @@
     enable = true;
     extraPackages = with pkgs; [
       glow
+      luajitPackages.tiktoken_core
+      lynx
+      ripgrep
     ];
     extraConfig = /* vim */''
       " Styled and colored underline support
@@ -253,6 +256,7 @@
       telescope-github-nvim
       open-browser-vim
       open-browser-github-vim
+      plenary-nvim
       copilot-vim
       copilot-lsp
       { plugin = CopilotChat-nvim;
