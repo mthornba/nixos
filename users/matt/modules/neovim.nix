@@ -211,12 +211,12 @@
       )
 
       require("CopilotChat").setup({
-        model = 'gpt-4',
+        model = 'gpt-4o',
         temperature = 0.1,
         window = {
-          layout = 'float',
-          width = 80,
-          height = 20,
+          layout = 'vertical', -- or 'horizontal', 'float'
+          width = 0.4,  -- 40% of screen width for vertical split
+          height = 0.8, -- 80% of screen height
           border = 'rounded',
           title = '\u{ec1e} AI Assistant',
           zindex = 100,
