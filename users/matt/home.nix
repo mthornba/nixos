@@ -295,6 +295,7 @@ in
           alt-slash = "layout tiles horizontal vertical";
           alt-comma = "layout accordion horizontal vertical";
           alt-shift-space = "layout floating tiling";
+          alt-f = "fullscreen";
           alt-h = "focus left";
           alt-j = "focus down";
           alt-k = "focus up";
@@ -319,7 +320,6 @@ in
           alt-c = "workspace C";
           alt-d = "workspace D";
           alt-e = "workspace E";
-          alt-f = "workspace F";
           alt-g = "workspace G";
           alt-i = "workspace I";
           alt-m = "workspace M";
@@ -350,7 +350,6 @@ in
           alt-shift-c = "move-node-to-workspace C";
           alt-shift-d = "move-node-to-workspace D";
           alt-shift-e = "move-node-to-workspace E";
-          alt-shift-f = "move-node-to-workspace F";
           alt-shift-g = "move-node-to-workspace G";
           alt-shift-i = "move-node-to-workspace I";
           alt-shift-m = "move-node-to-workspace M";
