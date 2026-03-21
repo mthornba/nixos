@@ -906,10 +906,14 @@ in
       historySubstringSearch = {
         enable = true;
         searchDownKey = [
-          "^[OB"
+          "^[[B"  # Standard down arrow
+          "^[OB"  # Application mode down arrow
+          "^N"    # Ctrl-N (works in both modes)
         ];
         searchUpKey = [
-          "^[OA"
+          "^[[A"  # Standard up arrow
+          "^[OA"  # Application mode up arrow
+          "^P"    # Ctrl-P (works in both modes)
         ];
       };
 
@@ -941,6 +945,12 @@ in
           autoload -Uz edit-command-line
           zle -N edit-command-line
           bindkey '^X^E' edit-command-line
+
+          # Ensure history-substring-search works in vi mode
+          bindkey -M vicmd 'k' history-substring-search-up
+          bindkey -M vicmd 'j' history-substring-search-down
+          bindkey -M viins '^[[A' history-substring-search-up
+          bindkey -M viins '^[[B' history-substring-search-down
 
           # uncomment to enable profiling
           #zprof
