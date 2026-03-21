@@ -849,7 +849,7 @@ in
     };
 
     zellij = {
-      enable = true;
+      enable = false;
     };
 
     zsh = {
