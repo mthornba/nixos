@@ -5,6 +5,7 @@
     ansible
     codex
     commitizen
+    drawio
     drone-cli
     go-task
     graphviz
