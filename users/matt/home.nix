@@ -73,6 +73,7 @@ in
     # cli apps
     aichat
     bat
+    bitwarden-cli
     browsh
     btop
     buku
