@@ -12,14 +12,12 @@
   environment.systemPackages = with pkgs; [
     ansible
     curl
+    iproute2mac
     lima
     qemu
     raycast
     vim
     wget
-  ] ++ lib.optionals (!pkgs.stdenv.isDarwin || pkgs.stdenv.hostPlatform.isx86_64) [
-    # iproute2mac only needed/working on Intel
-    iproute2mac
   ];
 
   # Necessary for using flakes on this system
