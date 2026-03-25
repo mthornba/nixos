@@ -698,6 +698,14 @@ in
 
     qutebrowser = {
       enable = true;
+      keyBindings = {
+        normal = {
+          ",d" = "config-cycle colors.webpage.darkmode.enabled true false";
+        };
+      };
+      settings = {
+        colors.webpage.darkmode.enabled = true;
+      };
     };
 
     starship = {
