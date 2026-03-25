@@ -84,9 +84,9 @@
       " Highlight trailing whitespace
       highlight ExtraWhitespace ctermbg=red guibg=red
       match ExtraWhitespace /\s\+$/
-      autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-      autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-      autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+      autocmd BufWinEnter * if &filetype != 'neo-tree' | match ExtraWhitespace /\s\+$/ | endif
+      autocmd InsertEnter * if &filetype != 'neo-tree' | match ExtraWhitespace /\s\+\%#\@<!$/ | endif
+      autocmd InsertLeave * if &filetype != 'neo-tree' | match ExtraWhitespace /\s\+$/ | endif
       autocmd BufWinLeave * call clearmatches()
     '';
     extraLuaConfig = /* lua */ ''
