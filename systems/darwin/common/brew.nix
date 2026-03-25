@@ -22,6 +22,7 @@
     
     casks = [
       "logseq"
+      "microsoft-teams"
       "orbstack"
       "plexamp"
       "truetree"
