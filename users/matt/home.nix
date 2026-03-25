@@ -180,29 +180,29 @@ in
     # Ghostty config for Macuake
     ".config/ghostty/config".text = ''
       font-family = FiraCode Nerd Font
-      font-size = 11
-      background = 002b36
-      foreground = 839496
-      cursor-color = 93a1a1
-      selection-background = 073642
-      selection-foreground = eee8d5
-      palette = 0=#073642
-      palette = 1=#dc322f
-      palette = 2=#859900
-      palette = 3=#b58900
-      palette = 4=#268bd2
-      palette = 5=#d33682
-      palette = 6=#2aa198
-      palette = 7=#eee8d5
-      palette = 8=#002b36
-      palette = 9=#cb4b16
-      palette = 10=#586e75
-      palette = 11=#657b83
-      palette = 12=#839496
-      palette = 13=#6c71c4
-      palette = 14=#93a1a1
-      palette = 15=#fdf6e3
-      background-opacity = 0.95
+      font-size = 12
+      background = 001e26
+      foreground = 9bc1c2
+      cursor-color = f34a00
+      selection-background = 003747
+      selection-foreground = 001e26
+      palette = 0=#002731
+      palette = 1=#d01b24
+      palette = 2=#6bbe6c
+      palette = 3=#a57705
+      palette = 4=#2075c7
+      palette = 5=#c61b6e
+      palette = 6=#259185
+      palette = 7=#e9e2cb
+      palette = 8=#006388
+      palette = 9=#f4153b
+      palette = 10=#50ee84
+      palette = 11=#b17e28
+      palette = 12=#178dc7
+      palette = 13=#e14d8e
+      palette = 14=#00b29e
+      palette = 15=#fcf4dc
+      background-opacity = 0.90
       background-blur-radius = 20
       window-padding-x = 4
       window-padding-y = 4
