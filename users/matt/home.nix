@@ -936,8 +936,8 @@ in
         '';
         zshConfigBeforeCompInit = lib.mkOrder 550 "# BeforeCompInit";
         zshConfig = lib.mkOrder 1000 ''
-          # Completion styling
-          zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+          # Completion styling with fuzzy substring matching
+          zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
           # Make "kubecolor" borrow the same completion logic as "kubectl"
           compdef kubecolor=kubectl
