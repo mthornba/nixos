@@ -67,6 +67,35 @@ in
   # release notes.
   home.stateVersion = "23.05"; # Please read the comment before changing.
 
+  # Manage pipx packages declaratively
+  home.activation.installPipxPackages = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    PATH="${config.home.path}/bin:$PATH"
+    
+    # List of pipx packages to install
+    PIPX_PACKAGES=(
+      "twg"
+    )
+    
+    # Install or upgrade packages
+    for pkg in "''${PIPX_PACKAGES[@]}"; do
+      if ${pkgs.pipx}/bin/pipx list 2>/dev/null | grep -q "package $pkg"; then
+        # Package exists, upgrade it
+        $DRY_RUN_CMD ${pkgs.pipx}/bin/pipx upgrade "$pkg" || true
+      else
+        # Package doesn't exist, install it
+        $DRY_RUN_CMD ${pkgs.pipx}/bin/pipx install "$pkg"
+      fi
+    done
+    
+    # Optional: Remove packages not in the list (similar to brew cleanup)
+    # Uncomment if you want declarative cleanup:
+    # ${pkgs.pipx}/bin/pipx list --short 2>/dev/null | while read -r installed_pkg; do
+    #   if [[ ! " ''${PIPX_PACKAGES[@]} " =~ " ''${installed_pkg} " ]]; then
+    #     $DRY_RUN_CMD ${pkgs.pipx}/bin/pipx uninstall "$installed_pkg"
+    #   fi
+    # done
+  '';
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -109,6 +138,7 @@ in
     ncdu
     nerd-fonts.fira-code
     nmap
+    pipx
     procs
     pstree
     pv
@@ -229,6 +259,10 @@ in
   home.sessionVariables = {
     BUKU_COLORS = "FCexd";
   };
+
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
 
   # Programs
   programs = {
