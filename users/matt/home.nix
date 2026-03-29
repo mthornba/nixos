@@ -721,6 +721,11 @@ in
       ];
     };
 
+    nix-search-tv = {
+      enable = true;
+      enableTelevisionIntegration = true;
+    };
+
     pay-respects = {
       enable = true;
       enableZshIntegration = true;
@@ -780,6 +785,28 @@ in
         };
       };
 
+    };
+
+    television = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        ui = {
+          show_preview_panel = false;
+          status_bar = {
+            hidden = false;
+          };
+          theme = "solarized-dark";
+          use_nerd_font_icons = true;
+          ui_scale = 100;
+        };
+        shell_integration ={
+          keybindings = {
+            smart_autocomplete = "ctrl-t";
+            command_history = "ctrl-r";
+          };
+        };
+      };
     };
 
     tmux = {
@@ -993,6 +1020,17 @@ in
           bindkey -M vicmd 'j' history-substring-search-down
           bindkey -M viins '^[[A' history-substring-search-up
           bindkey -M viins '^[[B' history-substring-search-down
+
+          # Television file picker widget
+          function _television-file-picker() {
+            local selected=$(tv files)
+            if [[ -n "$selected" ]]; then
+              LBUFFER="$LBUFFER$selected"
+              zle reset-prompt
+            fi
+          }
+          zle -N _television-file-picker
+          bindkey '^T' _television-file-picker
 
           # uncomment to enable profiling
           #zprof
