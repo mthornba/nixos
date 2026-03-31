@@ -186,6 +186,18 @@ Update all flake inputs (root includes NixOS and darwin, users/matt is home-mana
 nix flake update && (cd users/matt && nix flake update)
 ```
 
+Update a single input without updating others:
+```sh
+# Update only nixpkgs in root flake (system packages)
+nix flake update nixpkgs
+
+# Update only home-manager input
+nix flake update home-manager
+
+# Preview changes before applying
+git diff flake.lock
+```
+
 Then rebuild:
 ```sh
 nix run .  # Auto-detects OS and hostname
