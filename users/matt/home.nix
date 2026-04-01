@@ -816,8 +816,12 @@ in
       keyMode = "vi";
       mouse = true;
       reverseSplit = true;
-      terminal = "xterm-256color";
+      terminal = "tmux-256color";
       extraConfig = ''
+        # Enable true color support
+        set -ga terminal-overrides ",xterm-256color:Tc"
+        set -ga terminal-overrides ",xterm-kitty:Tc"
+
         # Enable richer key reports (needed for Ctrl+Tab passthrough from kitty)
         set -g xterm-keys on
         set -g base-index 1
@@ -835,7 +839,7 @@ in
         bind % split-window -h -c "#{pane_current_path}"
         unbind '"'
         bind '"' split-window -c "#{pane_current_path}"
-        
+
         # Ensure new windows start in home directory
         unbind c
         bind c new-window -c ~
