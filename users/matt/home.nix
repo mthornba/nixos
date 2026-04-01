@@ -118,6 +118,7 @@ in
     fd
     file
     gfold
+    git-filter-repo
     gita
     frogmouth
     ghq
