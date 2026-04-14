@@ -108,6 +108,7 @@ in
     buku
     carl
     chatgpt-cli
+    colordiff
     copilot-language-server
     curlie
     ddgr
@@ -1071,6 +1072,9 @@ in
       };
 
       siteFunctions = {
+        csdiff = ''
+          csdiff -w $(stty size | awk '{print $NF}') $@ | colordiff
+        '';
         # display Vault secrets
         showCreds = ''
           vault kv get -format=json -mount="''\${1}" "''\${2}" | \
