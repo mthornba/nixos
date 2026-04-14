@@ -12,6 +12,7 @@
     homebrew-dustinblackman = { url = "github:dustinblackman/homebrew-tap"; flake = false; };
     homebrew-devnullvoid = { url = "github:devnullvoid/homebrew-pvetui"; flake = false; };
     homebrew-services = { url = "github:homebrew/homebrew-services"; flake = false; };
+    homebrew-johnsideserf = { url = "github:johnsideserf/homebrew-siggy"; flake = false; };
   };
 
   nixConfig = {

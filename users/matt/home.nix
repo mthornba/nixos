@@ -146,6 +146,7 @@ in
     pv
     ripgrep
     serpl
+    signal-cli
     silver-searcher
     so
     spec-kit

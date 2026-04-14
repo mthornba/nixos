@@ -18,6 +18,7 @@
       "mas"
       "oatmeal"
       "pvetui"
+      "siggy"
     ];
     
     casks = [

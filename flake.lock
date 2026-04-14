@@ -97,6 +97,22 @@
         "type": "github"
       }
     },
+    "homebrew-johnsideserf": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775042504,
+        "narHash": "sha256-uR83xRac52nflj4+6f01lkEiLCjjr8p6ssy2rUhRFHU=",
+        "owner": "johnsideserf",
+        "repo": "homebrew-siggy",
+        "rev": "5c8a3da1af8c41f38a1337811d77b432957ddbdc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "johnsideserf",
+        "repo": "homebrew-siggy",
+        "type": "github"
+      }
+    },
     "homebrew-services": {
       "flake": false,
       "locked": {
@@ -174,6 +190,7 @@
         "homebrew-core": "homebrew-core",
         "homebrew-devnullvoid": "homebrew-devnullvoid",
         "homebrew-dustinblackman": "homebrew-dustinblackman",
+        "homebrew-johnsideserf": "homebrew-johnsideserf",
         "homebrew-services": "homebrew-services",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
