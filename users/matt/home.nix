@@ -126,7 +126,6 @@ in
     github-copilot-cli
     gitnr
     glow
-    gurk-rs
     gnupg
     htop
     ipcalc
