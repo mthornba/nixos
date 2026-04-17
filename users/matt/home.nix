@@ -1089,7 +1089,7 @@ in
 
         # Clone with ghq and cd into the cloned directory
         gclone = ''
-          ghq get -p "$@" && cd "$(ghq list -p -e "$(echo "$1" | sed 's|^.*://||' | sed 's|\.git$||')")"
+          ghq get -p "$@" && cd "$(ghq list -p -e "$(echo "$1" | sed -E 's#^(https://|ssh://git@)##; s#\.git$##')")"
         '';
       };
 
