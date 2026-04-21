@@ -262,7 +262,6 @@
         config = /* vim */ ''
           let mapleader = " "
           let maplocalleader = " "
-          nnoremap <Space> <Nop>
         '';
       }
       ale
