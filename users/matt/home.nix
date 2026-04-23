@@ -754,9 +754,7 @@ in
       # custom settings
       settings = {
         add_newline = true;
-        format = "$all";
-        line_break.disabled = true;
-        right_format = "$time";
+        format = "$all$fill$time$line_break$character";
 
         aws.disabled = true;
         gcloud.disabled = true;
@@ -779,11 +777,20 @@ in
           disabled = false;
         };
 
+        fill = {
+          symbol = " ";
+        };
+
         time = {
           disabled = false;
           format = "[$time]($style)";
           time_format = "%H:%M:%S";
           style = "yellow";
+        };
+
+        character = {
+          success_symbol = "[❯](bold green)";
+          error_symbol = "[❯](bold red)";
         };
       };
 
@@ -1037,6 +1044,11 @@ in
           }
           zle -N _television-file-picker
           bindkey '^T' _television-file-picker
+
+          # Show timestamp when command is executed
+          preexec() {
+            echo -ne "\r\033[2K\033[2m 󰔛 [ $(date '+%H:%M:%S') ]\n\033[0m"
+          }
 
           # uncomment to enable profiling
           #zprof
