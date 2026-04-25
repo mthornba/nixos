@@ -754,13 +754,29 @@ in
       # custom settings
       settings = {
         add_newline = true;
-        format = "$all$fill$time$line_break$character";
+        format = "$os$all$fill$time$line_break$character";
+
+        os = {
+          disabled = false;
+          style = "white";
+          symbols = {
+            Macos = "󰀵 ";
+            Linux = "󰌽 ";
+          };
+        };
 
         aws.disabled = true;
         gcloud.disabled = true;
 
         kubernetes = {
+          symbol = "󱃾 ";
           contexts = [
+            {
+              context_pattern = "^(none|disabled|safe)$";
+              symbol = "";
+              context_alias = "";
+              style = "dimmed";
+            }
             {
               context_pattern = ".*test.*";
               context_alias = "test";
@@ -775,16 +791,33 @@ in
             }
           ];
           disabled = false;
+          format = "[$symbol$context( \\($namespace\\)) ]($style)";
+          detect_extensions = [];
+          detect_files = [];
+          detect_folders = [];
+        };
+
+        lua = {
+          symbol = "󰢱 ";
+        };
+
+        nix_shell = {
+          symbol = "󱄅 ";
+        };
+
+        git_branch = {
+          symbol = "󰘬 ";
         };
 
         fill = {
-          symbol = " ";
+          symbol = "─";
+          style = "bold dimmed";
         };
 
         time = {
           disabled = false;
           format = "[$time]($style)";
-          time_format = "%H:%M:%S";
+          time_format = " %H:%M:%S";
           style = "yellow";
         };
 
