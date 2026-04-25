@@ -161,26 +161,6 @@ in
     # graphical apps
     slack
     vscode # unfree
-  ] ++ lib.optionals pkgs.stdenv.isDarwin [
-    # macOS-only packages
-    pkgs.ghostty-bin  # For Macuake to use
-    (pkgs.stdenvNoCC.mkDerivation {
-      pname = "macuake";
-      version = "0.1.3";
-      src = pkgs.fetchurl {
-        url = "https://github.com/menemy/macuake/releases/download/v0.1.3/Macuake.dmg";
-        hash = "sha256-HtI49e3Ng2iGyreHUOz3bHvCnSbcOMGB2Djnk6N7/rc=";
-      };
-      nativeBuildInputs = [ pkgs._7zz ];
-      sourceRoot = ".";
-      unpackPhase = ''
-        7zz x $src
-      '';
-      installPhase = ''
-        mkdir -p $out/Applications
-        cp -r Macuake.app $out/Applications/
-      '';
-    })
   ] ++ [
     # Custom scripts
     (pkgs.writeShellScriptBin "termcolors" (builtins.readFile ./dotfiles/scripts/termcolors))
@@ -485,8 +465,11 @@ in
         window-padding-y = 4;
         shell-integration-features = "no-cursor";
         quick-terminal-position = "center";
+        quick-terminal-screen = "main";
+        quick-terminal-size = "1480px,75%"; # 75% of 1964
         keybind= [
           "global:ctrl+grave_accent=toggle_quick_terminal"
+          "global:option+space=toggle_quick_terminal"
           "ctrl+tab=csi:1;5I"
           "ctrl+shift+tab=csi:1;6I"
         ];
