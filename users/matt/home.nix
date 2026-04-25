@@ -209,38 +209,6 @@ in
     ".tmuxp/dashboard.yml".source = dotfiles/tmuxp/dashboard.yml;
     ".tmuxp/kubernetes.yml".source = dotfiles/tmuxp/kubernetes.yml;
 
-    # Ghostty config for Macuake
-    ".config/ghostty/config".text = ''
-      font-family = FiraCode Nerd Font
-      font-size = 12
-      background = 001e26
-      foreground = 9bc1c2
-      cursor-color = f34a00
-      selection-background = 003747
-      selection-foreground = 001e26
-      palette = 0=#002731
-      palette = 1=#d01b24
-      palette = 2=#6bbe6c
-      palette = 3=#a57705
-      palette = 4=#2075c7
-      palette = 5=#c61b6e
-      palette = 6=#259185
-      palette = 7=#e9e2cb
-      palette = 8=#006388
-      palette = 9=#f4153b
-      palette = 10=#50ee84
-      palette = 11=#b17e28
-      palette = 12=#178dc7
-      palette = 13=#e14d8e
-      palette = 14=#00b29e
-      palette = 15=#fcf4dc
-      background-opacity = 0.90
-      background-blur-radius = 20
-      window-padding-x = 4
-      window-padding-y = 4
-      shell-integration-features = no-cursor
-    '';
-
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
@@ -478,6 +446,51 @@ in
 
     gh = {
       enable = true;
+    };
+
+    ghostty = {
+      enable = true;
+      enableZshIntegration = true;
+      package = pkgs.ghostty-bin;
+      settings = {
+        font-family = "FiraCode Nerd Font";
+        font-size = 12;
+        adjust-cell-width = "5%";
+        background = "001e26";
+        foreground = "9bc1c2";
+        cursor-color = "f34a00";
+        selection-background = "003747";
+        selection-foreground = "001e26";
+        palette = [
+          "0=#002731"
+          "1=#d01b24"
+          "2=#6bbe6c"
+          "3=#a57705"
+          "4=#2075c7"
+          "5=#c61b6e"
+          "6=#259185"
+          "7=#e9e2cb"
+          "8=#006388"
+          "9=#f4153b"
+          "10=#50ee84"
+          "11=#b17e28"
+          "12=#178dc7"
+          "13=#e14d8e"
+          "14=#00b29e"
+          "15=#fcf4dc"
+        ];
+        background-opacity = 0.70;
+        background-blur-radius = 30;
+        window-padding-x = 4;
+        window-padding-y = 4;
+        shell-integration-features = "no-cursor";
+        quick-terminal-position = "center";
+        keybind= [
+          "global:ctrl+grave_accent=toggle_quick_terminal"
+          "ctrl+tab=csi:1;5I"
+          "ctrl+shift+tab=csi:1;6I"
+        ];
+      };
     };
 
     git = {
@@ -862,8 +875,10 @@ in
         # Enable true color support
         set -ga terminal-overrides ",xterm-256color:Tc"
         set -ga terminal-overrides ",xterm-kitty:Tc"
+        set -ga terminal-overrides ",xterm-ghostty:Tc"
 
-        # Enable richer key reports (needed for Ctrl+Tab passthrough from kitty)
+
+        # Enable richer key reports (needed for Ctrl+Tab passthrough from kitty/ghostty)
         set -g xterm-keys on
         set -g base-index 1
         set -g renumber-windows on
