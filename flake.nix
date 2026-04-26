@@ -13,6 +13,7 @@
     homebrew-devnullvoid = { url = "github:devnullvoid/homebrew-pvetui"; flake = false; };
     homebrew-services = { url = "github:homebrew/homebrew-services"; flake = false; };
     homebrew-johnsideserf = { url = "github:johnsideserf/homebrew-siggy"; flake = false; };
+    homebrew-erickochen = { url = "github:erickochen/homebrew-purple"; flake = false; };
   };
 
   nixConfig = {

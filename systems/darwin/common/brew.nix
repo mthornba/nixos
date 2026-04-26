@@ -17,6 +17,7 @@
       "ekphos"
       "mas"
       "oatmeal"
+      "purple"
       "pvetui"
       "siggy"
     ];

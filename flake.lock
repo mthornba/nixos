@@ -97,6 +97,22 @@
         "type": "github"
       }
     },
+    "homebrew-erickochen": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777111337,
+        "narHash": "sha256-yYk/OO/7XdRfrQdycC5DZCTyCwAEdWiQMWb9mqPW3Rw=",
+        "owner": "erickochen",
+        "repo": "homebrew-purple",
+        "rev": "ef5eeffe6faf1183f32dcd3e8d5f2a9fed0ac04b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "erickochen",
+        "repo": "homebrew-purple",
+        "type": "github"
+      }
+    },
     "homebrew-johnsideserf": {
       "flake": false,
       "locked": {
@@ -190,6 +206,7 @@
         "homebrew-core": "homebrew-core",
         "homebrew-devnullvoid": "homebrew-devnullvoid",
         "homebrew-dustinblackman": "homebrew-dustinblackman",
+        "homebrew-erickochen": "homebrew-erickochen",
         "homebrew-johnsideserf": "homebrew-johnsideserf",
         "homebrew-services": "homebrew-services",
         "nix-darwin": "nix-darwin",

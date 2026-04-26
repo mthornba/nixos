@@ -21,6 +21,7 @@ let
             "dustinblackman/homebrew-tap" = inputs.homebrew-dustinblackman;
             "devnullvoid/homebrew-pvetui" = inputs.homebrew-devnullvoid;
             "johnsideserf/homebrew-siggy" = inputs.homebrew-johnsideserf;
+            "erickochen/homebrew-purple" = inputs.homebrew-erickochen;
           };
 
           mutableTaps = false;
