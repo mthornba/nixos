@@ -127,6 +127,7 @@ in
     gitnr
     glow
     gnupg
+    gum
     htop
     ipcalc
     jless
@@ -421,6 +422,7 @@ in
 
     fzf = {
       enable = true;
+      tmux.enableShellIntegration = true;
       enableZshIntegration = false;
     };
 
@@ -723,6 +725,12 @@ in
       };
     };
 
+    sesh = {
+      enable = true;
+      enableTmuxIntegration = true;
+      icons = true;
+    };
+
     starship = {
       enable = true;
       # custom settings
@@ -870,6 +878,7 @@ in
         bind C-j send-keys C-j
         bind C-k send-keys C-k
         bind C-l send-keys C-l
+        bind-key "K" run-shell "tmux display-popup -E -w 50 -h 20 'sesh connect \"$(sesh list -it | gum filter --limit 1 --placeholder \"Pick a sesh\" --prompt=\"⚡\")\"'"
       '';
       plugins = with pkgs; [
         tmuxPlugins.tmux-fzf
@@ -1024,6 +1033,9 @@ in
 
           # Make "kubecolor" borrow the same completion logic as "kubectl"
           compdef kubecolor=kubectl
+
+          # sesh completion
+          source <(sesh completion zsh)
 
           # krew
           export PATH="''\${KREW_ROOT:-''\$HOME/.krew}/bin:$PATH"
