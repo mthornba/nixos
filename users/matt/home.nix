@@ -881,6 +881,7 @@ in
         bind-key "K" run-shell "tmux display-popup -E -w 50 -h 20 'sesh connect \"$(sesh list -it | gum filter --limit 1 --placeholder \"Pick a sesh\" --prompt=\"⚡\")\"'"
       '';
       plugins = with pkgs; [
+        tmuxPlugins.fzf-tmux-url
         tmuxPlugins.tmux-fzf
         tmuxPlugins.tmux-powerline
         tmuxPlugins.tmux-floax
