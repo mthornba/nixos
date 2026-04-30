@@ -435,24 +435,35 @@ in
       enableZshIntegration = true;
       package = pkgs.ghostty-bin;
       settings = {
+        adjust-cell-width = "5%";
+        background-blur-radius = 30;
+        background-opacity = 0.90;
+        bell-features = "no-attention,border,title";
+        cursor-text = "cell-background";
         font-family = "FiraCode Nerd Font";
         font-size = 12;
-        adjust-cell-width = "5%";
-        theme = "Solarized Dark Higher Contrast";
-        background-opacity = 0.70;
-        background-blur-radius = 30;
-        window-padding-x = 4;
-        window-padding-y = 4;
-        shell-integration-features = "no-cursor";
-        quick-terminal-position = "center";
-        quick-terminal-screen = "main";
-        quick-terminal-size = "1480px,75%"; # 75% of 1964
         keybind= [
           "global:ctrl+grave_accent=toggle_quick_terminal"
           "global:option+space=toggle_quick_terminal"
           "ctrl+tab=csi:1;5I"
           "ctrl+shift+tab=csi:1;6I"
         ];
+        macos-icon = "custom-style";
+        macos-icon-frame = "beige";
+        macos-icon-ghost-color = "#33FF00";
+        macos-icon-screen-color = "#33FF00,#28CC28,#282828,#000000";
+        macos-titlebar-style = "hidden";
+        mouse-hide-while-typing = "true";
+        mouse-scroll-multiplier = 0.5;
+        quick-terminal-position = "center";
+        quick-terminal-screen = "mouse";
+        quick-terminal-size = "1450px,75%"; # 75% of 1964
+        shell-integration-features = "no-cursor";
+        theme = "Solarized Dark Higher Contrast";
+        window-padding-x = 4;
+        window-padding-y = 4;
+        # load this config file if it exists
+        config-file = "?config.manual";
       };
     };
 
