@@ -22,6 +22,7 @@ let
             "devnullvoid/homebrew-pvetui" = inputs.homebrew-devnullvoid;
             "johnsideserf/homebrew-siggy" = inputs.homebrew-johnsideserf;
             "erickochen/homebrew-purple" = inputs.homebrew-erickochen;
+            "AlexStrNik/homebrew-Browserino" = inputs.homebrew-alexstrnik;
           };
 
           mutableTaps = false;

@@ -23,6 +23,8 @@
     ];
     
     casks = [
+      "browserino"
+      "finicky"
       "logseq"
       "microsoft-teams"
       "orbstack"

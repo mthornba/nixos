@@ -17,6 +17,22 @@
         "type": "github"
       }
     },
+    "homebrew-alexstrnik": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767864093,
+        "narHash": "sha256-Aso4CDemO9POwiL6IFT/ipO76x9QTG9B+H7u/3huu7M=",
+        "owner": "AlexStrNik",
+        "repo": "homebrew-Browserino",
+        "rev": "16341f622042d2071a55d95957a859c64b0b197e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AlexStrNik",
+        "repo": "homebrew-Browserino",
+        "type": "github"
+      }
+    },
     "homebrew-bundle": {
       "flake": false,
       "locked": {
@@ -201,6 +217,7 @@
     },
     "root": {
       "inputs": {
+        "homebrew-alexstrnik": "homebrew-alexstrnik",
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",

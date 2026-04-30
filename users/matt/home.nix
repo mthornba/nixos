@@ -190,6 +190,32 @@ in
     ".tmuxp/dashboard.yml".source = dotfiles/tmuxp/dashboard.yml;
     ".tmuxp/kubernetes.yml".source = dotfiles/tmuxp/kubernetes.yml;
 
+    ".config/finicky/finicky.js".text = ''
+      export default {
+      defaultBrowser: "qutebrowser",
+      options: {
+        checkForUpdates: false,
+        logRequests: false,
+        hideIcon: false,
+      },
+
+      // Browser selection rules
+      handlers: [
+        {
+          // Open links from these apps in Browserino for choice
+          match: (options) => {
+            const opener = options.opener;
+            if (opener && opener.name) {
+              return ["Slack", "Mail", "Microsoft Outlook"].includes(opener.name);
+            }
+            return false;
+          },
+          browser: "Browserino"
+        }
+      ]
+    };
+    '';
+
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
