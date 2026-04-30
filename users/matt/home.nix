@@ -189,7 +189,7 @@ in
     ".tmuxp/code.yml".source = dotfiles/tmuxp/code.yml;
     ".tmuxp/dashboard.yml".source = dotfiles/tmuxp/dashboard.yml;
     ".tmuxp/kubernetes.yml".source = dotfiles/tmuxp/kubernetes.yml;
-
+    ".local/bin/vault-token-renewer".source = scripts/vault-token-renewer.sh;
     ".config/finicky/finicky.js".text = ''
       export default {
       defaultBrowser: "qutebrowser",
@@ -240,6 +240,21 @@ in
   home.sessionPath = [
     "$HOME/.local/bin"
   ];
+
+  launchd.agents.vault-token-renewer = {
+    enable = true;
+    config = {
+      ProgramArguments = [ "${config.home.homeDirectory}/.local/bin/vault-token-renewer" ];
+      KeepAlive = false;
+      RunAtLoad = false;
+      StandardOutPath = "${config.home.homeDirectory}/Library/Logs/vault-token-renewer.log";
+      StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/vault-token-renewer.error.log";
+      EnvironmentVariables = {
+        PATH = "${config.home.profileDirectory}/bin:/usr/bin:/bin:/usr/sbin:/sbin";
+        VAULT_ADDR = "https://vault.internal.palitronica.com";
+      };
+    };
+  };
 
   # Programs
   programs = {
