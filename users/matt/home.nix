@@ -2,6 +2,7 @@
 
 let
   defaultImports = [
+    ./modules/lsq.nix
     ./modules/neovim.nix
     ./modules/palitronica.nix
     ./modules/taskwarrior.nix
