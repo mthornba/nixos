@@ -897,6 +897,9 @@ in
       reverseSplit = true;
       terminal = "tmux-256color";
       extraConfig = ''
+        # Update PATH from shell environment to prevent stale paths in splits
+        set-option -g update-environment "PATH"
+        
         # Enable true color support
         set -ga terminal-overrides ",xterm-256color:Tc"
         set -ga terminal-overrides ",xterm-kitty:Tc"
