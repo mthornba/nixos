@@ -239,8 +239,10 @@ in
   };
 
   home.sessionPath = [
-    "${config.home.profileDirectory}/bin"
-    "$HOME/.local/bin"
+    "${config.home.profileDirectory}/bin"  # Nix packages (vim alias, etc)
+    "/opt/homebrew/bin"                     # Apple Silicon Homebrew
+    "/usr/local/bin"                        # Intel Homebrew
+    "$HOME/.local/bin"                      # pipx and custom scripts
   ];
 
   launchd.agents.vault-token-renewer = {
