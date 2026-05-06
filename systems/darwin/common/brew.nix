@@ -26,7 +26,6 @@
       "browserino"
       "finicky"
       "logseq"
-      "microsoft-teams"
       "orbstack"
       "plexamp"
       "truetree"
