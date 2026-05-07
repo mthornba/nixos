@@ -460,6 +460,18 @@ in
       enable = true;
     };
 
+    diff-so-fancy = {
+      enable = true;
+      enableGitIntegration = false;
+      pagerOpts = [
+        "--tabs=4"
+        "-RFXS"
+      ];
+      settings = {
+        semIntegration = true;
+      };
+    };
+
     dircolors.enable = true;
 
     direnv = {
@@ -522,6 +534,12 @@ in
     git = {
       enable = true;
       settings = {
+        alias = {
+          dsf = "diff --color";
+        };
+        pager = {
+          dsf = "diff-so-fancy | less --tabs=4 -RFXS";
+        };
         credential.helper = "${
             pkgs.git.override { withLibsecret = true; }
           }/bin/git-credential-libsecret";
@@ -1202,7 +1220,6 @@ in
           { name = "zsh-users/zsh-history-substring-search"; tags = [ as:plugin ]; }
           { name = "zsh-users/zsh-autosuggestions"; }
           { name = "marzocchi/zsh-notify"; }
-          { name = "zdharma-continuum/zsh-diff-so-fancy"; }
           { name = "jimeh/zsh-peco-history"; }
         ];
       };
