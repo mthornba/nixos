@@ -183,6 +183,11 @@ in
     # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # symlink to the Nix store copy.
+    ".local/bin/ranger".text = ''
+        #!/usr/bin/env bash
+        exec yazi "$@"
+      '';
+    ".local/bin/ranger".executable = true;
     ".config/kitty/sessions".source = dotfiles/kitty/sessions;
     ".config/newsboat/bookmark.sh".source = scripts/newsboat/bookmark.sh;
     ".config/wtf/config.yml".source = dotfiles/wtf/config.yml;
