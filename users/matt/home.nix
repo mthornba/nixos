@@ -302,6 +302,8 @@ in
           { "if" = { app-id = "com.apple.ActivityMonitor"; }; run = "layout floating"; }
           # Archive Utility
           { "if" = { app-id = "com.apple.archiveutility"; }; run = "layout floating"; }
+          # Azure VPN Client
+          { "if" = { app-id = "com.microsoft.AzureVpnMac"; }; run = "layout floating"; }
           # Software Update
           { "if" = { app-id = "com.apple.SoftwareUpdate"; }; run = "layout floating"; }
           # Finder preferences, info windows
