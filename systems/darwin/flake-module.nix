@@ -23,6 +23,7 @@ let
             "johnsideserf/homebrew-siggy" = inputs.homebrew-johnsideserf;
             "erickochen/homebrew-purple" = inputs.homebrew-erickochen;
             "AlexStrNik/homebrew-Browserino" = inputs.homebrew-alexstrnik;
+            "unhappychoice/homebrew-tap" = inputs.homebrew-unhappychoice;
           };
 
           mutableTaps = false;

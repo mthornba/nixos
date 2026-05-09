@@ -15,6 +15,7 @@
     homebrew-johnsideserf = { url = "github:johnsideserf/homebrew-siggy"; flake = false; };
     homebrew-erickochen = { url = "github:erickochen/homebrew-purple"; flake = false; };
     homebrew-alexstrnik = { url = "github:AlexStrNik/homebrew-Browserino"; flake = false; };
+    homebrew-unhappychoice = { url = "github:unhappychoice/homebrew-tap"; flake = false; };
   };
 
   nixConfig = {

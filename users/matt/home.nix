@@ -1158,6 +1158,9 @@ in
             echo -ne "\r\033[2K\033[2m 󰔛 [ $(date '+%H:%M:%S') ]\n\033[0m"
           }
 
+          # splashboard — render on new shell and on directory change
+          eval "$(splashboard init zsh)"
+
           # uncomment to enable profiling
           #zprof
         '';

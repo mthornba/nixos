@@ -20,6 +20,7 @@
       "purple"
       "pvetui"
       "siggy"
+      "splashboard"
     ];
     
     casks = [

@@ -161,6 +161,22 @@
         "type": "github"
       }
     },
+    "homebrew-unhappychoice": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778166635,
+        "narHash": "sha256-qpSU44rCLlTwPz3zhriY0gx5hB1H94mrrKVCHj3K7LA=",
+        "owner": "unhappychoice",
+        "repo": "homebrew-tap",
+        "rev": "77cdba811f54792f215b96e851b07bd1672cc6c7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "unhappychoice",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -226,6 +242,7 @@
         "homebrew-erickochen": "homebrew-erickochen",
         "homebrew-johnsideserf": "homebrew-johnsideserf",
         "homebrew-services": "homebrew-services",
+        "homebrew-unhappychoice": "homebrew-unhappychoice",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs"
