@@ -138,6 +138,7 @@ in
     lazygit
     lazyssh
     lsd
+    nb
     ncdu
     nerd-fonts.fira-code
     nmap
@@ -158,6 +159,7 @@ in
     unrar
     unzip
     viddy
+    w3m
     wtfutil
     zip
     # graphical apps
