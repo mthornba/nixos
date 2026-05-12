@@ -1129,9 +1129,6 @@ in
           # sesh completion
           source <(sesh completion zsh)
 
-          # krew
-          export PATH="''\${KREW_ROOT:-''\$HOME/.krew}/bin:$PATH"
-
         '';
         zshConfigLate = lib.mkOrder 1500 ''
           # Late
