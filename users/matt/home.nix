@@ -1110,6 +1110,11 @@ in
           # uncomment to enable profiling
           #zmodload zsh/zprof
           
+          # Ensure Nix profile bin directories are first in PATH
+          # This ensures programs like vim (aliased to nvim by vimAlias) take precedence
+          # over system paths like /usr/bin
+          export PATH="${config.home.profileDirectory}/bin:${config.home.profileDirectory}/sbin:$PATH"
+          
           # Magic space for history expansion
           bindkey -M viins ' ' magic-space
         '';
