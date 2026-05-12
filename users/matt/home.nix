@@ -521,6 +521,7 @@ in
         macos-titlebar-style = "hidden";
         mouse-hide-while-typing = "true";
         mouse-scroll-multiplier = 0.5;
+        quick-terminal-autohide = "false";
         quick-terminal-position = "center";
         quick-terminal-screen = "mouse";
         quick-terminal-size = "1450px,75%"; # 75% of 1964
