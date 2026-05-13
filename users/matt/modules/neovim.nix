@@ -62,6 +62,13 @@
       set splitright
       syntax enable
       colorscheme solarized8
+      
+      " Make background transparent (inherit from terminal)
+      highlight Normal guibg=NONE ctermbg=NONE
+      highlight NonText guibg=NONE ctermbg=NONE
+      highlight SignColumn guibg=NONE ctermbg=NONE
+      highlight EndOfBuffer guibg=NONE ctermbg=NONE
+      
       let g:airline_solarized_bg='dark'
       let g:airline_detect_truecolor = 1
       let g:airline_theme='solarized_flood'
