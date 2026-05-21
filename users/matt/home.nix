@@ -151,9 +151,9 @@ in
     signal-cli
     silver-searcher
     so
-    spec-kit
+    unstable.spec-kit
     sshs
-    termscp
+    # termscp
     tldr
     tmuxp
     unrar
@@ -163,7 +163,7 @@ in
     wtfutil
     zip
     # graphical apps
-    slack
+    unstable.slack
     vscode # unfree
   ] ++ [
     # Custom scripts
@@ -280,9 +280,8 @@ in
     aerospace = {
       enable = true;
       launchd.enable = true;
-      settings = {
-        config-version = 2;
-        after-startup-command = [ ];
+      userSettings = {
+        # Simplified v1 config for aerospace 0.20.3 compatibility
         start-at-login = false;
         enable-normalization-flatten-containers = true;
         enable-normalization-opposite-orientation-for-nested-containers = true;
@@ -290,38 +289,19 @@ in
         default-root-container-layout = "tiles";
         default-root-container-orientation = "auto";
         on-focused-monitor-changed = [ "move-mouse monitor-lazy-center" ];
-        automatically-unhide-macos-hidden-apps = false;
         
         # Windows that should always float
         on-window-detected = [
-          # System Preferences/Settings
           { "if" = { app-id = "com.apple.systempreferences"; }; run = "layout floating"; }
-          # Calculator
           { "if" = { app-id = "com.apple.calculator"; }; run = "layout floating"; }
-          # Activity Monitor
           { "if" = { app-id = "com.apple.ActivityMonitor"; }; run = "layout floating"; }
-          # Archive Utility
           { "if" = { app-id = "com.apple.archiveutility"; }; run = "layout floating"; }
-          # Azure VPN Client
           { "if" = { app-id = "com.microsoft.AzureVpnMac"; }; run = "layout floating"; }
-          # Software Update
           { "if" = { app-id = "com.apple.SoftwareUpdate"; }; run = "layout floating"; }
-          # Finder preferences, info windows
           { "if" = { app-id = "com.apple.finder"; }; run = "layout floating"; }
-          # UTM
           { "if" = { app-id = "com.utmapp.UTM"; }; run = "layout floating"; }
         ];
         
-        persistent-workspaces = [
-          "B"
-          "C"
-          "D"
-          "I"
-          "N"
-          "S"
-          "9"
-        ];
-        on-mode-changed = [ ];
         key-mapping.preset = "qwerty";
         gaps = {
           inner.horizontal = 2;
@@ -408,7 +388,6 @@ in
           alt-shift-z = "move-node-to-workspace Z";
           alt-tab = "workspace-back-and-forth";
           alt-shift-tab = "move-workspace-to-monitor --wrap-around next";
-          # Disable "hide application" & "hide others"
           cmd-h = [];
           cmd-alt-h = [];
           cmd-alt-right = "workspace --wrap-around next";

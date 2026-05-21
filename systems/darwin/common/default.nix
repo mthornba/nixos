@@ -10,10 +10,8 @@
 
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
-    ansible
     curl
     iproute2mac
-    lima
     qemu
     raycast
     vim

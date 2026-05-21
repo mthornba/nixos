@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     asdf-vm
-    ansible
     codex
     commitizen
     devcontainer

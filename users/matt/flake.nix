@@ -3,22 +3,32 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { nixpkgs, home-manager, nur, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nur, ... }:
     let
       mkHome = system:
         let 
           pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
-            overlays = [ nur.overlays.default ];
+            overlays = [ 
+              nur.overlays.default
+              # Overlay to provide unstable packages
+              (final: prev: {
+                unstable = import nixpkgs-unstable {
+                  inherit system;
+                  config.allowUnfree = true;
+                };
+              })
+            ];
           };
         in
         home-manager.lib.homeManagerConfiguration {
