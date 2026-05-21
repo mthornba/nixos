@@ -806,6 +806,8 @@ in
       };
       settings = {
         colors.webpage.darkmode.enabled = true;
+        scrolling.bar = "always";
+        scrolling.smooth = true;
       };
     };
 
