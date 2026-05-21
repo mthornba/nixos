@@ -513,11 +513,17 @@ in
           "global:option+space=toggle_quick_terminal"
           "ctrl+tab=csi:1;5I"
           "ctrl+shift+tab=csi:1;6I"
+          "ctrl+alt+shift+j=write_screen_file:open"
+          "shift+page_up=scroll_page_up"
+          "shift+page_down=scroll_page_down"
+          "ctrl+shift+page_up=jump_to_prompt:-1"
+          "ctrl+shift+page_down=jump_to_prompt:1"
         ];
         macos-icon = "custom-style";
         macos-icon-frame = "beige";
         macos-icon-ghost-color = "#33FF00";
         macos-icon-screen-color = "#33FF00,#28CC28,#282828,#000000";
+        macos-option-as-alt = "true";
         macos-titlebar-style = "hidden";
         mouse-hide-while-typing = "true";
         mouse-scroll-multiplier = 0.5;
