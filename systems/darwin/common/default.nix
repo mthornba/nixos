@@ -49,7 +49,7 @@
       wvous-br-corner = 2; # Mission Control
     };
     
-    spaces.spans-displays = true; # Disable "Displays have separate spaces"
+    spaces.spans-displays = false; # Enable "Displays have separate spaces"
 
     NSGlobalDomain = {
       _HIHideMenuBar = false; # autohide menu bar
