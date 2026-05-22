@@ -13,7 +13,7 @@
     curl
     iproute2mac
     qemu
-    raycast
+    unstable.raycast
     vim
     wget
   ];

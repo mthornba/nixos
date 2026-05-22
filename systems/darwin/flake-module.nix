@@ -8,6 +8,16 @@ let
       ./hosts/${hostname}.nix
       inputs.nix-homebrew.darwinModules.nix-homebrew
       {
+        nixpkgs.overlays = [
+          # Overlay to provide unstable packages
+          (final: prev: {
+            unstable = import inputs.nixpkgs-unstable {
+              system = final.system;
+              config.allowUnfree = true;
+            };
+          })
+        ];
+        
         nix-homebrew = {
           enable = true;
           user = "matt";
