@@ -41,6 +41,15 @@
         { "if" = { app-id = "com.apple.SoftwareUpdate"; }; run = "layout floating"; }
         { "if" = { app-id = "com.apple.finder"; }; run = "layout floating"; }
         { "if" = { app-id = "com.utmapp.UTM"; }; run = "layout floating"; }
+        # Force specific apps to open in specific workspaces
+        { "if" = { app-id = "com.microsoft.Outlook"; }; run = "move-node-to-workspace O"; }
+        { "if" = { app-id = "com.microsoft.Powerpoint"; }; run = "move-node-to-workspace P"; }
+        { "if" = { app-id = "com.microsoft.Excel"; }; run = "move-node-to-workspace E"; }
+        { "if" = { app-id = "com.tinyspeck.slackmacgap"; }; run = "move-node-to-workspace S"; }
+        { "if" = { app-id = "com.logseq.logseq"; }; run = "move-node-to-workspace N"; }
+        { "if" = { app-id = "tv.plex.plexamp"; }; run = "move-node-to-workspace S"; }
+        { "if" = { app-id = "com.vivaldi.Vivaldi"; }; run = "move-node-to-workspace B"; }
+        { "if" = { app-id = "org.qutebrowser.qutebrowser"; }; run = "move-node-to-workspace C"; }
       ];
       
       key-mapping.preset = "qwerty";
