@@ -13,15 +13,13 @@
     curl
     iproute2mac
     qemu
-    unstable.raycast
+    raycast
     vim
     wget
   ];
 
-  # Aerospace window manager from unstable
   services.aerospace = {
     enable = true;
-    package = pkgs.unstable.aerospace;
     settings = {
       start-at-login = false;
       enable-normalization-flatten-containers = true;
