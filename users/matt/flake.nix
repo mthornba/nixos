@@ -5,6 +5,7 @@
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-25_11.url = "github:NixOS/nixpkgs/nixos-25.11";
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,7 +13,7 @@
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, nur, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, nixpkgs-25_11, home-manager, nur, ... }:
     let
       mkHome = system:
         let 
@@ -30,6 +31,12 @@
                 # pipx 1.8.0 in stable has cosmetic test failures (spacing in package specifier
                 # assertions) that don't affect functionality. Skip tests to allow it to build.
                 pipx = prev.pipx.overrideAttrs (_: { doInstallCheck = false; });
+                # qtwebengine 6.11.0 fails to compile on aarch64-darwin in 26.05. Pin to 25.11
+                # where it builds successfully.
+                qutebrowser = (import nixpkgs-25_11 {
+                  inherit system;
+                  config.allowUnfree = true;
+                }).qutebrowser;
               })
             ];
           };
