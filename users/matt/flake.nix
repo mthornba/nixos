@@ -31,6 +31,9 @@
                 # pipx 1.8.0 in stable has cosmetic test failures (spacing in package specifier
                 # assertions) that don't affect functionality. Skip tests to allow it to build.
                 pipx = prev.pipx.overrideAttrs (_: { doInstallCheck = false; });
+                # intelli-shell 3.4.1 has a test_default_config snapshot mismatch that doesn't
+                # affect functionality (AI prompt text changed but snapshot wasn't updated).
+                intelli-shell = prev.intelli-shell.overrideAttrs (_: { doCheck = false; });
                 # qtwebengine 6.11.0 fails to compile on aarch64-darwin in 26.05. Pin to 25.11
                 # where it builds successfully.
                 qutebrowser = (import nixpkgs-25_11 {
