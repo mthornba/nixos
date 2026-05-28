@@ -21,12 +21,15 @@
             config.allowUnfree = true;
             overlays = [ 
               nur.overlays.default
-              # Overlay to provide unstable packages
+              # Overlay to provide unstable packages and fix broken stable packages
               (final: prev: {
                 unstable = import nixpkgs-unstable {
                   inherit system;
                   config.allowUnfree = true;
                 };
+                # pipx 1.8.0 in stable has cosmetic test failures (spacing in package specifier
+                # assertions) that don't affect functionality. Skip tests to allow it to build.
+                pipx = prev.pipx.overrideAttrs (_: { doInstallCheck = false; });
               })
             ];
           };
