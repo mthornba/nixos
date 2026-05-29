@@ -4,6 +4,8 @@
   programs.neovim = {
     defaultEditor = true;
     enable = true;
+    withRuby = true;
+    withPython3 = true;
     extraPackages = with pkgs; [
       glow
       luajitPackages.tiktoken_core
@@ -96,7 +98,7 @@
       autocmd InsertLeave * if &filetype != 'neo-tree' | match ExtraWhitespace /\s\+$/ | endif
       autocmd BufWinLeave * call clearmatches()
     '';
-    extraLuaConfig = /* lua */ ''
+    initLua = /* lua */ ''
       -- require('lazy').setup({
       --   {
       --     "dustinblackman/oatmeal.nvim",
@@ -266,6 +268,7 @@
       };
     in with pkgs.vimPlugins; [
       { plugin = preludeLeader;
+        type = "viml";
         config = /* vim */ ''
           let mapleader = " "
           let maplocalleader = " "
@@ -282,6 +285,7 @@
       copilot-vim
       copilot-lsp
       { plugin = CopilotChat-nvim;
+        type = "viml";
         config = /* vim */ ''
           " Toggle CopilotChat window
           nnoremap <leader>cc <cmd>CopilotChatToggle<cr>
@@ -300,6 +304,7 @@
       }
 
       { plugin = neo-tree-nvim;
+        type = "viml";
         config = /* vim */ ''
           nnoremap <leader>nt <cmd>Neotree source=filesystem position=left reveal=true toggle<cr>
         '';
@@ -308,6 +313,7 @@
       }
 
       { plugin = markdown-preview-nvim;
+        type = "viml";
         config = /* vim */ ''
           " Markdown preview in browser
           let g:mkdp_browser = 'qutebrowser'
@@ -332,6 +338,7 @@
       luasnip
       cmp_luasnip
       { plugin = copilot-vim;
+        type = "viml";
         config = /* vim */ ''
           let g:copilot_filetypes = { '*': v:true }
         '';
@@ -344,6 +351,7 @@
       telescope-fzf-native-nvim
 
       { plugin = telescope-nvim;
+        type = "viml";
         config = /* vim */ ''
           " Find files using Telescope command-line sugar.
           nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -353,6 +361,7 @@
         '';
       }
       { plugin = toggleterm-nvim;
+        type = "viml";
         config = /* vim */ ''
           " set
           autocmd TermEnter term://*toggleterm#*
@@ -381,6 +390,7 @@
       }
       vim-airline
       { plugin = vim-airline-themes;
+        type = "viml";
         config = /* vim */ ''
           let g:airline_powerline_fonts = 1
 
@@ -425,11 +435,13 @@
       NeoSolarized
       vim-fugitive
       { plugin = vim-gitgutter;
+        type = "viml";
         config = /* vim */ ''
           nmap <leader>hs <Plug>(GitGutterStageHunk)
         '';
       }
       { plugin = vim-terraform;
+        type = "viml";
         config = /* vim */ ''
           let g:terraform_fmt_on_save=1
           let g:terraform_align=1
