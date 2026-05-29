@@ -838,7 +838,7 @@ in
           plugin = tmuxPlugins.resurrect;
           extraConfig = ''
             set -g @resurrect-strategy-nvim 'session'
-            set -g @resurrect-processes 'nvim ~/Users/matt/.nix-profile/bin/nvim->nvim ~/nix/store/.*/bin/nvim->nvim vim k9s wtfutil aerc newsboat'
+            set -g @resurrect-processes 'nvim ~/.nix-profile/bin/nvim->/nix/store/.*/bin/nvim->nvim vim k9s wtfutil aerc newsboat'
           '';
         }
         {
