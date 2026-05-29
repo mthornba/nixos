@@ -165,7 +165,7 @@
         }
       }
 
-      require('nvim-treesitter.configs').setup({ highlight = { enable = true } })
+      require('nvim-treesitter').setup({ highlight = { enable = true } })
 
       vim.lsp.config('terraformls', {
         cmd = { 'terraform-ls', 'serve' },
