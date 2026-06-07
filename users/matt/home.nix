@@ -346,6 +346,10 @@ in
       enable = true;
     };
 
+    gh-dash = {
+      enable = true;
+    };
+
     ghostty = {
       enable = true;
       enableZshIntegration = true;
