@@ -922,9 +922,9 @@ in
 
         # Rebuild compinit cache only if the dump is older than a day
         if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
-          compinit -C
-        else
           compinit
+        else
+          compinit -C
         fi
       '';
 
