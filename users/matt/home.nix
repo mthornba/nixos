@@ -998,6 +998,8 @@ in
           # sesh completion
           source <(sesh completion zsh)
 
+          # add krew to path
+          PATH="${config.home.homeDirectory}/.krew/bin:$PATH";
         '';
         zshConfigLate = lib.mkOrder 1500 ''
           # Late
