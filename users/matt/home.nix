@@ -332,6 +332,12 @@ in
       nix-direnv.enable = true;
     };
 
+    fabric-ai = {
+      enable = true;
+      enablePatternsAliases = true;
+      enableZshIntegration = true;
+    };
+
     firefox = {
       enable = true;
     };
