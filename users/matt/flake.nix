@@ -40,6 +40,11 @@
                   inherit system;
                   config.allowUnfree = true;
                 }).qutebrowser;
+                # Pin to 25.11 for compatibility with self-hosted Vaultwarden instance.
+                bitwarden-cli = (import nixpkgs-25_11 {
+                  inherit system;
+                  config.allowUnfree = true;
+                }).bitwarden-cli;
               })
             ];
           };
