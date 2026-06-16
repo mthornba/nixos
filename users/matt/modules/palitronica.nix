@@ -19,7 +19,6 @@
     kubespy
     kubernetes-helm
     minio-client
-    opencode
     openvpn
     packer
     pgcli

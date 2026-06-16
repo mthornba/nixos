@@ -2,6 +2,7 @@
 
 let
   defaultImports = [
+    ./modules/ai.nix
     ./modules/lsq.nix
     ./modules/neovim.nix
     ./modules/palitronica.nix
@@ -103,6 +104,7 @@ in
     # cli apps
     aichat
     bat
+    beads
     bitwarden-cli
     browsh
     btop

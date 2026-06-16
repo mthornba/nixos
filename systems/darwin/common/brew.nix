@@ -54,6 +54,7 @@ in
     
     casks = [
       "browserino"
+      "ollama"
       "finicky"
       "logseq"
       "orbstack"
