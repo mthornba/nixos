@@ -6,6 +6,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-25_11.url = "github:NixOS/nixpkgs/nixos-25.11";
+    clin.url = "github:reekta92/clin-rs";
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,7 +14,7 @@
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, nixpkgs-25_11, home-manager, nur, ... }:
+  outputs = { nixpkgs, nixpkgs-unstable, nixpkgs-25_11, home-manager, nur, clin, ... }:
     let
       mkHome = system:
         let 
@@ -51,6 +52,7 @@
         in
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
+          extraSpecialArgs = { clin-pkg = clin.packages.${system}.default; };
           modules = [ ./home.nix ];
         };
     in {

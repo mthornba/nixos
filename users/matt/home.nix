@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, clin-pkg, ... }:
 
 let
   defaultImports = [
@@ -109,6 +109,7 @@ in
     buku
     carl
     chatgpt-cli
+    clin-pkg
     colordiff
     copilot-language-server
     curlie
