@@ -449,6 +449,12 @@
       }
       vim-terraform-completion
       vim-tmux-navigator
+      { plugin = vimwiki;
+        type = "viml";
+        config = /* vim */ ''
+          let g:vimwiki_list = [{'path': '~/Documents/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+        '';
+      }
       xterm-color-table-vim
       zoomwintab-vim
     ];
