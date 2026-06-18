@@ -8,6 +8,8 @@
     withPython3 = true;
     extraPackages = with pkgs; [
       glow
+      imagemagick
+      luajitPackages.magick
       luajitPackages.tiktoken_core
       lynx
       ripgrep
@@ -258,6 +260,20 @@
           },
         },
       })
+
+      require("image").setup({
+        backend = "kitty",
+        integrations = {
+          markdown = {
+            enabled = true,
+            clear_in_insert_mode = false,
+            download_remote_images = true,
+            filetypes = { "markdown", "vimwiki" },
+          },
+        },
+        max_height_window_percentage = 50,
+        hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.svg" },
+      })
     '';
 
     plugins = let
@@ -455,6 +471,7 @@
           let g:vimwiki_list = [{'path': '~/Documents/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
         '';
       }
+      image-nvim
       xterm-color-table-vim
       zoomwintab-vim
     ];
