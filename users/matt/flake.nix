@@ -46,6 +46,15 @@
                   inherit system;
                   config.allowUnfree = true;
                 }).bitwarden-cli;
+                # Patch carbon-now-cli to avoid import assertions failing at runtime.
+                carbon-now-cli = prev.carbon-now-cli.overrideAttrs (old: {
+                  postBuild = ''
+                    if [ -f dist/cli.js ]; then
+                      substituteInPlace dist/cli.js \
+                        --replace "import packageJson from './package.json' assert { type: 'json' };" "import { readFileSync } from 'fs'; const packageJson = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'));"
+                    fi
+                  '';
+                });
               })
             ];
           };

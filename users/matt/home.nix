@@ -107,6 +107,9 @@ in
     browsh
     btop
     buku
+    carbon-now-cli
+    dprint
+    dprint-plugins.dprint-plugin-markdown
     carl
     chatgpt-cli
     clin-pkg
@@ -143,7 +146,9 @@ in
     ncdu
     nerd-fonts.fira-code
     nmap
+    nodejs
     pipx
+    playwright
     procs
     pstree
     pv
@@ -170,6 +175,18 @@ in
     # Custom scripts
     (pkgs.writeShellScriptBin "termcolors" (builtins.readFile ./dotfiles/scripts/termcolors))
   ];
+
+  # Ensure the exact Playwright Chromium revision that carbon-now-cli (playwright-core v1.49.0) needs.
+  home.activation.installPlaywrightBrowsers = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    PATH="${config.home.path}/bin:$PATH"
+
+    if [ -d "$HOME/Library/Caches/ms-playwright/chromium_headless_shell-1148" ]; then
+      echo "Playwright Chromium revision 1148 already installed; skipping"
+    else
+      echo "Installing Playwright Chromium revision 1148 (required by carbon-now-cli)..."
+      $DRY_RUN_CMD npx playwright@1.49.0 install chromium || true
+    fi
+  '';
 
   # Tip: add OS-specific packages when needed, e.g.:
   # home.packages = (with pkgs; [
