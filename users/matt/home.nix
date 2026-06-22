@@ -142,6 +142,7 @@ in
     lazygit
     lazyssh
     lsd
+    mdformat
     nb
     ncdu
     nerd-fonts.fira-code
