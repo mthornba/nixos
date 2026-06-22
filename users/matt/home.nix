@@ -819,6 +819,7 @@ in
         set -ga terminal-overrides ",xterm-kitty:Tc"
         set -ga terminal-overrides ",xterm-ghostty:Tc"
 
+        set -g allow-passthrough on
 
         # Enable richer key reports (needed for Ctrl+Tab passthrough from kitty/ghostty)
         set -g xterm-keys on
