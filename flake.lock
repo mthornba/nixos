@@ -129,6 +129,22 @@
         "type": "github"
       }
     },
+    "homebrew-herald": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782437899,
+        "narHash": "sha256-gwaLszwwpGgcAa80QoP7pmgHuOUhYCbAMeFVWSRZSx4=",
+        "owner": "herald-email",
+        "repo": "homebrew-herald",
+        "rev": "8f36d1fd369b6b1cf621d3679c0b7836b21fed5a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "herald-email",
+        "repo": "homebrew-herald",
+        "type": "github"
+      }
+    },
     "homebrew-johnsideserf": {
       "flake": false,
       "locked": {
@@ -257,6 +273,7 @@
         "homebrew-devnullvoid": "homebrew-devnullvoid",
         "homebrew-dustinblackman": "homebrew-dustinblackman",
         "homebrew-erickochen": "homebrew-erickochen",
+        "homebrew-herald": "homebrew-herald",
         "homebrew-johnsideserf": "homebrew-johnsideserf",
         "homebrew-services": "homebrew-services",
         "homebrew-unhappychoice": "homebrew-unhappychoice",

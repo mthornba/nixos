@@ -17,6 +17,7 @@
     homebrew-erickochen = { url = "github:erickochen/homebrew-purple"; flake = false; };
     homebrew-alexstrnik = { url = "github:AlexStrNik/homebrew-Browserino"; flake = false; };
     homebrew-unhappychoice = { url = "github:unhappychoice/homebrew-tap"; flake = false; };
+    homebrew-herald = { url = "github:herald-email/homebrew-herald"; flake = false; };
   };
 
   nixConfig = {

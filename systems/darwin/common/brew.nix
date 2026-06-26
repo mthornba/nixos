@@ -15,6 +15,7 @@
     brews = [
       "azure-cli"
       "ekphos"
+      "herald"
       "mas"
       "oatmeal"
       "purple"

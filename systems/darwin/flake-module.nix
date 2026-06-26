@@ -34,6 +34,7 @@ let
             "erickochen/homebrew-purple" = inputs.homebrew-erickochen;
             "AlexStrNik/homebrew-Browserino" = inputs.homebrew-alexstrnik;
             "unhappychoice/homebrew-tap" = inputs.homebrew-unhappychoice;
+            "herald-email/homebrew-herald" = inputs.homebrew-herald;
           };
 
           mutableTaps = false;
