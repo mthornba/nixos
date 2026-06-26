@@ -158,13 +158,14 @@ in
     signal-cli
     silver-searcher
     so
-    unstable.spec-kit
+    #unstable.spec-kit
     sshs
     # termscp
     tldr
     tmuxp
     unrar
     unzip
+    uv
     viddy
     w3m
     wtfutil
@@ -262,6 +263,7 @@ in
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
     BUKU_COLORS = "FCexd";
+    UV_PYTHON_DOWNLOADS = "never"; 
   };
 
   home.sessionPath = [
