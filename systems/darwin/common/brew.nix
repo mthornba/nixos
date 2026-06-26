@@ -1,6 +1,34 @@
 { config, pkgs, lib, ... }:
 
+let
+  # Derive short tap names for `brew trust` from the declarative tap set.
+  # Filters out official homebrew/* taps (auto-trusted) and strips the
+  # "homebrew-" prefix from repo names (e.g. "herald-email/homebrew-herald"
+  # → "herald-email/herald").
+  thirdPartyTaps = lib.filter (t: !(lib.hasPrefix "homebrew/" t))
+    (builtins.attrNames config.nix-homebrew.taps);
+  tapTrustNames = map (t:
+    let
+      parts = lib.splitString "/" t;
+      user  = builtins.elemAt parts 0;
+      repo  = lib.removePrefix "homebrew-" (builtins.elemAt parts 1);
+    in "${user}/${repo}"
+  ) thirdPartyTaps;
+in
 {
+  # Trust all third-party taps before brew bundle runs (Homebrew 4.5+ requires
+  # explicit trust for non-homebrew/* taps). Script name "brewTrust" sorts
+  # before "homebrew" so it runs first during activation.
+  system.activationScripts.brewTrust.text = ''
+    for BREW in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+      [ -x "$BREW" ] || continue
+      ${lib.concatMapStrings (tap: ''
+        "$BREW" trust "${tap}" 2>/dev/null || true
+      '') tapTrustNames}
+      break
+    done
+  '';
+
   users.users.matt = {
     name = "matt";
     home = "/Users/matt";
