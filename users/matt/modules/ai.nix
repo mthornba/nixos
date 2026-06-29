@@ -9,7 +9,7 @@
       settings = {
         "$schema" = "https://opencode.ai/config.json";
 
-        model = "ollama/qwen3-8b-64k";
+        model = "ollama/qwen3-coder-next-64k";
         small_model = "ollama/qwen3-8b-64k";
 
         autoupdate = false;
@@ -29,6 +29,15 @@
             };
 
             models = {
+              "qwen3-coder-next-64k" = {
+                name = "Qwen3 Coder Next 64K";
+
+                limit = {
+                  context = 65536;
+                  output = 8192;
+                };
+              };
+
               "qwen3-8b-64k" = {
                 name = "Qwen3 8B 64K";
 
