@@ -58,8 +58,8 @@ in
       "logseq"
       "orbstack"
       "plexamp"
+      "scroll-reverser"
       "truetree"
-      "unnaturalscrollwheels"
       "utm"
       "vivaldi"
     ] ++ lib.optionals pkgs.stdenv.hostPlatform.isx86_64 [
