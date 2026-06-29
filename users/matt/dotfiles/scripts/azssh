@@ -1,0 +1,61 @@
+#!/usr/bin/env zsh
+
+azssh () {
+  local host
+  local -a files
+
+  files=(~/.ssh/arc/config.d/*.conf(N))
+
+  (( ${#files[@]} )) || {
+    echo "No Arc SSH config files found in ~/.ssh/arc/config.d" >&2
+    return 1
+  }
+
+  host=$(
+    awk '
+      /^[[:space:]]*Host[[:space:]]+/ {
+        for (i = 2; i <= NF; i++) {
+          if ($i ~ /^rg-anvil-arc-dev-.*-anvil-user$/ && $i !~ /[*?!]/) {
+            print $i
+          }
+        }
+      }
+    ' "${files[@]}" 2>/dev/null |
+      sort -u |
+      fzf --prompt='Arc SSH host > ' --height=40% --reverse
+  )
+
+  [[ -z "$host" ]] && return 0
+
+  local log
+  log="$(mktemp)"
+
+  ssh "$host" 2> >(tee "$log" >&2)
+  local rc=$?
+
+  if [[ $rc -eq 0 ]]; then
+    rm -f "$log"
+    return 0
+  fi
+
+  if grep -qiE 'Permission denied \(publickey\)|Certificate invalid|expired|No more authentication methods' "$log"; then
+    echo
+    echo "SSH auth failed for $host. Renewing Arc SSH cert/config and retrying..."
+    echo
+
+    if arc_renew_host "$host"; then
+      rm -f "$log"
+      ssh "$host"
+      return $?
+    else
+      local renew_rc=$?
+      rm -f "$log"
+      return $renew_rc
+    fi
+  fi
+
+  rm -f "$log"
+  return $rc
+}
+
+azssh

@@ -176,6 +176,7 @@ in
   ] ++ [
     # Custom scripts
     (pkgs.writeShellScriptBin "termcolors" (builtins.readFile ./dotfiles/scripts/termcolors))
+#    (pkgs.writeShellScriptBin "azssh" (builtins.readFile ./dotfiles/scripts/azssh))
   ];
 
   # Ensure the exact Playwright Chromium revision that carbon-now-cli (playwright-core v1.49.0) needs.
@@ -1090,6 +1091,12 @@ in
       };
 
       siteFunctions = {
+        azssh = ''
+          HOST=$(awk '/^[[:space:]]*Host[[:space:]]+rg/ { for (i=2; i<=NF; i++) if ($i !~ /[*?!]/) print $i }' ~/.ssh/config 2>/dev/null | \
+          sort -u | \
+          fzf --prompt='SSH host > ' --height=40% --reverse)
+          [ -n "$HOST" ] && ssh "$HOST"
+        '';
         csdiff = ''
           csdiff -w $(stty size | awk '{print $NF}') $@ | colordiff
         '';
