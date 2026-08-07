@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     asdf-vm
+    awscli2
     codex
     commitizen
     devcontainer
