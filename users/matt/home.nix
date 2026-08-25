@@ -134,6 +134,7 @@ in
     gnupg
     gum
     htop
+    imagemagick
     ipcalc
     jless
     jq
