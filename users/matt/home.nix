@@ -162,6 +162,7 @@ in
     #unstable.spec-kit
     sshs
     # termscp
+    timewarrior
     tldr
     tmuxp
     unrar
