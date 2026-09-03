@@ -18,6 +18,7 @@
     homebrew-alexstrnik = { url = "github:AlexStrNik/homebrew-Browserino"; flake = false; };
     homebrew-unhappychoice = { url = "github:unhappychoice/homebrew-tap"; flake = false; };
     homebrew-herald = { url = "github:herald-email/homebrew-herald"; flake = false; };
+    homebrew-as-foss = { url = "github:as-foss/homebrew-mandible"; flake = false; };
   };
 
   nixConfig = {

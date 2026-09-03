@@ -33,6 +33,22 @@
         "type": "github"
       }
     },
+    "homebrew-as-foss": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788224326,
+        "narHash": "sha256-X+5xC5zTVnjocfgtPzIeQkUsfTFPJ9HxPockI7H8Xwk=",
+        "owner": "as-foss",
+        "repo": "homebrew-mandible",
+        "rev": "240e45e60baa3f32eb1888d52c4f608480ffe813",
+        "type": "github"
+      },
+      "original": {
+        "owner": "as-foss",
+        "repo": "homebrew-mandible",
+        "type": "github"
+      }
+    },
     "homebrew-bundle": {
       "flake": false,
       "locked": {
@@ -267,6 +283,7 @@
     "root": {
       "inputs": {
         "homebrew-alexstrnik": "homebrew-alexstrnik",
+        "homebrew-as-foss": "homebrew-as-foss",
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",

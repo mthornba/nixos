@@ -35,6 +35,7 @@ let
             "AlexStrNik/homebrew-Browserino" = inputs.homebrew-alexstrnik;
             "unhappychoice/homebrew-tap" = inputs.homebrew-unhappychoice;
             "herald-email/homebrew-herald" = inputs.homebrew-herald;
+            "as-foss/homebrew-mandible" = inputs.homebrew-as-foss;
           };
 
           mutableTaps = false;

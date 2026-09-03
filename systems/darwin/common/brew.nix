@@ -44,6 +44,7 @@ in
       "azure-cli"
       "ekphos"
       "herald"
+      "as-foss/mandible/mandible"
       "mas"
       "oatmeal"
       "purple"
