@@ -108,9 +108,11 @@ in
     btop
     buku
     carbon-now-cli
+    diffnav
     dprint
     dprint-plugins.dprint-plugin-markdown
     carl
+    #cliamp
     chatgpt-cli
     clin-pkg
     colordiff
@@ -127,6 +129,7 @@ in
     git-filter-repo
     gita
     frogmouth
+    gh-enhance
     ghq
     github-copilot-cli
     gitnr
@@ -377,6 +380,26 @@ in
 
     gh-dash = {
       enable = true;
+      settings = {
+        pager = {
+          diff = "diffnav";
+        };
+        prSections = [
+          {
+            filters = "is:pr is:open involves:@me";
+            title = "My Pull Requests";
+          }
+        ];
+        keybindings = {
+          universal = [
+            {
+              key = "g";
+              name = "lazygit";
+              command = "cd {{.RepoPath}}; lazygit";
+            }
+          ];
+        };
+      };
     };
 
     ghostty = {
