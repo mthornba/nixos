@@ -1144,7 +1144,7 @@ in
             owner = "ohmyzsh";
             repo = "ohmyzsh";
             rev = "master";
-            sha256 = "QkiUAvefSD4RauHP9j+TJaEgL4aBhDIe1UcXKHG9ATQ=";
+            sha256 = "sha256-CwUhGo+y6Fky4BGt3Ri5ES24E0ODxnuxqTHzW3JjpIQ=";
           };
         }
         {
@@ -1154,7 +1154,7 @@ in
             owner = "ohmyzsh";
             repo = "ohmyzsh";
             rev = "master";
-            sha256 = "QkiUAvefSD4RauHP9j+TJaEgL4aBhDIe1UcXKHG9ATQ=";
+            sha256 = "sha256-CwUhGo+y6Fky4BGt3Ri5ES24E0ODxnuxqTHzW3JjpIQ=";
           };
         }
       ];
