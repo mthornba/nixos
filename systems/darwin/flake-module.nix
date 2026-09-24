@@ -36,6 +36,7 @@ let
             "unhappychoice/homebrew-tap" = inputs.homebrew-unhappychoice;
             "herald-email/homebrew-herald" = inputs.homebrew-herald;
             "as-foss/homebrew-mandible" = inputs.homebrew-as-foss;
+            "ZenNotes/homebrew-tap" = inputs.homebrew-zennotes;
           };
 
           mutableTaps = false;

@@ -63,6 +63,9 @@ in
       "truetree"
       "utm"
       "vivaldi"
+      # Self-updating cask; Homebrew's recorded version will drift from the
+      # installed app. Notes vault lives at ~/Documents/zennotes.
+      "zennotes"
     ] ++ lib.optionals pkgs.stdenv.hostPlatform.isx86_64 [
       # Intel-only casks
       "virtualbox"

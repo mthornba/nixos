@@ -209,6 +209,22 @@
         "type": "github"
       }
     },
+    "homebrew-zennotes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788972800,
+        "narHash": "sha256-Hixkkm8czdFpyPEwzRX5kgYujpMiBtKCfjUnDt2LG+8=",
+        "owner": "ZenNotes",
+        "repo": "homebrew-tap",
+        "rev": "8ace3085a44de1a867e5f24b684fd733dd5aa0bc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ZenNotes",
+        "repo": "homebrew-tap",
+        "type": "github"
+      }
+    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -294,6 +310,7 @@
         "homebrew-johnsideserf": "homebrew-johnsideserf",
         "homebrew-services": "homebrew-services",
         "homebrew-unhappychoice": "homebrew-unhappychoice",
+        "homebrew-zennotes": "homebrew-zennotes",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs",

@@ -19,6 +19,7 @@
     homebrew-unhappychoice = { url = "github:unhappychoice/homebrew-tap"; flake = false; };
     homebrew-herald = { url = "github:herald-email/homebrew-herald"; flake = false; };
     homebrew-as-foss = { url = "github:as-foss/homebrew-mandible"; flake = false; };
+    homebrew-zennotes = { url = "github:ZenNotes/homebrew-tap"; flake = false; };
   };
 
   nixConfig = {
