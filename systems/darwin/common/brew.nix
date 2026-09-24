@@ -14,16 +14,24 @@ let
       repo  = lib.removePrefix "homebrew-" (builtins.elemAt parts 1);
     in "${user}/${repo}"
   ) thirdPartyTaps;
+
+  brewUser = config.nix-homebrew.user;
 in
 {
-  # Trust all third-party taps before brew bundle runs (Homebrew 4.5+ requires
-  # explicit trust for non-homebrew/* taps). Script name "brewTrust" sorts
-  # before "homebrew" so it runs first during activation.
-  system.activationScripts.brewTrust.text = ''
+  # Trust all third-party taps before brew bundle runs (Homebrew requires
+  # explicit trust for non-homebrew/* taps).
+  #
+  # Must hook preActivation: nix-darwin interpolates a fixed, hardcoded list of
+  # activation scripts, so an arbitrarily named script (e.g. "brewTrust") is
+  # defined but never executed.
+  #
+  # Trust is stored per-user in ~/.homebrew/trust.json and `brew bundle` runs as
+  # ${brewUser}, so the trust entries must be written as that user, not as root.
+  system.activationScripts.preActivation.text = ''
     for BREW in /opt/homebrew/bin/brew /usr/local/bin/brew; do
       [ -x "$BREW" ] || continue
       ${lib.concatMapStrings (tap: ''
-        "$BREW" trust "${tap}" 2>/dev/null || true
+        sudo --user=${brewUser} --set-home "$BREW" trust --tap "${tap}" >/dev/null 2>&1 || true
       '') tapTrustNames}
       break
     done
