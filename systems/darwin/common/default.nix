@@ -18,6 +18,11 @@
     wget
   ];
 
+  # 1Password desktop app plus the `op` CLI (allows biometric unlock and
+  # CLI/app integration).
+  programs._1password.enable = true;
+  programs._1password-gui.enable = true;
+
   services.aerospace = {
     enable = true;
     settings = {
