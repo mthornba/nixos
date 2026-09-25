@@ -38,6 +38,17 @@ in
           }
         else {}
       )
+      # Nix wraps github-copilot-cli with a binary wrapper that execs node, so the
+      # pane's foreground process is "node" and Herdr cannot identify the agent.
+      # HERDR_AGENT tells Herdr which agent detection manifest to use.
+      (final: prev: {
+        github-copilot-cli = prev.github-copilot-cli.overrideAttrs (old: {
+          nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ final.makeBinaryWrapper ];
+          postFixup = (old.postFixup or "") + ''
+            wrapProgram $out/bin/copilot --set-default HERDR_AGENT copilot
+          '';
+        });
+      })
     ];
 
     # Configure your nixpkgs instance
