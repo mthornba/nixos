@@ -11,6 +11,8 @@
   # List packages installed in system profile
   environment.systemPackages = with pkgs; [
     curl
+    # Not yet in nixos-26.05; pulled from the nixpkgs-unstable overlay.
+    unstable.herdr
     iproute2mac
     qemu
     raycast
