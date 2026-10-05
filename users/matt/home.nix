@@ -1118,7 +1118,7 @@ in
 
       siteFunctions = {
         csdiff = ''
-          csdiff -w $(stty size | awk '{print $NF}') $@ | colordiff
+          sdiff -w $(stty size | awk '{print $NF}') $@ | colordiff
         '';
         # display Vault secrets
         showCreds = ''
