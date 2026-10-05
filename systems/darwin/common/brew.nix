@@ -67,7 +67,6 @@ in
       "logseq"
       "orbstack"
       "plexamp"
-      "scroll-reverser"
       "truetree"
       "utm"
       "vivaldi"

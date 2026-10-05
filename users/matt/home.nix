@@ -188,6 +188,10 @@ in
     # graphical apps
     unstable.slack
     vscode # unfree
+  ] ++ lib.optionals pkgs.stdenv.isDarwin [
+    # macOS-only menu bar toolkit. Not in nixpkgs; packaged in NUR, which is
+    # unreviewed third-party packaging that installs the upstream prebuilt DMG.
+    pkgs.nur.repos.forkprince.vorssaint
   ] ++ [
     # Custom scripts
     (pkgs.writeShellScriptBin "termcolors" (builtins.readFile ./dotfiles/scripts/termcolors))
